@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="{{ site.Language.Locale | default "zh-cn" }}">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ .Title }} | {{ site.Title }}{{ end }}</title>
+    {{ with resources.Get "css/main.css" | minify | fingerprint }}
+      <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}">
+    {{ end }}
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="site">
+        <h1 class="site-title"><a href="{{ site.Home.RelPermalink }}">{{ site.Title }}</a></h1>
+        {{ with site.Params.description }}<p class="site-description">{{ . }}</p>{{ end }}
+      </div>
+    </header>
+    <main class="site">
+      {{ block "main" . }}{{ end }}
+    </main>
+    <footer class="site site-footer">
+      <small>&copy; {{ now.Year }} {{ site.Title }}</small>
+    </footer>
+  </body>
+</html>
