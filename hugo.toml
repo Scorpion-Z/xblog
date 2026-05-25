@@ -1,6 +1,94 @@
 baseURL = 'https://scorpion-z.github.io/xblog/'
-locale = 'zh-cn'
-title = 'Hugo Blog'
+languageCode = 'zh-CN'
+defaultContentLanguage = 'zh-cn'
+locale = 'zh-CN'
+title = 'xblog'
+theme = 'PaperMod'
 
 [params]
-description = 'A minimal Hugo blog published with GitHub Pages.'
+description = '日常收集与记录'
+defaultTheme = 'auto'
+disableThemeToggle = false
+ShowReadingTime = true
+ShowShareButtons = false
+ShowPostNavLinks = true
+ShowBreadCrumbs = true
+ShowCodeCopyButtons = true
+ShowWordCount = true
+ShowRssButtonInSectionTermList = true
+UseHugoToc = true
+showtoc = true
+tocopen = false
+DateFormat = '2006-01-02'
+
+[params.homeInfoParams]
+Title = 'xblog'
+Content = '日常收集、阅读笔记与技术记录。'
+
+[params.assets]
+disableHLJS = true
+
+[params.fuseOpts]
+isCaseSensitive = false
+shouldSort = true
+location = 0
+distance = 1000
+threshold = 0.4
+minMatchCharLength = 1
+keys = ['title', 'permalink', 'summary', 'content']
+
+[outputs]
+home = ['HTML', 'RSS', 'JSON']
+
+[taxonomies]
+category = 'categories'
+tag = 'tags'
+
+[markup]
+  [markup.highlight]
+  noClasses = false
+  lineNos = false
+  codeFences = true
+  guessSyntax = true
+
+[[menu.main]]
+identifier = 'home'
+name = '首页'
+url = '/'
+weight = 10
+
+[[menu.main]]
+identifier = 'posts'
+name = '文章'
+url = '/posts/'
+weight = 20
+
+[[menu.main]]
+identifier = 'archives'
+name = '归档'
+url = '/archives/'
+weight = 30
+
+[[menu.main]]
+identifier = 'categories'
+name = '分类'
+url = '/categories/'
+weight = 40
+
+[[menu.main]]
+identifier = 'tags'
+name = '标签'
+url = '/tags/'
+weight = 50
+
+[[menu.main]]
+identifier = 'search'
+name = '搜索'
+url = '/search/'
+weight = 60
+
+[[menu.main]]
+identifier = 'about'
+name = '关于'
+url = '/about/'
+weight = 70
