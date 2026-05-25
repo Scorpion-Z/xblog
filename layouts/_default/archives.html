@@ -1,9 +1,6 @@
 {{ define "main" }}
-  <article>
+  <article class="theme-switch-archives">
     <header>
-      {{ if .Params.showBreadcrumbs | default (site.Params.list.showBreadcrumbs | default false) }}
-        {{ partial "breadcrumbs.html" . }}
-      {{ end }}
       <h1 class="mt-5 text-4xl font-extrabold text-neutral-900 dark:text-neutral">{{ .Title }}</h1>
     </header>
     <section class="mt-8 space-y-10">
@@ -12,7 +9,17 @@
           <h2 class="text-2xl font-bold text-neutral-700 dark:text-neutral-300">{{ .Key }}</h2>
           <div class="mt-4 space-y-6">
             {{ range .Pages }}
-              {{ partial "article-link/simple.html" . }}
+              <article>
+                <h3>
+                  <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+                </h3>
+                <p>
+                  <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">{{ .Date.Format "2006-01-02" }}</time>
+                </p>
+                {{ with .Summary }}
+                  <p>{{ . | plainify }}</p>
+                {{ end }}
+              </article>
             {{ end }}
           </div>
         </div>
