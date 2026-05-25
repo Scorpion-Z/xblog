@@ -1,0 +1,6 @@
+baseURL = 'https://scorpion-z.github.io/xblog/'
+locale = 'zh-cn'
+title = 'Hugo Blog'
+
+[params]
+description = 'A minimal Hugo blog published with GitHub Pages.'
