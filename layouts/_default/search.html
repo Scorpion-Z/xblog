@@ -1,0 +1,19 @@
+{{ define "main" }}
+  <article>
+    <header id="single_header" class="mt-5 max-w-prose">
+      {{ if .Params.showBreadcrumbs | default (site.Params.article.showBreadcrumbs | default false) }}
+        {{ partial "breadcrumbs.html" . }}
+      {{ end }}
+      <h1 class="mt-0 text-4xl font-extrabold text-neutral-900 dark:text-neutral">{{ .Title }}</h1>
+    </header>
+    <section class="article-content max-w-prose mb-20">
+      {{ .Content }}
+      <button
+        type="button"
+        class="mt-4 rounded-lg bg-primary-600 px-4 py-2 text-neutral hover:bg-primary-700"
+        onclick="document.getElementById('search-button')?.click()">
+        打开搜索
+      </button>
+    </section>
+  </article>
+{{ end }}
