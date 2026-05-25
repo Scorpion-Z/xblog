@@ -3,58 +3,39 @@ languageCode = 'zh-CN'
 defaultContentLanguage = 'zh-cn'
 locale = 'zh-CN'
 title = 'xblog'
-theme = 'blowfish'
+theme = 'PaperMod'
 
 [params]
 description = '日常收集与记录'
-colorScheme = 'blowfish'
-defaultAppearance = 'light'
-autoSwitchAppearance = true
-enableSearch = true
-enableCodeCopy = true
-mainSections = ['posts']
+defaultTheme = 'auto'
+disableThemeToggle = false
+ShowReadingTime = true
+ShowShareButtons = false
+ShowPostNavLinks = true
+ShowBreadCrumbs = true
+ShowCodeCopyButtons = true
+ShowWordCount = true
+ShowRssButtonInSectionTermList = true
+UseHugoToc = true
+showtoc = true
+tocopen = false
+DateFormat = '2006-01-02'
 
-[params.header]
-layout = 'basic'
+[params.homeInfoParams]
+Title = 'xblog'
+Content = '日常收集、阅读笔记与技术记录。'
 
-[params.footer]
-showMenu = true
-showCopyright = true
-showThemeAttribution = true
-showAppearanceSwitcher = true
-showScrollToTop = true
+[params.assets]
+disableHLJS = true
 
-[params.homepage]
-layout = 'profile'
-showRecent = true
-showRecentItems = 5
-showMoreLink = true
-showMoreLinkDest = '/posts/'
-
-[params.article]
-showDate = true
-showAuthor = false
-showBreadcrumbs = true
-showPagination = true
-showReadingTime = true
-showTableOfContents = true
-showTaxonomies = true
-showCategories = true
-showTags = true
-showWordCount = true
-
-[params.list]
-showBreadcrumbs = true
-showSummary = true
-groupByYear = true
-
-[params.taxonomy]
-showTermCount = true
-showBreadcrumbs = true
-
-[params.term]
-showBreadcrumbs = true
-showTableOfContents = true
+[params.fuseOpts]
+isCaseSensitive = false
+shouldSort = true
+location = 0
+distance = 1000
+threshold = 0.4
+minMatchCharLength = 1
+keys = ['title', 'permalink', 'summary', 'content']
 
 [outputs]
 home = ['HTML', 'RSS', 'JSON']
@@ -70,61 +51,44 @@ tag = 'tags'
   codeFences = true
   guessSyntax = true
 
-[languages.zh-cn]
-locale = 'zh-CN'
-label = '简体中文'
-title = 'xblog'
-weight = 1
-
-  [languages.zh-cn.params]
-  displayName = '简中'
-  isoCode = 'zh-CN'
-  rtl = false
-  dateFormat = '2006-01-02'
-  description = '日常收集与记录'
-
-    [languages.zh-cn.params.author]
-    name = 'xblog'
-    headline = '日常收集、阅读笔记与技术记录。'
-
 [[menu.main]]
 identifier = 'home'
 name = '首页'
-pageRef = '/'
+url = '/'
 weight = 10
 
 [[menu.main]]
 identifier = 'posts'
 name = '文章'
-pageRef = 'posts'
+url = '/posts/'
 weight = 20
 
 [[menu.main]]
 identifier = 'archives'
 name = '归档'
-pageRef = 'archives'
+url = '/archives/'
 weight = 30
 
 [[menu.main]]
 identifier = 'categories'
 name = '分类'
-pageRef = 'categories'
+url = '/categories/'
 weight = 40
 
 [[menu.main]]
 identifier = 'tags'
 name = '标签'
-pageRef = 'tags'
+url = '/tags/'
 weight = 50
 
 [[menu.main]]
 identifier = 'search'
 name = '搜索'
-pageRef = 'search'
+url = '/search/'
 weight = 60
 
 [[menu.main]]
 identifier = 'about'
 name = '关于'
-pageRef = 'about'
+url = '/about/'
 weight = 70
