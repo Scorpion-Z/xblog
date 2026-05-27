@@ -1,0 +1,103 @@
+{{- define "main" }}
+{{- $posts := where site.RegularPages "Type" "in" site.Params.mainSections }}
+{{- $posts = where $posts "Params.hiddenInHomeList" "!=" "true" }}
+{{- $featured := first 3 $posts }}
+{{- $latest := first 6 $posts }}
+
+<section class="x-home-hero" aria-labelledby="home-title">
+  <div class="x-hero-copy">
+    <p class="x-kicker">技术实践 / 阅读笔记 / 日常观察</p>
+    <h1 id="home-title">把零散经验整理成可以长期使用的文字。</h1>
+    <p class="x-hero-text">
+      xblog 记录真实问题、验证过程和阅读线索。写作目标不是制造信息流，而是把那些未来还会用到的判断保存下来。
+    </p>
+    <div class="x-hero-actions">
+      <a class="x-button x-button-primary" href="{{ "posts/" | relURL }}">阅读文章</a>
+      <a class="x-button x-button-secondary" href="{{ "about/" | relURL }}">了解 xblog</a>
+    </div>
+  </div>
+  <div class="x-hero-panel" aria-hidden="true">
+    <div class="x-orbit-card x-orbit-card-a">
+      <span>Notes</span>
+      <strong>可回溯的阅读记录</strong>
+    </div>
+    <div class="x-orbit-card x-orbit-card-b">
+      <span>Build</span>
+      <strong>可复用的实践流程</strong>
+    </div>
+    <div class="x-orbit-card x-orbit-card-c">
+      <span>Review</span>
+      <strong>持续更新的问题复盘</strong>
+    </div>
+  </div>
+</section>
+
+<section class="x-section" aria-labelledby="featured-title">
+  <div class="x-section-head">
+    <p class="x-kicker">Featured</p>
+    <h2 id="featured-title">精选文章</h2>
+  </div>
+  <div class="x-featured-grid">
+    {{- range $index, $page := $featured }}
+    <article class="x-featured-card{{ if eq $index 0 }} x-featured-card-large{{ end }}">
+      <a href="{{ .RelPermalink }}" aria-label="阅读 {{ .Title }}">
+        <div class="x-card-meta">
+          <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">{{ .Date.Format "2006-01-02" }}</time>
+          {{- with index .Params.categories 0 }}
+          <span>{{ . }}</span>
+          {{- end }}
+        </div>
+        <h3>{{ .Title }}</h3>
+        <p>{{ .Summary | plainify | htmlUnescape }}</p>
+      </a>
+    </article>
+    {{- end }}
+  </div>
+</section>
+
+<section class="x-section" aria-labelledby="topics-title">
+  <div class="x-section-head">
+    <p class="x-kicker">Explore</p>
+    <h2 id="topics-title">主题入口</h2>
+  </div>
+  <div class="x-topic-grid">
+    <a class="x-topic-card" href="{{ "categories/技术/" | relURL }}">
+      <span>技术</span>
+      <strong>构建、部署、自动化和工具链实践。</strong>
+    </a>
+    <a class="x-topic-card" href="{{ "categories/笔记/" | relURL }}">
+      <span>笔记</span>
+      <strong>阅读、观察和问题整理的方法。</strong>
+    </a>
+    <a class="x-topic-card" href="{{ "archives/" | relURL }}">
+      <span>归档</span>
+      <strong>按时间回看所有文章和更新轨迹。</strong>
+    </a>
+    <a class="x-topic-card" href="{{ "search/" | relURL }}">
+      <span>搜索</span>
+      <strong>从标题、标签和正文里快速定位内容。</strong>
+    </a>
+  </div>
+</section>
+
+<section class="x-section x-latest" aria-labelledby="latest-title">
+  <div class="x-section-head x-section-head-row">
+    <div>
+      <p class="x-kicker">Latest</p>
+      <h2 id="latest-title">最新文章</h2>
+    </div>
+    <a class="x-text-link" href="{{ "posts/" | relURL }}">查看全部</a>
+  </div>
+  <div class="x-latest-list">
+    {{- range $latest }}
+    <article class="x-latest-item">
+      <a href="{{ .RelPermalink }}">
+        <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">{{ .Date.Format "2006-01-02" }}</time>
+        <h3>{{ .Title }}</h3>
+        <p>{{ .Summary | plainify | htmlUnescape }}</p>
+      </a>
+    </article>
+    {{- end }}
+  </div>
+</section>
+{{- end }}

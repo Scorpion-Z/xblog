@@ -6,7 +6,7 @@ title = 'xblog'
 theme = 'PaperMod'
 
 [params]
-description = '记录技术实践、阅读笔记与日常观察'
+description = '面向长期使用的技术实践、阅读笔记与日常观察'
 defaultTheme = 'auto'
 disableThemeToggle = false
 ShowReadingTime = true
@@ -23,7 +23,7 @@ DateFormat = '2006-01-02'
 
 [params.homeInfoParams]
 Title = 'xblog'
-Content = '记录技术实践、阅读笔记与日常观察。把零散经验整理成可复用的文字，也保留一点持续思考的现场。'
+Content = '面向长期使用的技术实践、阅读笔记与日常观察。把零散经验整理成可复用的文字，也保留一点持续思考的现场。'
 
 [params.assets]
 disableHLJS = true
