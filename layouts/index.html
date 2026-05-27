@@ -4,102 +4,63 @@
 {{- $pinned := where $posts "Params.pinned" true }}
 {{- $regular := where $posts "Params.pinned" "!=" true }}
 {{- $posts = union $pinned $regular }}
-{{- $featured := $pinned }}
-{{- if eq (len $featured) 0 }}
-{{- $featured = first 1 $posts }}
-{{- end }}
-{{- $latest := first 8 $posts }}
-
-<section class="x-dev-hero" aria-labelledby="home-title">
-  <p class="x-kicker">Open notes for builders and readers</p>
-  <h1 id="home-title">xblog</h1>
-  <p class="x-hero-text">
-    记录技术实践、阅读笔记与日常观察。把真实问题、验证过程和可复用判断整理成长期可检索的文字。
-  </p>
-  <div class="x-hero-actions">
-    <a class="x-button x-button-primary" href="{{ "posts/" | relURL }}">浏览全部文章</a>
-    <a class="x-button x-button-secondary" href="{{ "search/" | relURL }}">搜索内容</a>
-  </div>
-</section>
+{{- $recent := first 5 $posts }}
+{{- $stream := first 8 $posts }}
 
 <div class="x-dev-shell">
   <aside class="x-dev-index" aria-label="内容索引">
+    <nav class="x-index-nav" aria-label="文章浏览">
+      <a class="x-index-active" href="{{ "posts/" | relURL }}">All posts</a>
+    </nav>
     <div class="x-index-block">
-      <p class="x-index-label">Browse</p>
-      <nav class="x-index-nav" aria-label="浏览入口">
-        <a href="{{ "posts/" | relURL }}">全部文章</a>
-        <a href="{{ "categories/技术/" | relURL }}">技术</a>
-        <a href="{{ "categories/笔记/" | relURL }}">笔记</a>
-        <a href="{{ "archives/" | relURL }}">归档</a>
-        <a href="{{ "search/" | relURL }}">搜索</a>
+      <p class="x-index-label">Recent</p>
+      <nav class="x-recent-nav" aria-label="最近文章">
+        {{- range $recent }}
+        <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+        {{- end }}
       </nav>
     </div>
     <div class="x-index-block">
       <p class="x-index-label">Topics</p>
-      <div class="x-topic-list">
+      <nav class="x-topic-list" aria-label="主题">
+        <a href="{{ "categories/技术/" | relURL }}">技术</a>
+        <a href="{{ "categories/笔记/" | relURL }}">笔记</a>
         <a href="{{ "tags/reading/" | relURL }}">Reading</a>
         <a href="{{ "tags/hugo/" | relURL }}">Hugo</a>
         <a href="{{ "tags/thinking/" | relURL }}">Thinking</a>
-      </div>
+      </nav>
     </div>
   </aside>
 
   <div class="x-dev-feed">
-    <section class="x-section" aria-labelledby="featured-title">
-      <div class="x-section-head x-section-head-row">
-        <div>
-          <p class="x-kicker">Featured</p>
-          <h2 id="featured-title">置顶文章</h2>
-        </div>
-      </div>
-      <div class="x-post-list">
-        {{- range $featured }}
-        <article class="x-post-row x-post-row-featured">
-          <a href="{{ .RelPermalink }}" aria-label="阅读 {{ .Title }}">
-            <div class="x-row-meta">
-              {{- if .Params.pinned }}
-              <span>置顶</span>
-              {{- end }}
-              <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">{{ .Date.Format "2006-01-02" }}</time>
-              {{- with index .Params.categories 0 }}
-              <span>{{ . }}</span>
-              {{- end }}
-            </div>
-            <h3>{{ .Title }}</h3>
-            <p>{{ .Summary | plainify | htmlUnescape }}</p>
-          </a>
-        </article>
-        {{- end }}
-      </div>
+    <section class="x-dev-hero" aria-labelledby="home-title">
+      <h1 id="home-title">xblog Developer Blog</h1>
+      <p class="x-hero-text">Insights, notes, and field reports for building, reading, and maintaining a personal knowledge system.</p>
     </section>
 
-    <section class="x-section x-latest" aria-labelledby="latest-title">
-      <div class="x-section-head x-section-head-row">
-        <div>
-          <p class="x-kicker">Recent</p>
-          <h2 id="latest-title">最近文章</h2>
-        </div>
-        <a class="x-text-link" href="{{ "posts/" | relURL }}">All posts</a>
-      </div>
-      <div class="x-post-list">
-        {{- range $latest }}
-        <article class="x-post-row">
-          <a href="{{ .RelPermalink }}" aria-label="阅读 {{ .Title }}">
+    <section class="x-post-stream" aria-label="文章列表">
+      {{- range $stream }}
+      <article class="x-stream-post">
+        <a class="x-stream-link" href="{{ .RelPermalink }}" aria-label="阅读 {{ .Title }}">
+          <div class="x-post-cover" aria-hidden="true">
+            <span>{{- with index .Params.categories 0 }}{{ . }}{{ else }}xblog{{ end -}}</span>
+          </div>
+          <div class="x-stream-body">
             <div class="x-row-meta">
               {{- if .Params.pinned }}
               <span>置顶</span>
               {{- end }}
-              <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">{{ .Date.Format "2006-01-02" }}</time>
-              {{- with index .Params.categories 0 }}
-              <span>{{ . }}</span>
-              {{- end }}
+              <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">{{ .Date.Format "Jan 2" }}</time>
             </div>
-            <h3>{{ .Title }}</h3>
+            <h2>{{ .Title }}</h2>
             <p>{{ .Summary | plainify | htmlUnescape }}</p>
-          </a>
-        </article>
-        {{- end }}
-      </div>
+            {{- with index .Params.categories 0 }}
+            <span class="x-stream-topic">{{ . }}</span>
+            {{- end }}
+          </div>
+        </a>
+      </article>
+      {{- end }}
     </section>
   </div>
 </div>
