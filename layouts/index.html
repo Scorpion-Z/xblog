@@ -41,8 +41,8 @@
     <h2 id="featured-title">精选文章</h2>
   </div>
   <div class="x-featured-grid">
-    {{- range $index, $page := $featured }}
-    <article class="x-featured-card{{ if eq $index 0 }} x-featured-card-large{{ end }}">
+    {{- with index $featured 0 }}
+    <article class="x-featured-card x-featured-card-large">
       <a href="{{ .RelPermalink }}" aria-label="阅读 {{ .Title }}">
         <div class="x-card-meta">
           {{- if .Params.pinned }}
@@ -58,6 +58,25 @@
       </a>
     </article>
     {{- end }}
+    <div class="x-featured-side">
+      {{- range after 1 $featured }}
+      <article class="x-featured-card x-featured-card-secondary">
+        <a href="{{ .RelPermalink }}" aria-label="阅读 {{ .Title }}">
+          <div class="x-card-meta">
+            {{- if .Params.pinned }}
+            <span>置顶</span>
+            {{- end }}
+            <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">{{ .Date.Format "2006-01-02" }}</time>
+            {{- with index .Params.categories 0 }}
+            <span>{{ . }}</span>
+            {{- end }}
+          </div>
+          <h3>{{ .Title }}</h3>
+          <p>{{ .Summary | plainify | htmlUnescape }}</p>
+        </a>
+      </article>
+      {{- end }}
+    </div>
   </div>
 </section>
 

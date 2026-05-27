@@ -101,6 +101,7 @@ body {
   font-weight: 650;
   line-height: 0.98;
   letter-spacing: 0;
+  overflow-wrap: anywhere;
 }
 
 .x-hero-text {
@@ -236,7 +237,13 @@ body {
 
 .x-featured-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.65fr);
+  align-items: start;
+  gap: 16px;
+}
+
+.x-featured-side {
+  display: grid;
   gap: 16px;
 }
 
@@ -269,8 +276,7 @@ body {
 }
 
 .x-featured-card-large {
-  grid-column: span 2;
-  min-height: 320px;
+  grid-column: auto;
 }
 
 .x-card-meta {
@@ -287,6 +293,20 @@ body {
   font-size: clamp(1.45rem, 3vw, 2.45rem);
   font-weight: 620;
   line-height: 1.12;
+  overflow-wrap: anywhere;
+}
+
+.x-featured-card-large h3 {
+  font-size: clamp(1.9rem, 3.3vw, 2.9rem);
+}
+
+.x-featured-card-secondary h3 {
+  font-size: clamp(1.25rem, 2vw, 1.65rem);
+  line-height: 1.18;
+}
+
+.x-featured-card-secondary a {
+  padding: 22px;
 }
 
 .x-featured-card p,
@@ -294,6 +314,17 @@ body {
   margin: 16px 0 0;
   color: var(--secondary);
   line-height: 1.78;
+}
+
+.x-featured-card p {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+
+.x-featured-card-secondary p {
+  -webkit-line-clamp: 4;
 }
 
 .x-topic-grid {
@@ -470,6 +501,10 @@ body {
   .x-home-hero,
   .x-featured-grid,
   .x-topic-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .x-featured-side {
     grid-template-columns: 1fr;
   }
 
