@@ -6,7 +6,7 @@ title = 'xblog'
 theme = 'PaperMod'
 
 [params]
-description = '日常收集与记录'
+description = '记录技术实践、阅读笔记与日常观察'
 defaultTheme = 'auto'
 disableThemeToggle = false
 ShowReadingTime = true
@@ -14,7 +14,7 @@ ShowShareButtons = false
 ShowPostNavLinks = true
 ShowBreadCrumbs = true
 ShowCodeCopyButtons = true
-ShowWordCount = true
+ShowWordCount = false
 ShowRssButtonInSectionTermList = true
 UseHugoToc = true
 showtoc = true
@@ -23,7 +23,7 @@ DateFormat = '2006-01-02'
 
 [params.homeInfoParams]
 Title = 'xblog'
-Content = '日常收集、阅读笔记与技术记录。'
+Content = '记录技术实践、阅读笔记与日常观察。把零散经验整理成可复用的文字，也保留一点持续思考的现场。'
 
 [params.assets]
 disableHLJS = true
