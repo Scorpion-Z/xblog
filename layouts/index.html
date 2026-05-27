@@ -1,6 +1,9 @@
 {{- define "main" }}
 {{- $posts := where site.RegularPages "Type" "in" site.Params.mainSections }}
 {{- $posts = where $posts "Params.hiddenInHomeList" "!=" "true" }}
+{{- $pinned := where $posts "Params.pinned" true }}
+{{- $regular := where $posts "Params.pinned" "!=" true }}
+{{- $posts = union $pinned $regular }}
 {{- $featured := first 3 $posts }}
 {{- $latest := first 6 $posts }}
 
@@ -42,6 +45,9 @@
     <article class="x-featured-card{{ if eq $index 0 }} x-featured-card-large{{ end }}">
       <a href="{{ .RelPermalink }}" aria-label="阅读 {{ .Title }}">
         <div class="x-card-meta">
+          {{- if .Params.pinned }}
+          <span>置顶</span>
+          {{- end }}
           <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">{{ .Date.Format "2006-01-02" }}</time>
           {{- with index .Params.categories 0 }}
           <span>{{ . }}</span>
@@ -92,7 +98,12 @@
     {{- range $latest }}
     <article class="x-latest-item">
       <a href="{{ .RelPermalink }}">
-        <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">{{ .Date.Format "2006-01-02" }}</time>
+        <div class="x-latest-meta">
+          {{- if .Params.pinned }}
+          <span>置顶</span>
+          {{- end }}
+          <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">{{ .Date.Format "2006-01-02" }}</time>
+        </div>
         <h3>{{ .Title }}</h3>
         <p>{{ .Summary | plainify | htmlUnescape }}</p>
       </a>

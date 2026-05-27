@@ -179,7 +179,7 @@ body {
 
 .x-orbit-card span,
 .x-card-meta,
-.x-latest-item time {
+.x-latest-meta {
   color: var(--x-muted);
   font-size: 0.78rem;
   font-weight: 650;
@@ -328,6 +328,12 @@ body {
   grid-template-columns: 120px minmax(180px, 0.75fr) minmax(0, 1.25fr);
   gap: 22px;
   align-items: baseline;
+}
+
+.x-latest-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
 }
 
 .x-latest-item h3 {
