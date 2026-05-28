@@ -26,23 +26,27 @@
 <nav class="x-quick-links" aria-label="快速入口">
   <a class="x-quick-link" href="{{ "posts/" | relURL }}">
     <span>全部文章</span>
-    <strong>按发布时间浏览完整列表</strong>
+    <strong>按发布时间浏览完整文章列表。</strong>
   </a>
   <a class="x-quick-link" href="{{ "categories/技术/" | relURL }}">
     <span>技术</span>
-    <strong>构建、部署与工具链实践</strong>
+    <strong>构建、部署、自动化和工具链实践。</strong>
   </a>
   <a class="x-quick-link" href="{{ "categories/笔记/" | relURL }}">
     <span>笔记</span>
-    <strong>阅读、观察与问题整理</strong>
+    <strong>阅读、观察和问题整理的方法。</strong>
   </a>
   <a class="x-quick-link" href="{{ "archives/" | relURL }}">
     <span>归档</span>
-    <strong>按时间回看更新轨迹</strong>
+    <strong>按时间回看更新轨迹。</strong>
+  </a>
+  <a class="x-quick-link" href="{{ "tags/" | relURL }}">
+    <span>标签</span>
+    <strong>按关键词连接不同文章里的线索。</strong>
   </a>
   <a class="x-quick-link" href="{{ "search/" | relURL }}">
     <span>搜索</span>
-    <strong>定位标题、标签与正文</strong>
+    <strong>定位标题、标签与正文。</strong>
   </a>
 </nav>
 
@@ -72,31 +76,6 @@
       </a>
     </article>
     {{- end }}
-  </div>
-</section>
-
-<section class="x-section" aria-labelledby="topics-title">
-  <div class="x-section-head">
-    <p class="x-eyebrow">Topics</p>
-    <h2 id="topics-title">主题入口</h2>
-  </div>
-  <div class="x-topic-grid">
-    <a class="x-topic-card" href="{{ "categories/技术/" | relURL }}">
-      <span>技术</span>
-      <strong>构建、部署、自动化和工具链实践。</strong>
-    </a>
-    <a class="x-topic-card" href="{{ "categories/笔记/" | relURL }}">
-      <span>笔记</span>
-      <strong>阅读、观察和问题整理的方法。</strong>
-    </a>
-    <a class="x-topic-card" href="{{ "tags/" | relURL }}">
-      <span>标签</span>
-      <strong>按关键词连接不同文章里的线索。</strong>
-    </a>
-    <a class="x-topic-card" href="{{ "about/" | relURL }}">
-      <span>关于</span>
-      <strong>了解这个博客的写作边界和记录方式。</strong>
-    </a>
   </div>
 </section>
 
