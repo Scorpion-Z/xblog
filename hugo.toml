@@ -7,7 +7,7 @@ theme = 'PaperMod'
 
 [params]
 description = '面向长期使用的技术实践、阅读笔记与日常观察'
-defaultTheme = 'dark'
+defaultTheme = 'auto'
 disableThemeToggle = false
 ShowReadingTime = true
 ShowShareButtons = false
@@ -18,7 +18,7 @@ ShowWordCount = false
 ShowRssButtonInSectionTermList = true
 UseHugoToc = true
 showtoc = true
-tocopen = true
+tocopen = false
 DateFormat = '2006-01-02'
 
 [params.homeInfoParams]
