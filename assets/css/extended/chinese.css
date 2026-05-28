@@ -86,7 +86,15 @@ input:focus-visible {
 }
 
 .logo a {
+  column-gap: 0.5rem;
   font-weight: 650;
+}
+
+.logo a img {
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--border) 72%, transparent);
 }
 
 #menu {
@@ -700,6 +708,87 @@ details.toc a:hover {
   background: var(--x-accent-hover);
 }
 
+.x-search-header {
+  max-width: 760px;
+}
+
+.x-searchbox {
+  max-width: 860px;
+  margin: 28px 0 80px;
+}
+
+.searchbox input {
+  width: 100%;
+  min-height: 50px;
+  padding: 0 16px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--entry);
+  color: var(--primary);
+  font: inherit;
+  font-size: 1rem;
+  font-weight: 500;
+  box-shadow: var(--x-shadow);
+  transition:
+    border-color 0.16s ease,
+    box-shadow 0.16s ease,
+    background-color 0.16s ease;
+}
+
+.searchbox input:disabled {
+  cursor: wait;
+  color: var(--x-muted);
+}
+
+.searchbox input:focus {
+  border-color: var(--x-accent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--x-accent) 18%, transparent);
+}
+
+.searchResults {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+  margin: 18px 0 0;
+}
+
+.searchResults li {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 56px;
+  padding: 14px 16px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--entry);
+  color: var(--primary);
+  font-weight: 600;
+  list-style: none;
+  transition:
+    background-color 0.16s ease,
+    border-color 0.16s ease,
+    box-shadow 0.16s ease,
+    transform 0.16s ease;
+}
+
+.searchResults li:hover,
+.searchResults li:focus-within,
+.searchResults li.focus {
+  border-color: color-mix(in srgb, var(--x-accent) 52%, var(--border));
+  background: var(--x-accent-soft);
+  box-shadow: var(--x-shadow);
+  transform: translateY(-1px);
+}
+
+.searchResults li svg {
+  width: 20px;
+  height: 20px;
+  color: var(--x-accent);
+  flex: none;
+}
+
 .footer {
   color: var(--secondary);
 }
@@ -763,6 +852,10 @@ details.toc a:hover {
   .logo {
     width: 100%;
     justify-content: space-between;
+  }
+
+  .logo a {
+    font-size: 1.25rem;
   }
 
   #menu {
