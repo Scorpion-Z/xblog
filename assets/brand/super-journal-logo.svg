@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="超能日志 Logo">
   <rect width="64" height="64" rx="16" fill="#0f4c81"/>
   <path d="M11 48c6-13 16-20 30-22 6-.8 10-3.4 12-7 .7 10-2.7 18.8-10.4 26.2C34.8 52.7 24.3 53.6 11 48Z" fill="#e74856"/>
   <path d="M19 49c4.7-10.4 13-16.5 24.8-18.4 3.4-.5 6-1.6 7.9-3.2-2.2 7.1-6.5 12.7-12.7 16.8-5.6 3.8-12.3 5.4-20 4.8Z" fill="#c4314b"/>

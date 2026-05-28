@@ -2,11 +2,11 @@ baseURL = 'https://scorpion-z.github.io/xblog/'
 languageCode = 'zh-CN'
 defaultContentLanguage = 'zh-cn'
 locale = 'zh-CN'
-title = '飞行笔记'
+title = '超能日志'
 theme = 'PaperMod'
 
 [params]
-description = '把技术实践、阅读笔记与日常观察整理成可再次起飞的文字'
+description = '记录技术实践、阅读笔记和日常观察，把零散经验整理成可复用的判断'
 defaultTheme = 'auto'
 disableThemeToggle = false
 ShowReadingTime = true
@@ -22,8 +22,8 @@ tocopen = true
 DateFormat = '2006-01-02'
 
 [params.homeInfoParams]
-Title = '飞行笔记'
-Content = '把技术实践、阅读笔记与日常观察整理成可再次起飞的文字。'
+Title = '超能日志'
+Content = '记录技术实践、阅读笔记和日常观察，把零散经验整理成可复用的判断。'
 
 [params.assets]
 disableHLJS = true
@@ -32,8 +32,8 @@ theme_color = '#0078d4'
 msapplication_TileColor = '#0078d4'
 
 [params.label]
-text = '飞行笔记'
-icon = 'brand/flight-notes-logo.svg'
+text = '超能日志'
+icon = 'brand/super-journal-logo.svg'
 iconHeight = 30
 
 [params.fuseOpts]
