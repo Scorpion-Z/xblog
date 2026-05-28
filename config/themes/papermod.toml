@@ -18,7 +18,7 @@ ShowWordCount = false
 ShowRssButtonInSectionTermList = true
 UseHugoToc = true
 showtoc = true
-tocopen = false
+tocopen = true
 DateFormat = '2006-01-02'
 
 [params.homeInfoParams]
