@@ -6,6 +6,7 @@ title = '超能日志'
 theme = 'PaperMod'
 
 [params]
+mainSections = ['posts', 'prompts']
 description = '记录技术实践、阅读笔记和日常观察，把零散经验整理成可复用的判断'
 defaultTheme = 'auto'
 disableThemeToggle = false
@@ -70,6 +71,12 @@ identifier = 'posts'
 name = '文章'
 url = '/posts/'
 weight = 20
+
+[[menu.main]]
+identifier = 'prompts'
+name = '提示词'
+url = '/prompts/'
+weight = 25
 
 [[menu.main]]
 identifier = 'archives'

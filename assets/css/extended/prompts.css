@@ -1,0 +1,73 @@
+.x-prompt-card {
+  margin: 24px 0;
+  padding: 22px 24px;
+  background: var(--entry);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,.035);
+}
+.x-prompt-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  border-bottom: 1px solid var(--tertiary);
+  padding-bottom: 16px;
+  margin-bottom: 16px;
+}
+.x-prompt-title-group { min-width: 0; }
+.x-prompt-category {
+  display: inline-block;
+  color: var(--x-accent, #0078d4);
+  background: var(--x-accent-soft, #eff6fc);
+  border-radius: 4px;
+  padding: 2px 8px;
+  font-size: .73rem;
+  font-weight: 650;
+  margin-bottom: 8px;
+}
+.post-content .x-prompt-title,
+.x-prompt-title {
+  font-size: 1.15rem;
+  line-height: 1.45;
+  font-weight: 650;
+  margin: 0 0 6px;
+  color: var(--primary);
+}
+.post-content .x-prompt-use,
+.x-prompt-use { font-size: .82rem; color: var(--secondary); margin: 0; }
+.x-prompt-copy {
+  flex-shrink: 0;
+  padding: 8px 13px;
+  margin-top: 4px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--theme);
+  color: var(--primary);
+  cursor: pointer;
+  font: inherit;
+  font-size: .82rem;
+  line-height: 1.5;
+  transition: border-color .18s, background-color .18s;
+}
+.x-prompt-copy:hover,
+.x-prompt-copy:focus-visible {
+  border-color: var(--x-accent, #0078d4);
+  background: var(--x-accent-soft, #eff6fc);
+}
+.x-prompt-copy.is-copied {
+  color: var(--x-accent, #0078d4);
+  border-color: var(--x-accent, #0078d4);
+}
+.x-prompt-body { color: var(--content); font-size: .98rem; line-height: 1.88; }
+.post-content .x-prompt-body p { margin: 0 0 10px; }
+.post-content .x-prompt-body p:last-child,
+.post-content .x-prompt-body ol:last-child { margin-bottom: 0; }
+.x-prompt-body ol { padding-left: 1.4rem; }
+.x-prompt-body li { margin: .35rem 0; }
+@media (max-width: 600px) {
+  .x-prompt-card { padding: 18px 16px; }
+  .x-prompt-head { gap: 8px; }
+  .x-prompt-copy { padding: 7px 9px; font-size: .75rem; }
+  .post-content .x-prompt-title { font-size: 1.03rem; }
+}

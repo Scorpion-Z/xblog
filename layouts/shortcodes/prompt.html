@@ -1,0 +1,13 @@
+{{- $title := .Get "title" | default "提示词" -}}
+{{- $id := .Get "id" | default (anchorize $title) -}}
+<div class="x-prompt-card" id="{{ $id }}">
+  <div class="x-prompt-head">
+    <div class="x-prompt-title-group">
+      {{- with .Get "category" }}<span class="x-prompt-category">{{ . }}</span>{{ end -}}
+      <h3 class="x-prompt-title">{{ $title }}</h3>
+      {{- with .Get "use" }}<p class="x-prompt-use">适用：{{ . }}</p>{{ end -}}
+    </div>
+    <button type="button" class="x-prompt-copy" aria-label="复制{{ $title }}" aria-live="polite">复制提示词</button>
+  </div>
+  <div class="x-prompt-body">{{ .Inner | markdownify }}</div>
+</div>

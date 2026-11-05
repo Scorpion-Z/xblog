@@ -12,7 +12,7 @@ defaultAppearance = 'light'
 autoSwitchAppearance = true
 enableSearch = true
 enableCodeCopy = true
-mainSections = ['posts']
+mainSections = ['posts', 'prompts']
 
 [params.header]
 layout = 'basic'
@@ -98,6 +98,12 @@ identifier = 'posts'
 name = '文章'
 pageRef = 'posts'
 weight = 20
+
+[[menu.main]]
+identifier = 'prompts'
+name = '提示词'
+pageRef = 'prompts'
+weight = 25
 
 [[menu.main]]
 identifier = 'archives'
