@@ -77,7 +77,7 @@ return '<div class="crumb"><a href="#home">课程首页</a><span>/</span><span>�
 function render(){
 const route=current();let html;
 switch(route.page){case"module":html=modulePage(route.id);break;case"cases":html=casesPage();break;case"case":html=casePage(route.id);break;case"lesson":html=lessonPage(route.id);break;case"workshop":html=workshop();break;case"glossary":html=glossary();break;default:html=home()}
-root.innerHTML=html;renderSidebar(search.value);document.title=(route.page==="lesson"?(flat.find(l=>l.id===route.id)?.title||"课程")+" | ":route.page==="home"?"":route.page==="workshop"?"综合案例演练 | ":route.page==="glossary"?"术语词典 | ":"课程模块 | ")+"企业财务研习室 · 超能日志";document.getElementById("sidebar").classList.remove("open");document.getElementById("mobile-menu").setAttribute("aria-expanded","false");window.scrollTo({top:0,behavior:"auto"});
+root.innerHTML=html;renderSidebar(search.value);document.title=(route.page==="lesson"?(flat.find(l=>l.id===route.id)?.title||"课程")+" | ":route.page==="home"?"":route.page==="workshop"?"综合案例演练 | ":route.page==="glossary"?"术语词典 | ":route.page==="cases"?"连续业务案例库 | ":route.page==="case"?(CASES.find(c=>c.id===route.id)?.title||"连续案例")+" | ":"课程模块 | ")+"企业财务研习室 · 超能日志";document.getElementById("sidebar").classList.remove("open");document.getElementById("mobile-menu").setAttribute("aria-expanded","false");window.scrollTo({top:0,behavior:"auto"});
 }
 function verify(){
 const w=C.capstone,labels={cash:"银行存款",receivable:"应收账款",asset:"资产总额",profit:"净利润",equity:"所有者权益"};let n=0;const out=[];
