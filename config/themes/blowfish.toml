@@ -106,6 +106,12 @@ pageRef = 'prompts'
 weight = 25
 
 [[menu.main]]
+identifier = 'finance-academy'
+name = '财务学堂'
+url = '/finance-academy/'
+weight = 27
+
+[[menu.main]]
 identifier = 'archives'
 name = '归档'
 pageRef = 'archives'
