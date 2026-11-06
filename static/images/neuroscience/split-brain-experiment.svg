@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 600" role="img" aria-labelledby="t d">
+<title id="t">裂脑实验为何出现两种答案</title><desc id="d">患者注视中央固定点。屏幕左右分别短暂显示锯子与锤子。优势语言左半球报告锤子，右半球可指导左手选出锯子。</desc>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#64748b"/></marker></defs>
+<rect width="1160" height="600" rx="24" fill="#f8fafc"/>
+<text x="52" y="65" font-size="30" font-weight="700" fill="#0f172a" font-family="Arial,Noto Sans SC,sans-serif">同一个人，为何给出两种不同的答案？</text>
+<text x="52" y="102" font-size="17" fill="#475569" font-family="Arial,Noto Sans SC,sans-serif">典型裂脑实验演示，前提是患者注视中央、刺激呈现时间足够短。</text>
+<rect x="110" y="139" width="940" height="182" rx="20" fill="#ffffff" stroke="#cbd5e1" stroke-width="3"/>
+<rect x="140" y="167" width="402" height="125" rx="12" fill="#eff6ff"/>
+<rect x="619" y="167" width="402" height="125" rx="12" fill="#f0fdf4"/>
+<text x="340" y="206" text-anchor="middle" font-size="22" fill="#1e40af" font-family="Arial,Noto Sans SC,sans-serif">屏幕左侧</text>
+<text x="340" y="263" text-anchor="middle" font-size="42" font-weight="700" fill="#1d4ed8" font-family="Arial,Noto Sans SC,sans-serif">锯子</text>
+<text x="820" y="206" text-anchor="middle" font-size="22" fill="#166534" font-family="Arial,Noto Sans SC,sans-serif">屏幕右侧</text>
+<text x="820" y="263" text-anchor="middle" font-size="42" font-weight="700" fill="#15803d" font-family="Arial,Noto Sans SC,sans-serif">锤子</text>
+<circle cx="580" cy="229" r="17" fill="white" stroke="#334155" stroke-width="3"/>
+<path d="M580 218V240M569 229H591" stroke="#334155" stroke-width="3"/>
+<path d="M340 326 C340 354 817 358 817 399" fill="none" stroke="#2563eb" stroke-width="4" marker-end="url(#a)"/>
+<path d="M820 326 C820 354 340 358 340 399" fill="none" stroke="#16a34a" stroke-width="4" marker-end="url(#a)"/>
+<rect x="110" y="418" width="430" height="118" rx="18" fill="#ffffff" stroke="#86efac" stroke-width="2"/>
+<rect x="619" y="418" width="430" height="118" rx="18" fill="#ffffff" stroke="#93c5fd" stroke-width="2"/>
+<text x="325" y="456" text-anchor="middle" font-size="23" font-weight="700" fill="#166534" font-family="Arial,Noto Sans SC,sans-serif">左半球：语言回答</text>
+<text x="325" y="502" text-anchor="middle" font-size="30" fill="#0f172a" font-weight="700" font-family="Arial,Noto Sans SC,sans-serif">“锤子”</text>
+<text x="834" y="456" text-anchor="middle" font-size="23" font-weight="700" fill="#075985" font-family="Arial,Noto Sans SC,sans-serif">右半球：指导左手</text>
+<text x="834" y="502" text-anchor="middle" font-size="30" fill="#0f172a" font-weight="700" font-family="Arial,Noto Sans SC,sans-serif">选择或画出“锯子”</text>
+<text x="580" y="572" text-anchor="middle" font-size="16" fill="#64748b" font-family="Arial,Noto Sans SC,sans-serif">图示用于理解实验逻辑；不同患者的手术范围、语言侧化和行为反应可能不同。</text>
+</svg>
