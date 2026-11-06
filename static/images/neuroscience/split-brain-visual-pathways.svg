@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 530" role="img" aria-labelledby="t d">
+<title id="t">裂脑视觉通路示意</title><desc id="d">左侧视野的刺激主要由右半球处理，右侧视野的刺激主要由左半球处理。注意两只眼睛都参与左右视野感知。</desc>
+<defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#64748b"/></marker><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f8fafc"/><stop offset="1" stop-color="#eff6ff"/></linearGradient></defs>
+<rect width="1160" height="530" rx="24" fill="url(#bg)"/>
+<text x="54" y="60" font-size="29" font-weight="700" fill="#0f172a" font-family="Arial, Noto Sans SC, sans-serif">为什么左边看到的东西，主要由右脑处理？</text>
+<text x="54" y="98" font-size="17" fill="#475569" font-family="Arial, Noto Sans SC, sans-serif">神经信号在视觉通路中重新分配，关键是视野位置，而非单纯区分左眼或右眼。</text>
+<rect x="66" y="144" width="430" height="92" rx="18" fill="#e0f2fe" stroke="#7dd3fc" stroke-width="2"/>
+<rect x="664" y="144" width="430" height="92" rx="18" fill="#dcfce7" stroke="#86efac" stroke-width="2"/>
+<text x="281" y="182" text-anchor="middle" font-size="26" font-weight="700" fill="#075985" font-family="Arial, Noto Sans SC, sans-serif">左侧视野</text>
+<text x="281" y="212" text-anchor="middle" font-size="17" fill="#0369a1" font-family="Arial, Noto Sans SC, sans-serif">例如：平底锅出现在屏幕左边</text>
+<text x="879" y="182" text-anchor="middle" font-size="26" font-weight="700" fill="#166534" font-family="Arial, Noto Sans SC, sans-serif">右侧视野</text>
+<text x="879" y="212" text-anchor="middle" font-size="17" fill="#15803d" font-family="Arial, Noto Sans SC, sans-serif">例如：锤子出现在屏幕右边</text>
+<path d="M281 239 C281 278 788 269 879 322" fill="none" stroke="#0284c7" stroke-width="5" marker-end="url(#arr)"/>
+<path d="M879 239 C879 278 372 269 281 322" fill="none" stroke="#16a34a" stroke-width="5" marker-end="url(#arr)"/>
+<rect x="66" y="334" width="430" height="118" rx="18" fill="white" stroke="#86efac" stroke-width="2"/>
+<rect x="664" y="334" width="430" height="118" rx="18" fill="white" stroke="#7dd3fc" stroke-width="2"/>
+<text x="281" y="375" text-anchor="middle" font-size="26" font-weight="700" fill="#166534" font-family="Arial, Noto Sans SC, sans-serif">左大脑半球</text>
+<text x="281" y="414" text-anchor="middle" font-size="18" fill="#334155" font-family="Arial, Noto Sans SC, sans-serif">多数人的语言表达优势侧</text>
+<text x="879" y="375" text-anchor="middle" font-size="26" font-weight="700" fill="#075985" font-family="Arial, Noto Sans SC, sans-serif">右大脑半球</text>
+<text x="879" y="414" text-anchor="middle" font-size="18" fill="#334155" font-family="Arial, Noto Sans SC, sans-serif">可指导左手完成部分识别任务</text>
+<text x="580" y="490" text-anchor="middle" font-size="16" fill="#64748b" font-family="Arial, Noto Sans SC, sans-serif">简化示意：视网膜信号经视交叉与视觉通路传递，两只眼睛均参与视野采集。</text>
+</svg>
