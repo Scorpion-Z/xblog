@@ -8,6 +8,8 @@ version:"2026.11.06",name:"企业财务研习室",
 sources:[
 {name:"财政部：企业会计准则第6号《无形资产》",url:"https://kjs.mof.gov.cn/zt/kjzzss/kuaijizhunzeshishi/200806/t20080618_46242.htm"},
 {name:"财政部：2025年年报会计准则执行提示",url:"https://m.mof.gov.cn/czxw/202512/t20251224_3980024.htm"},
+{name:"财政部：企业会计准则第14号《收入》",url:"https://kjs.mof.gov.cn/zt/kjzzss/kuaijizhunzeshishi/201709/t20170907_2694006.htm"},
+{name:"财政部：企业会计准则第33号《合并财务报表》",url:"https://www.mof.gov.cn/gkml/caizhengwengao/wg2014/wg201405/201412/t20141217_1168564.htm"},
 {name:"财政部：管理会计应用指引第804号《财务共享服务》",url:"https://kjs.mof.gov.cn/zhengcefabu/202606/t20260630_3992536.htm"}
 ],
 modules:[
