@@ -6,8 +6,8 @@ title = '超能日志'
 theme = 'PaperMod'
 
 [params]
-mainSections = ['posts', 'prompts']
-description = '记录技术实践、阅读笔记和日常观察，把零散经验整理成可复用的判断'
+mainSections = ['posts']
+description = '阅读、技术与随笔。'
 defaultTheme = 'auto'
 disableThemeToggle = false
 ShowReadingTime = true
@@ -24,7 +24,7 @@ DateFormat = '2006-01-02'
 
 [params.homeInfoParams]
 Title = '超能日志'
-Content = '记录技术实践、阅读笔记和日常观察，把零散经验整理成可复用的判断。'
+Content = '阅读、技术与随笔。'
 
 [params.assets]
 disableHLJS = true
@@ -61,28 +61,16 @@ tag = 'tags'
   guessSyntax = true
 
 [[menu.main]]
-identifier = 'home'
-name = '首页'
-url = '/'
-weight = 10
-
-[[menu.main]]
 identifier = 'posts'
 name = '文章'
 url = '/posts/'
+weight = 10
+
+[[menu.main]]
+identifier = 'topics'
+name = '专题'
+url = '/topics/'
 weight = 20
-
-[[menu.main]]
-identifier = 'prompts'
-name = '提示词'
-url = '/prompts/'
-weight = 25
-
-[[menu.main]]
-identifier = 'finance-academy'
-name = '财务学堂'
-url = '/finance-academy/'
-weight = 27
 
 [[menu.main]]
 identifier = 'archives'
@@ -91,25 +79,7 @@ url = '/archives/'
 weight = 30
 
 [[menu.main]]
-identifier = 'categories'
-name = '分类'
-url = '/categories/'
-weight = 40
-
-[[menu.main]]
-identifier = 'tags'
-name = '标签'
-url = '/tags/'
-weight = 50
-
-[[menu.main]]
 identifier = 'search'
 name = '搜索'
 url = '/search/'
-weight = 60
-
-[[menu.main]]
-identifier = 'about'
-name = '关于'
-url = '/about/'
-weight = 70
+weight = 40

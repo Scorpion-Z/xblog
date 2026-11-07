@@ -31,7 +31,7 @@
 
 ## 集成及部署
 
-博客使用Hugo与PaperMod。项目文件放在 `static/finance-academy/` 下，Hugo构建时会原样复制。博客菜单入口在根目录 `hugo.toml` 与两个主题配置文件中添加为“财务学堂”。
+博客使用 Hugo 与 PaperMod。专题文件放在 `static/finance-academy/`，构建时原样复制。专题入口位于博客的“专题”页面。
 
 推送到主分支后，仓库的GitHub Actions工作流 `.github/workflows/hugo.yml` 执行构建并部署到GitHub Pages。
 

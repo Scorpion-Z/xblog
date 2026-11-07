@@ -4,7 +4,11 @@
 
 - 网站：https://scorpion-z.github.io/xblog/
 - 关于：https://scorpion-z.github.io/xblog/about/
-- 内容：技术实践、企业数字化、科学阅读与个人项目
+- 内容：技术、阅读、科普与专题笔记
+
+## 写作风格
+
+以“朴素、清楚、具体、有自己的判断”为原则。新增文章和修订旧文参见 [WRITING.md](WRITING.md)。
 
 ## 访问与阅读统计
 
