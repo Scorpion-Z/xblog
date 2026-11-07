@@ -1,29 +1,21 @@
-{{ define "main" }}
-  <article class="theme-switch-archives">
-    <header>
-      <h1 class="mt-5 text-4xl font-extrabold text-neutral-900 dark:text-neutral">{{ .Title }}</h1>
-    </header>
-    <section class="mt-8 space-y-10">
-      {{ range (where site.RegularPages "Section" "posts").GroupByDate "2006" }}
-        <div>
-          <h2 class="text-2xl font-bold text-neutral-700 dark:text-neutral-300">{{ .Key }}</h2>
-          <div class="mt-4 space-y-6">
-            {{ range .Pages }}
-              <article>
-                <h3>
-                  <a href="{{ .RelPermalink }}">{{ .Title }}</a>
-                </h3>
-                <p>
-                  <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">{{ .Date.Format "2006-01-02" }}</time>
-                </p>
-                {{ with .Summary }}
-                  <p>{{ . | plainify }}</p>
-                {{ end }}
-              </article>
-            {{ end }}
-          </div>
-        </div>
-      {{ end }}
-    </section>
-  </article>
-{{ end }}
+{{- define "main" -}}
+<section class="journal-archive" aria-labelledby="archives-heading">
+  <header class="journal-archive-heading">
+    <h1 id="archives-heading">归档</h1>
+    <p>按发表时间整理。</p>
+  </header>
+  {{- range (where site.RegularPages "Section" "posts").GroupByDate "2006" }}
+  <section class="journal-archive-year" aria-labelledby="year-{{ .Key }}">
+    <h2 id="year-{{ .Key }}">{{ .Key }}</h2>
+    <ol class="journal-archive-list">
+      {{- range .Pages.ByDate.Reverse }}
+      <li>
+        <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "01-02" }}</time>
+        <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+      </li>
+      {{- end }}
+    </ol>
+  </section>
+  {{- end }}
+</section>
+{{- end -}}

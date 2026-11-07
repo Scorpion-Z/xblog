@@ -1,80 +1,35 @@
-{{- define "main" }}
-{{- $posts := where site.RegularPages "Type" "in" site.Params.mainSections }}
-{{- $posts = where $posts "Params.hiddenInHomeList" "!=" "true" }}
-{{- $featured := first 4 $posts }}
-{{- $latest := first 7 $posts }}
+{{- define "main" -}}
+{{- $posts := where site.RegularPages "Section" "posts" -}}
+{{- $posts = where $posts "Params.hiddenInHomeList" "!=" true -}}
+{{- $posts = $posts.ByDate.Reverse -}}
 
-<section class="x-learn-hero" aria-labelledby="home-title">
-  <div class="x-hero-copy">
-    <p class="x-eyebrow">超能日志 / knowledge base</p>
-    <h1 id="home-title">把零散经验整理成可以复用的判断。</h1>
-    <p class="x-hero-text">
-      这里记录技术实践、阅读笔记和日常观察。每篇文章都尽量保留上下文、方法和后续可检索的线索。
-    </p>
-    <div class="x-hero-actions">
-      <a class="x-button x-button-primary" href="{{ "posts/" | relURL }}">浏览文章</a>
-      <a class="x-button x-button-secondary" href="{{ "search/" | relURL }}">搜索内容</a>
-    </div>
-  </div>
-</section>
+<section class="journal-home" aria-labelledby="journal-heading">
+  <header class="journal-home-heading">
+    <h1 id="journal-heading">最近更新</h1>
+    <p>阅读、技术与随笔。</p>
+  </header>
 
-<section class="x-section" aria-labelledby="featured-title">
-  <div class="x-section-head x-section-head-row">
-    <div>
-      <p class="x-eyebrow">Featured</p>
-      <h2 id="featured-title">精选内容</h2>
-    </div>
-    <a class="x-text-link" href="{{ "posts/" | relURL }}">查看全部</a>
-  </div>
-  <div class="x-featured-list">
-    {{- range $featured }}
-    <article class="x-featured-card{{ if .Params.pinned }} is-pinned{{ end }}">
-      <a href="{{ .RelPermalink }}" aria-label="阅读 {{ .Title }}">
-        <div class="x-card-meta">
-          {{- if .Params.pinned }}
-          <span class="x-badge">置顶</span>
-          {{- end }}
-          <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">{{ .Date.Format "2006-01-02" }}</time>
-          {{- with index .Params.categories 0 }}
-          <span>{{ . }}</span>
-          {{- end }}
-        </div>
-        <h3>{{ .Title }}</h3>
-        <p>{{ .Summary | plainify | htmlUnescape }}</p>
-      </a>
-    </article>
+  <ol class="journal-list">
+    {{- range first 12 $posts }}
+    <li class="journal-entry">
+      <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time>
+      <div class="journal-entry-main">
+        <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+        {{- with .Params.summary }}
+        <p>{{ . }}</p>
+        {{- else }}
+        {{- with .Summary }}
+        <p>{{ . | plainify | htmlUnescape | truncate 110 }}</p>
+        {{- end }}
+        {{- end }}
+      </div>
+    </li>
     {{- end }}
-  </div>
-</section>
+  </ol>
 
-<section class="x-section x-latest" aria-labelledby="latest-title">
-  <div class="x-section-head x-section-head-row">
-    <div>
-      <p class="x-eyebrow">Recent</p>
-      <h2 id="latest-title">最近更新</h2>
-    </div>
-    <a class="x-text-link" href="{{ "archives/" | relURL }}">查看归档</a>
-  </div>
-  <div class="x-latest-list">
-    {{- range $latest }}
-    <article class="x-latest-item{{ if .Params.pinned }} is-pinned{{ end }}">
-      <a href="{{ .RelPermalink }}">
-        <div class="x-latest-meta">
-          {{- if .Params.pinned }}
-          <span class="x-badge">置顶</span>
-          {{- end }}
-          <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">{{ .Date.Format "2006-01-02" }}</time>
-          {{- with index .Params.categories 0 }}
-          <span>{{ . }}</span>
-          {{- end }}
-        </div>
-        <div>
-          <h3>{{ .Title }}</h3>
-          <p>{{ .Summary | plainify | htmlUnescape }}</p>
-        </div>
-      </a>
-    </article>
-    {{- end }}
-  </div>
+  <nav class="journal-home-more" aria-label="继续浏览">
+    <a href="{{ "posts/" | relURL }}">全部文章</a>
+    <a href="{{ "topics/" | relURL }}">专题目录</a>
+  </nav>
 </section>
-{{- end }}
+{{- end -}}
