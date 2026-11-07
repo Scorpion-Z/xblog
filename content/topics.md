@@ -1,19 +1,19 @@
 ---
 title: "专题"
 url: "/topics/"
-summary: "按主题整理的文章和工具。"
+summary: "按主题查找文章和工具。"
 showToc: false
 ---
 
 ## 学习与工具
 
-- [财务学堂](../finance-academy/)：从基础概念到业务案例的系统学习专题。
-- [提示词](../prompts/)：收集经过整理的提示词及其使用说明。
+- [财务学堂](../finance-academy/)：财务基础知识与实际案例。
+- [提示词](../prompts/)：整理过的提示词和使用说明。
 
-## 技术与思考
+## 技术与阅读
 
-- [人工智能与企业应用](../posts/ai-agents-enterprise-adoption-2026/)：从实际场景观察 AI 的应用与局限。
-- [电力基础](../posts/active-reactive-power-factor-explained/)：从有功功率、无功功率和功率因数开始。
-- [脑科学与认知](../posts/split-brain-two-minds-consciousness/)：从裂脑实验谈意识与自我。
+- [AI Agent 与企业应用](../posts/ai-agents-enterprise-adoption-2026/)
+- [电力基础：有功、无功与功率因数](../posts/active-reactive-power-factor-explained/)
+- [脑科学：裂脑实验](../posts/split-brain-two-minds-consciousness/)
 
-更多内容可以通过 [文章列表](../posts/) 或 [搜索](../search/) 查找。
+其他内容见 [全部文章](../posts/) 或 [搜索](../search/)。
