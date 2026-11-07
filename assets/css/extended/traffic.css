@@ -1,0 +1,35 @@
+/* Vercount: unobtrusive traffic information for Hugo / PaperMod. */
+.x-traffic-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  max-width: var(--x-content-width, 1080px);
+  margin: -0.5rem auto 1.6rem;
+  padding: 0 1rem;
+  color: var(--secondary);
+  font-size: 0.78rem;
+  line-height: 1.75;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+.x-traffic-bar strong,
+.x-post-viewcount strong {
+  color: var(--primary);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.x-traffic-divider {
+  color: var(--tertiary);
+}
+
+.x-post-viewcount {
+  white-space: nowrap;
+}
+
+@media (max-width: 480px) {
+  .x-traffic-bar { gap: 0.5rem; }
+}
