@@ -1,6 +1,6 @@
 ---
 title: "worse_query：一次 iOS 应用沙盒逃逸是怎样发生的"
-date: 2026-11-11T10:30:00+08:00
+date: 2026-11-11T09:50:00+08:00
 draft: false
 categories: ["技术", "科普"]
 tags: ["iOS", "worse_query", "应用沙盒", "系统安全", "漏洞分析", "App Group"]
