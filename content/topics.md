@@ -1,19 +1,33 @@
 ---
 title: "专题"
 url: "/topics/"
-summary: "按主题查找文章和工具。"
+summary: "按主题查找文章、提示词和学习工具。"
 showToc: false
 ---
 
-## 学习与工具
+按主题查找内容。日常文章仍会按照发表时间保存在[文章列表](../posts/)中。
 
-- [财务学堂](../finance-academy/)：财务基础知识与实际案例。
-- [提示词](../prompts/)：整理过的提示词和使用说明。
+## 技术与 AI
 
-## 技术与阅读
+- [AI Agent 与企业应用](../posts/ai-agents-enterprise-adoption-2026/)：应用场景、限制与企业落地。
+- [AI Agent 与退款审核](../posts/ai-agent-impossible-refund-governance/)：从具体案例理解自动化决策。
+- [worse_query 与 iOS 应用沙盒](../posts/ios-worse-query-sandbox-escape/)：漏洞原理及安全边界。
 
-- [AI Agent 与企业应用](../posts/ai-agents-enterprise-adoption-2026/)
-- [电力基础：有功、无功与功率因数](../posts/active-reactive-power-factor-explained/)
-- [脑科学：裂脑实验](../posts/split-brain-two-minds-consciousness/)
+## 科学与认知
 
-其他内容见 [全部文章](../posts/) 或 [搜索](../search/)。
+- [裂脑实验与意识](../posts/split-brain-two-minds-consciousness/)：实验现象与不同解释。
+- [精准锚定效应](../posts/precise-anchoring-effect/)：数字如何影响判断。
+- [有功功率、无功功率与功率因数](../posts/active-reactive-power-factor-explained/)：从实例理解电力基础知识。
+- [白皮书、蓝皮书与红皮书](../posts/white-blue-red-papers-explained/)：这些报告分别用来做什么。
+
+## 系统学习
+
+- [财务学堂](../finance-academy/)：从会计基础到实际业务案例的系统学习页面。
+
+## 提示词与工具
+
+- [提示词专栏](../prompts/)：持续整理可复制的提示词和使用说明。
+  - [报告与学术论文阅读](../prompts/report-reading/)：快速阅读、论证检查、决策分析与反向核验。
+  - [图片编辑](../prompts/photo-editing/)：人像、风光、旧照修复与保真约束。
+
+未归入这些专题的内容，可以通过[站内搜索](../search/)查找。

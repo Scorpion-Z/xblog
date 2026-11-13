@@ -321,3 +321,134 @@ body {
     line-height: 1.84;
   }
 }
+
+/* Home navigation: keep the journal-style list, make topic collections discoverable. */
+.journal-home-intro {
+  padding-bottom: 28px;
+}
+.journal-home-intro h1 {
+  margin: 0;
+  color: var(--primary);
+  font-size: clamp(1.7rem, 3.2vw, 2.2rem);
+  font-weight: 630;
+  line-height: 1.4;
+}
+.journal-home-intro p {
+  margin: 9px 0 0;
+  color: var(--secondary);
+  font-size: 0.93rem;
+}
+.journal-topic-nav {
+  margin-bottom: 42px;
+}
+.journal-topic-nav h2,
+.journal-home-heading h2 {
+  margin: 0 0 17px;
+  font-size: 1.27rem;
+  font-weight: 630;
+  color: var(--primary);
+  line-height: 1.5;
+}
+.journal-topic-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.journal-topic-list li {
+  min-width: 0;
+}
+.journal-topic-list a {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  height: 100%;
+  padding: 16px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--primary);
+  text-decoration: none;
+  transition: border-color .15s ease;
+}
+.journal-topic-list a:hover,
+.journal-topic-list a:focus-visible {
+  border-color: var(--x-accent);
+}
+.journal-topic-list strong {
+  font-size: .98rem;
+  font-weight: 600;
+}
+.journal-topic-list span {
+  font-size: .78rem;
+  line-height: 1.55;
+  color: var(--secondary);
+}
+.journal-home-heading h2 {
+  margin-bottom: 0;
+}
+.journal-entry-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 3px;
+}
+.journal-entry-meta span {
+  color: var(--secondary);
+  font-size: .77rem;
+}
+.journal-entry h3 {
+  margin: 0;
+  color: var(--primary);
+  font-size: clamp(1.08rem, 2.1vw, 1.23rem);
+  font-weight: 590;
+  line-height: 1.5;
+}
+.journal-entry h3 a {
+  color: inherit;
+  text-decoration: none;
+}
+.journal-entry h3 a:hover {
+  color: var(--x-accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* Thin, purely visual article reading progress indicator. */
+.x-reading-progress {
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  pointer-events: none;
+}
+.x-reading-progress-bar {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--x-accent);
+  transform: scaleX(0);
+  transform-origin: left;
+}
+.post-content h2,
+.post-content h3 {
+  scroll-margin-top: 20px;
+}
+@media (max-width: 600px) {
+  .journal-home-intro { padding-bottom: 24px; }
+  .journal-topic-nav { margin-bottom: 30px; }
+  .journal-topic-list { grid-template-columns: 1fr; gap: 8px; }
+  .journal-topic-list a {
+    padding: 11px 14px;
+    gap: 2px;
+  }
+  .journal-entry-meta {
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 6px;
+  }
+}

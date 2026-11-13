@@ -1,3 +1,8 @@
+{{- if and .IsPage (or (eq .Section "posts") (eq .Section "prompts")) }}
+<div class="x-reading-progress" aria-hidden="true"><span class="x-reading-progress-bar"></span></div>
+<script src="{{ "js/reading-progress.js" | relURL }}" defer></script>
+{{- end }}
+
 {{- if eq .Section "prompts" }}
 <script src="{{ "js/prompt-library.js" | relURL }}" defer></script>
 {{- end }}
