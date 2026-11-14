@@ -7,6 +7,11 @@ showToc: false
 
 按主题查找内容。日常文章仍会按照发表时间保存在[文章列表](../posts/)中。
 
+## 趣谈网络
+
+- [趣谈网络专栏](../network-stories/)：从协议、奇怪的实验和互联网技术史讲网络知识。
+  - [RFC 1149：当互联网开始用信鸽送 IP 包](../network-stories/rfc1149-pigeon-ip/)：信鸽、TCP/IP、MTU 与一场长达数小时的 Ping 实验。
+
 ## 技术与 AI
 
 - [AI Agent 与企业应用](../posts/ai-agents-enterprise-adoption-2026/)：应用场景、限制与企业落地。

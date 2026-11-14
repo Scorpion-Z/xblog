@@ -1,4 +1,4 @@
-{{- if and .IsPage (or (eq .Section "posts") (eq .Section "prompts")) }}
+{{- if and .IsPage (or (eq .Section "posts") (eq .Section "prompts") (eq .Section "network-stories")) }}
 <div class="x-reading-progress" aria-hidden="true"><span class="x-reading-progress-bar"></span></div>
 <script src="{{ "js/reading-progress.js" | relURL }}" defer></script>
 {{- end }}
@@ -9,7 +9,7 @@
 
 {{- /* Third-party counters should not run in Hugo's local development mode. */ -}}
 {{- if hugo.IsProduction }}
-{{- if and .IsPage (or (eq .Section "posts") (eq .Section "prompts")) }}
+{{- if and .IsPage (or (eq .Section "posts") (eq .Section "prompts") (eq .Section "network-stories")) }}
 <script>
 (function () {
   var meta = document.querySelector(".post-meta");

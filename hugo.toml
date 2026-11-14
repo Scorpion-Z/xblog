@@ -6,7 +6,7 @@ title = '超能日志'
 theme = 'PaperMod'
 
 [params]
-mainSections = ['posts']
+mainSections = ['posts', 'network-stories']
 description = '阅读、技术与随笔。'
 defaultTheme = 'auto'
 disableThemeToggle = false
@@ -65,6 +65,12 @@ identifier = 'posts'
 name = '文章'
 url = '/posts/'
 weight = 10
+
+[[menu.main]]
+identifier = 'network-stories'
+name = '趣谈网络'
+url = '/network-stories/'
+weight = 15
 
 [[menu.main]]
 identifier = 'topics'

@@ -4,7 +4,8 @@
 
 - 网站：https://scorpion-z.github.io/xblog/
 - 关于：https://scorpion-z.github.io/xblog/about/
-- 内容：技术、阅读、科普与专题笔记
+- 内容：技术、阅读、科普、趣谈网络与专题笔记
+- 趣谈网络：https://scorpion-z.github.io/xblog/network-stories/
 
 ## 写作风格
 
@@ -15,7 +16,7 @@
 本站通过 [Vercount](https://github.com/EvanNotFound/vercount) 提供基础流量计数，无需给 GitHub Pages 配置服务器。
 
 - 全站页脚展示“总访问”（PV）与“独立访客”（UV）。
-- `posts` 和 `prompts` 的文章详情页，在阅读时间等元信息后展示该页面的阅读次数（Page PV）。
+- `posts`、`prompts` 和 `network-stories` 的文章详情页，在阅读时间等元信息后展示该页面的阅读次数（Page PV）。
 - 集成位置：`layouts/partials/extend_footer.html`；样式：`assets/css/extended/traffic.css`。
 - 本地运行 `hugo server` 时不加载计数服务，避免本地预览误计入线上数据。正式构建会加载。
 - 统计从启用开始积累，无法自动恢复历史阅读量。PV 含重复访问；UV 是第三方按其规则计算的估计值。

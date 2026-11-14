@@ -351,7 +351,7 @@ body {
 }
 .journal-topic-list {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 10px;
   list-style: none;
   padding: 0;
@@ -436,6 +436,9 @@ body {
 .post-content h2,
 .post-content h3 {
   scroll-margin-top: 20px;
+}
+@media (min-width: 601px) and (max-width: 900px) {
+  .journal-topic-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: 600px) {
   .journal-home-intro { padding-bottom: 24px; }
