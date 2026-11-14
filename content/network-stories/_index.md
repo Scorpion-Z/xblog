@@ -10,4 +10,5 @@ date: 2026-11-14T15:19:00+08:00
 
 ### 已收录
 
+- [RFC 2324：如果咖啡机回答 418，我是一个茶壶](./rfc2324-coffee-pot-http/)：从 BREW 和 WHEN 讲到 HTTP 扩展、状态码和著名的茶壶。
 - [RFC 1149：当互联网开始用信鸽送 IP 包](./rfc1149-pigeon-ip/)：从愚人节 RFC 讲到 TCP/IP 分层、三次握手、MTU 和真实的信鸽 Ping。
