@@ -1,5 +1,5 @@
 ---
-title: "会议 AI 会让谁更透明？"
+title: "会议 AI 也应该记录领导的承诺"
 date: 2026-11-17T09:52:00+08:00
 draft: false
 categories: ["思考"]
