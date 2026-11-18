@@ -10,7 +10,7 @@
     {{- range .Pages.ByWeight }}
     <a class="story-catalog-card" href="{{ .RelPermalink }}">
       <span class="story-catalog-card-art">
-        {{- with .Params.cover }}<img src="{{ . | relURL }}" alt="" loading="lazy">{{- end }}
+        {{- with .Params.storyimage }}<img src="{{ . | relURL }}" alt="" loading="lazy">{{- end }}
       </span>
       <span class="story-catalog-card-copy">
         <span class="story-catalog-eyebrow">{{ .Params.kicker }}</span>

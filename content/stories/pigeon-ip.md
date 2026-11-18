@@ -5,7 +5,7 @@ draft: false
 weight: 10
 summary: "一个愚人节 RFC，2001 年的一次真实 Ping，以及信鸽教给我们的网络知识。"
 description: "RFC 1149 互动故事：从纸条上的 IP 数据包，理解 TCP/IP 分层、MTU、Ping 实验与网络延迟。"
-cover: "images/network-stories/rfc1149-cover.svg"
+storyimage: "images/network-stories/rfc1149-cover.svg"
 source: "network-stories/rfc1149-pigeon-ip/"
 kicker: "RFC 1149 · IP over Avian Carriers"
 intro: "1990 年，有人提出让信鸽传输 IP 数据报。十一年后，真有人照着做了一次实验。这段看起来荒唐的网络史，恰好能解释几个严肃的技术问题。"
