@@ -1,0 +1,309 @@
+/*
+ * Mobile story reader.
+ * Wide viewports keep the immersive fixed canvas and one-wheel/one-scene player.
+ * Narrow screens use a genuine document-flow layout: no sticky canvas,
+ * overlaid text, screen-height chapter constraints or hidden fallback art.
+ */
+@media (max-width: 900px) {
+  .vx-shell {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 0 36px;
+    padding: 0;
+    overflow: clip;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+  .vx-shell,
+  .vx-shell * { overflow-wrap: break-word; }
+  .vx-shell .vx-hero {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: auto;
+    min-height: 0;
+    max-height: none;
+    overflow: hidden;
+    padding: max(22px, env(safe-area-inset-top)) 20px 25px;
+    border-radius: 0;
+  }
+  .vx-hero-meta {
+    position: relative;
+    flex-wrap: wrap;
+    gap: 10px 16px;
+    font-size: .74rem;
+    line-height: 1.6;
+  }
+  .vx-hero-meta > span { display:none; }
+  .vx-shell .vx-hero-title {
+    position: relative;
+    width: 100%;
+    max-width: none;
+    margin: clamp(35px, 6vh, 65px) 0 14px;
+    padding: 0;
+    flex: 0 0 auto;
+  }
+  .vx-hero .vx-eyebrow { font-size: clamp(.62rem,2.8vw,.73rem); letter-spacing: .1em; }
+  .vx-shell .vx-hero h1 {
+    font-size: clamp(2.15rem, 9vw, 3.65rem);
+    line-height: 1.19;
+    letter-spacing: -.038em;
+    margin: 17px 0 19px;
+    max-width: 100%;
+    word-break: normal;
+  }
+  .vx-shell .vx-hero-title > p:not(.vx-eyebrow) {
+    max-width: 46em;
+    font-size: clamp(.94rem, 3.8vw, 1.06rem);
+    line-height: 1.86;
+    margin: 0;
+  }
+  .vx-shell .vx-hero-action {
+    margin: 22px 0 0;
+    gap: 12px 18px;
+  }
+  .vx-hero-action > span { font-size: .75rem; }
+  .vx-shell .vx-hero-drawing {
+    display: block;
+    position: relative;
+    width: 100%;
+    max-width: 640px;
+    height: auto;
+    min-height: 0;
+    max-height: none;
+    top: auto;
+    left: auto;
+    right: auto;
+    bottom: auto;
+    margin: 3px auto 16px;
+    padding: 0;
+    filter: drop-shadow(0 10px 20px rgba(0,0,0,.25));
+    transform: none;
+    animation: none;
+    flex: 0 0 auto;
+  }
+  .vx-shell .vx-hero-drawing svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    max-height: none;
+    overflow: visible;
+  }
+  .vx-hero-watermark {
+    right: -12%;
+    bottom: 0;
+    font-size: clamp(160px, 48vw, 340px);
+    opacity: .45;
+  }
+  .vx-shell .vx-hero-bottom {
+    position: relative;
+    margin-top: 10px;
+    padding-top: 12px;
+    line-height: 1.65;
+    font-size: .59rem;
+    flex: 0 0 auto;
+  }
+
+  /* Replace the desktop sticky canvas with seven self-contained story chapters. */
+  .vx-shell .vx-journey {
+    display: block;
+    position: relative;
+    height: auto;
+    min-height: 0;
+    overflow: visible;
+    background: #0d2234;
+    color: #f6f6f0;
+  }
+  .vx-shell .vx-world,
+  .vx-shell .vx-rail,
+  .vx-shell .vx-scene-controls,
+  .vx-shell .vx-reading-line {
+    display: none !important;
+  }
+  .vx-shell .vx-chapters {
+    display: block;
+    position: relative;
+    pointer-events: auto;
+    width: 100%;
+    min-width: 0;
+    height: auto;
+    z-index: auto;
+    padding: 0;
+    margin: 0;
+  }
+  .vx-shell .vx-chapter,
+  .vx-shell.vx-enhanced .vx-chapter {
+    --vx-bg: #132c43;
+    --vx-fg: #fcf7eb;
+    --vx-sub: #d3dee8;
+    --vx-edge: rgba(255,255,255,.19);
+    display: block;
+    width: 100%;
+    height: auto;
+    min-height: 0;
+    max-height: none;
+    padding: 36px clamp(18px,5vw,38px) 48px;
+    margin: 0;
+    border: 0;
+    border-bottom: 1px solid var(--vx-edge);
+    scroll-margin-top: 18px;
+    background: var(--vx-bg);
+    color: var(--vx-fg);
+    overflow: visible;
+    transform: none;
+    content-visibility: visible;
+  }
+  .vx-shell .vx-chapter:nth-child(2) {
+    --vx-bg: #f0e3cb; --vx-fg: #172f41; --vx-sub: #3e5262; --vx-edge: #c6bda9;
+  }
+  .vx-shell .vx-chapter:nth-child(3) {
+    --vx-bg: #193b55; --vx-fg: #fff8ef; --vx-sub: #ccdae4;
+  }
+  .vx-shell .vx-chapter:nth-child(4) {
+    --vx-bg: #efc577; --vx-fg: #182d3c; --vx-sub: #344957; --vx-edge: #ceaa69;
+  }
+  .vx-shell .vx-chapter:nth-child(5) {
+    --vx-bg: #0d2925; --vx-fg: #f0fcf4; --vx-sub: #c2dfce;
+  }
+  .vx-shell .vx-chapter:nth-child(6) {
+    --vx-bg: #343453; --vx-fg: #faf5f4; --vx-sub: #dbd5e9;
+  }
+  .vx-shell .vx-chapter:nth-child(7) {
+    --vx-bg: #e4e8dc; --vx-fg: #17333b; --vx-sub: #435d64; --vx-edge: #b2c2b8;
+  }
+  .vx-shell .vx-copy,
+  .vx-shell.vx-enhanced .vx-copy {
+    display: block;
+    position: static;
+    width: 100%;
+    max-width: 720px;
+    height: auto;
+    min-height: 0;
+    margin: 0 auto;
+    padding: 0;
+    box-shadow: none;
+    backdrop-filter: none;
+    background: transparent;
+    border: 0;
+    color: var(--vx-fg);
+    transform: none;
+  }
+  .vx-shell .vx-copy-number,
+  .vx-shell.vx-enhanced .vx-copy-number {
+    display: inline-flex;
+    gap: 10px;
+    align-items: center;
+    opacity: .82;
+    color: inherit;
+    font: 700 .72rem/1.6 ui-monospace, SFMono-Regular, Menlo, monospace;
+    letter-spacing: .07em;
+  }
+  .vx-shell .vx-copy-number::before { width: 22px; background: currentColor; opacity: .5; }
+  .vx-shell .vx-copy h2,
+  .vx-shell.vx-enhanced .vx-copy h2 {
+    color: var(--vx-fg);
+    font-size: clamp(1.55rem, 6vw, 2.1rem);
+    font-weight: 760;
+    line-height: 1.43;
+    letter-spacing: -.028em;
+    text-wrap: pretty;
+    margin: 14px 0 16px;
+    max-width: 100%;
+    overflow-wrap: anywhere;
+  }
+  .vx-shell .vx-copy > p,
+  .vx-shell.vx-enhanced .vx-copy > p {
+    color: var(--vx-sub);
+    font-size: clamp(.98rem, 3.75vw, 1.08rem);
+    font-weight: 450;
+    line-height: 1.92;
+    letter-spacing: normal;
+    max-width: 100%;
+    margin: 0;
+  }
+  .vx-shell .vx-copy-takeaway,
+  .vx-shell.vx-enhanced .vx-copy-takeaway {
+    color: var(--vx-fg);
+    max-width: 100%;
+    border: 0;
+    border-left: 3px solid currentColor;
+    padding: 2px 0 2px 14px;
+    margin: 24px 0 0;
+    font-size: .93rem;
+    font-weight: 650;
+    line-height: 1.85;
+  }
+  .vx-shell .vx-fallback-figure,
+  .vx-shell.vx-enhanced .vx-fallback-figure {
+    display: block !important;
+    position: static;
+    margin: 27px 0 0;
+    padding: 0;
+    width: 100%;
+    height: auto;
+    opacity: 1;
+    transform: none;
+    visibility: visible;
+  }
+  .vx-shell .vx-fallback-figure img {
+    display: block;
+    width: 100%;
+    height: auto;
+    min-height: 0;
+    max-height: none;
+    max-width: 100%;
+    object-fit: contain;
+    border-radius: 8px;
+    background: #eaf0f4;
+  }
+  .vx-shell .vx-fallback-figure figcaption {
+    position: static;
+    margin: 10px 0 0;
+    font-size: .78rem;
+    font-weight: 450;
+    line-height: 1.7;
+    color: var(--vx-sub);
+    text-align: left;
+    opacity: .89;
+    max-width: 100%;
+  }
+  /* The page remains readable when a chapter is not marked active. */
+  .vx-shell .vx-chapter .vx-copy *,
+  .vx-shell.vx-enhanced .vx-chapter .vx-copy * {
+    animation: none !important;
+    transition: none !important;
+    filter: none !important;
+    opacity: 1;
+  }
+  .vx-shell .vx-outro {
+    display: block;
+    position: relative;
+    padding: 52px clamp(19px,5vw,38px) 60px;
+    overflow: visible;
+  }
+  .vx-shell .vx-outro h2 {
+    font-size: clamp(2rem, 8vw, 3.2rem);
+    line-height: 1.38;
+    letter-spacing: -.038em;
+    margin: 18px 0 20px;
+  }
+  .vx-shell .vx-outro p {
+    font-size: 1rem;
+    line-height: 1.88;
+  }
+  .vx-shell .vx-outro-actions { margin-top: 28px; }
+  .vx-shell .vx-outro-sources { margin-top: 52px; }
+}
+@media (max-width: 370px) {
+  .vx-shell .vx-hero { padding-left: 16px; padding-right: 16px; }
+  .vx-shell .vx-hero h1 { font-size: clamp(2.05rem,9.3vw,2.7rem); }
+  .vx-shell .vx-chapter,.vx-shell.vx-enhanced .vx-chapter { padding-left: 16px; padding-right: 16px; }
+  .vx-shell .vx-copy h2,.vx-shell.vx-enhanced .vx-copy h2 { font-size: 1.52rem; }
+}
+@media (max-width: 900px) and (prefers-reduced-motion: reduce) {
+  .vx-shell *, .vx-shell *::before, .vx-shell *::after {
+    animation: none !important; scroll-behavior: auto !important;
+    transition: none !important;
+  }
+}
