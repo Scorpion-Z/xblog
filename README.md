@@ -25,6 +25,17 @@
 - Vercount 的全站数字按域名聚合。若同一 `scorpion-z.github.io` 域名下的其他项目也接入 Vercount，全站数字可能合并；独立域名或单独部署统计后端可实现项目级隔离。
 - 该脚本会向 Vercount 发起网络请求。使用前请了解其服务说明和隐私处理方式。
 
+## 专题叙事的实现
+
+专题叙事与普通文章相互独立。RFC 1149 页面使用以下文件：
+
+- `layouts/stories/single.html`：七个叙事场景、章节导航和文字版链接。
+- `static/js/story-immersive.js`：桌面端一滚一幕、键盘切换、自由滚动和场景状态。
+- `static/js/story-particles.js`：可选的 WebGL2 三维粒子对象，在七个章节之间连续改变形态并随镜头移动。
+- `assets/css/extended/zzz-story-choreography.css` 和 `assets/css/extended/zzzz-story-cinema.css`：转场、文字动画、三维图形和分镜镜头样式。
+
+WebGL2 仅在支持的桌面浏览器中启用。移动端、减少动画偏好的读者和不支持 WebGL2 的环境保留原有 SVG 图解。无论动画是否加载，文字、原文链接和资料来源仍可正常阅读。
+
 ## 本地构建
 
 ```bash
