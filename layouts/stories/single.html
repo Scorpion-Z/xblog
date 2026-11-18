@@ -1,70 +1,210 @@
 {{- define "main" -}}
 {{- $scenes := .Params.scenes -}}
-<article class="story-shell" data-story-root>
-  <div class="story-scroll-progress" aria-hidden="true"><span data-story-progress></span></div>
-  <header class="story-hero">
-    <div class="story-hero-top"><a href="{{ "stories/" | relURL }}">← 专题叙事</a><span>SUPER JOURNAL / STORY 01</span></div>
-    <div class="story-hero-grid">
-      <div class="story-hero-copy">
-        <p class="story-kicker">{{ .Params.kicker }}</p>
-        <h1>{{ .Title }}</h1>
-        <p class="story-hero-lead">{{ .Params.intro }}</p>
-        <div class="story-hero-actions">
-          <a class="story-cta" href="#story-chapters">开始阅读 <span aria-hidden="true">↓</span></a>
-          {{- with .Params.source }}<a class="story-text-link" href="{{ . | relURL }}">普通文章版</a>{{- end }}
-        </div>
-      </div>
-      <div class="story-hero-image">
-        {{- with .Params.storyimage }}<img src="{{ . | relURL }}" alt="信鸽运输 IP 数据包的原创示意图" fetchpriority="high">{{- end }}
+<article class="vx-shell" data-vx-story data-active="0" aria-label="RFC 1149 互动专题叙事">
+  <div class="vx-reading-line" aria-hidden="true"><span data-vx-progress></span></div>
+  <header class="vx-hero" id="vx-start">
+    <div class="vx-hero-meta">
+      <a href="{{ "stories/" | relURL }}">← 专题叙事</a>
+      <span>SUPER JOURNAL / FIELD REPORT NO. 1149</span>
+      {{- with .Params.source }}<a href="{{ . | relURL }}">文字版 ↗</a>{{- end }}
+    </div>
+    <div class="vx-hero-watermark" aria-hidden="true">1149</div>
+    <div class="vx-hero-title">
+      <p class="vx-eyebrow">A MOST UNUSUAL NETWORK EXPERIMENT</p>
+      <h1><span>当 IP 数据包</span><em>搭上信鸽。</em></h1>
+      <p>{{ .Params.intro }}</p>
+      <div class="vx-hero-action">
+        <a href="#vx-chapters" class="vx-primary-link">进入实验 <span aria-hidden="true">↓</span></a>
+        <span>07 个场景 · 滚动讲述</span>
       </div>
     </div>
-    <p class="story-hero-note">向下滚动，跟着一个数据包走完旅程。所有动画都可以跳过，正文可直接阅读。</p>
+    <div class="vx-hero-drawing" aria-hidden="true">
+      <svg viewBox="0 0 800 630" role="presentation" focusable="false">
+        <defs>
+          <linearGradient id="vx-bird-fill" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#fff9e9"/><stop offset="1" stop-color="#c9dbed"/></linearGradient>
+        </defs>
+        <circle cx="410" cy="310" r="220" fill="none" stroke="#91a8bd" stroke-dasharray="2 14" opacity=".35"/>
+        <circle cx="410" cy="310" r="275" fill="none" stroke="#91a8bd" stroke-dasharray="2 23" opacity=".22"/>
+        <path d="M-20 470 C130 335 217 480 346 304 S587 150 820 72" fill="none" stroke="#e8bd65" stroke-width="2" stroke-dasharray="10 14" opacity=".68"/>
+        <g class="vx-hero-bird">
+          <path d="M158 348 360 292 505 190 478 322 620 363 451 410 348 469 365 382Z" fill="url(#vx-bird-fill)" />
+          <path d="M360 292 505 190 422 355 478 322" fill="#a4c4dc"/>
+          <path d="M422 355 348 469 365 382 158 348" fill="#83a9c9"/>
+          <path d="M478 322 620 363 451 410 422 355" fill="#d7e7f2"/>
+          <circle cx="559" cy="358" r="5" fill="#0d2033"/>
+          <path d="M622 359 677 373 624 383" fill="#eebc60"/>
+          <g class="vx-paper">
+            <rect x="345" y="434" width="105" height="77" rx="5" transform="rotate(-8 345 434)" fill="#fff8e8"/>
+            <text x="351" y="468" font-size="17" font-family="monospace" fill="#0b3049">45 00</text>
+            <text x="351" y="489" font-size="17" font-family="monospace" fill="#0b3049">00 54</text>
+          </g>
+        </g>
+        <text x="61" y="100" font-family="monospace" font-size="15" fill="#a5bacb">IPoAC / RFC 1149</text>
+        <text x="595" y="538" font-family="monospace" font-size="16" fill="#a5bacb">1990 → 2001</text>
+      </svg>
+    </div>
+    <div class="vx-hero-bottom"><span>SCROLL TO SEND THE PACKET</span><span>01 — 07</span></div>
   </header>
 
-  <div class="story-experience" id="story-chapters">
-    <aside class="story-stage" aria-hidden="true">
-      <div class="story-stage-heading">
-        <span>FIELD NOTES / RFC 1149</span>
-        <span class="story-stage-count"><b data-story-current>01</b> / {{ printf "%02d" (len $scenes) }}</span>
+  <div class="vx-journey" id="vx-chapters">
+    <div class="vx-world" aria-hidden="true">
+      <div class="vx-world-grid"></div>
+      <span class="vx-world-giant" data-vx-giant>01</span>
+      <div class="vx-world-upper">
+        <span class="vx-world-label">RFC 1149 / NETWORK FIELD NOTES</span>
+        <span class="vx-world-count"><b data-vx-current>01</b><i> / 07</i></span>
       </div>
-      <div class="story-stage-figures">
-        {{- range $i, $scene := $scenes }}
-        <figure class="story-stage-figure{{ if eq $i 0 }} is-active{{ end }}" data-story-figure="{{ $i }}">
-          <img src="{{ $scene.image | relURL }}" alt="" {{ if gt $i 0 }}loading="lazy"{{ end }}>
-          <figcaption>{{ $scene.caption }}</figcaption>
-        </figure>
-        {{- end }}
+      <div class="vx-visual-stage">
+        <div class="vx-visual vx-v0 is-current" data-vx-visual="0">
+          <div class="vx-visual-tag">AN IMPOSSIBLE DELIVERY SERVICE</div>
+          <svg class="vx-v0-illustration" viewBox="0 0 700 580" role="presentation" focusable="false">
+            <path d="M-20 480 C185 400 206 172 450 201 S640 164 735 55" fill="none" stroke="#f5c36b" stroke-width="3" stroke-dasharray="10 14" opacity=".8"/>
+            <circle cx="440" cy="278" r="210" fill="#f7cd80" opacity=".085"/>
+            <circle cx="440" cy="278" r="155" fill="none" stroke="#f6d18b" opacity=".2"/>
+            <g class="vx-flying-bird">
+              <path d="M120 318 320 276 438 110 426 290 595 323 424 374 298 455 320 346Z" fill="#f6f5ed"/>
+              <path d="M320 276 438 110 372 324 426 290" fill="#bad7e9"/>
+              <path d="M320 346 298 455 120 318 372 324" fill="#93b8d0"/>
+              <path d="M426 290 595 323 424 374 372 324" fill="#d9e9ed"/>
+              <circle cx="541" cy="325" r="5" fill="#13283b"/>
+              <path d="M596 318 647 330 595 340" fill="#f4c66c"/>
+              <rect x="310" y="421" width="82" height="57" rx="5" fill="#fff4cf" transform="rotate(-7 310 421)"/>
+            </g>
+            <text x="485" y="500" fill="#c5d9e8" font-family="monospace" font-size="17">TTL 255</text>
+          </svg>
+          <span class="vx-visual-foot">NO CABLES · ONE PIGEON · ONE IP DATAGRAM</span>
+        </div>
+
+        <div class="vx-visual vx-v1" data-vx-visual="1">
+          <p class="vx-visual-tag">PAYLOAD / TRANSMISSION</p>
+          <div class="vx-paper-object">
+            <span class="vx-paper-top">INTERNET PROTOCOL · DATAGRAM</span>
+            <div class="vx-paper-code">45 00 00 54<br>8a 3f 00 00<br>40 01 7c 29</div>
+            <span class="vx-paper-rule"></span>
+            <span class="vx-paper-bottom">FOLD. ATTACH. RELEASE.</span>
+            <span class="vx-paper-stamp">IP</span>
+          </div>
+          <div class="vx-flow">
+            <div><span>01</span><b>编码</b></div><i>→</i>
+            <div><span>02</span><b>打印</b></div><i>→</i>
+            <div><span>03</span><b>运输</b></div><i>→</i>
+            <div><span>04</span><b>还原</b></div>
+          </div>
+          <p class="vx-visual-foot">THE BIRD DOESN'T NEED TO UNDERSTAND IP</p>
+        </div>
+
+        <div class="vx-visual vx-v2" data-vx-visual="2">
+          <p class="vx-visual-tag">THE STACK / FOUR LAYERS</p>
+          <div class="vx-stack">
+            <div><span>04</span><b>APPLICATION</b><small>HTTP / DNS / SSH</small></div>
+            <div><span>03</span><b>TRANSPORT</b><small>TCP / UDP</small></div>
+            <div><span>02</span><b>INTERNET</b><small>IP / ICMP</small></div>
+            <div class="vx-stack-bird"><span>01</span><b>NETWORK INTERFACE</b><small>ETHERNET / WI-FI / 🕊</small></div>
+          </div>
+          <div class="vx-stack-beam"></div>
+          <p class="vx-visual-foot">CHANGE THE CARRIER, KEEP THE LAYER CONTRACT</p>
+        </div>
+
+        <div class="vx-visual vx-v3" data-vx-visual="3">
+          <p class="vx-visual-tag">MTU / MAXIMUM TRANSMISSION UNIT</p>
+          <div class="vx-mtu-figures">
+            <div class="vx-mtu-standard"><small>ETHERNET</small><strong>1500</strong><span>BYTES</span></div>
+            <div class="vx-mtu-vs">VS.</div>
+            <div class="vx-mtu-bird"><small>RFC 1149</small><strong>256</strong><span>MILLIGRAMS</span></div>
+          </div>
+          <div class="vx-mtu-scale"><span></span><b></b><span></span></div>
+          <p class="vx-visual-foot">A DIFFERENT UNIT. AN INTENTIONAL JOKE.</p>
+        </div>
+
+        <div class="vx-visual vx-v4" data-vx-visual="4">
+          <p class="vx-visual-tag">BERGEN, NORWAY / APRIL 2001</p>
+          <div class="vx-terminal">
+            <div class="vx-terminal-top"><span class="vx-dots-circle">● ● ●</span><span>ping -i 900 10.0.3.1</span></div>
+            <p>$ transmitting on avian carrier ...</p>
+            <div class="vx-pings" aria-label="9 次请求，其中 4 次收到应答">
+              <span class="ok">01</span><span class="bad">02</span><span class="ok">03</span><span class="bad">04</span><span class="ok">05</span><span class="bad">06</span><span class="bad">07</span><span class="ok">08</span><span class="bad">09</span>
+            </div>
+            <div class="vx-terminal-metrics">
+              <div><b>9</b><span>PACKETS SENT</span></div>
+              <div><b>4</b><span>RECEIVED</span></div>
+              <div><b>~87<span>min</span></b><span>AVERAGE RTT</span></div>
+            </div>
+            <p class="vx-terminal-last">packet loss: ~55.6% <span class="vx-cursor">▌</span></p>
+          </div>
+          <p class="vx-visual-foot">REAL PACKET LOGS · REAL PIGEONS · VERY LONG WAIT</p>
+        </div>
+
+        <div class="vx-visual vx-v5" data-vx-visual="5">
+          <p class="vx-visual-tag">A TCP CONNECTION / THREE MESSAGES</p>
+          <div class="vx-handshake">
+            <div class="vx-handshake-head"><span>CLIENT</span><span>SERVER</span></div>
+            <svg viewBox="0 0 600 440" role="presentation" focusable="false">
+              <path d="M85 25 V410 M515 25 V410" stroke="#bed7e4" stroke-dasharray="6 12" stroke-width="2" opacity=".5"/>
+              <path d="M95 85 505 170" stroke="#f7c772" stroke-width="4" fill="none"/>
+              <path d="M505 170 495 153 M505 170 486 180" stroke="#f7c772" stroke-width="4" fill="none"/>
+              <path d="M505 212 95 292" stroke="#8fdcc7" stroke-width="4" fill="none"/>
+              <path d="M95 292 112 277 M95 292 114 302" stroke="#8fdcc7" stroke-width="4" fill="none"/>
+              <path d="M95 345 505 399" stroke="#f7c772" stroke-width="4" fill="none"/>
+              <path d="M505 399 493 385 M505 399 486 407" stroke="#f7c772" stroke-width="4" fill="none"/>
+              <g font-family="monospace" font-size="23" font-weight="600" fill="#fff"><text x="275" y="105">SYN</text><text x="237" y="237">SYN + ACK</text><text x="282" y="349">ACK</text></g>
+            </svg>
+          </div>
+          <p class="vx-visual-foot">ONE ROUND TRIP MAY TAKE MORE THAN AN HOUR</p>
+        </div>
+
+        <div class="vx-visual vx-v6" data-vx-visual="6">
+          <p class="vx-visual-tag">DELAY-TOLERANT NETWORKING</p>
+          <div class="vx-dtn-network">
+            <div class="vx-dtn-node"><span>01</span><b>STORE</b><small>保存消息</small><i>▣</i></div>
+            <div class="vx-dtn-link"><span>·········</span><b>→</b></div>
+            <div class="vx-dtn-node"><span>02</span><b>CARRY</b><small>等待运输</small><i>↗</i></div>
+            <div class="vx-dtn-link"><span>·········</span><b>→</b></div>
+            <div class="vx-dtn-node"><span>03</span><b>FORWARD</b><small>继续转发</small><i>➤</i></div>
+          </div>
+          <div class="vx-dtn-quote">“没有连续的链路，<br>消息也可以继续前进。”</div>
+          <p class="vx-visual-foot">FROM A JOKE TO A REAL NETWORKING QUESTION</p>
+        </div>
       </div>
-      <div class="story-stage-track"><span data-story-stage-progress style="transform:scaleX({{ div 1.0 (len $scenes) }})"></span></div>
-    </aside>
-    <div class="story-chapters" aria-label="故事章节">
+      <div class="vx-world-bottom">
+        <span>READ / EXPLORE / QUESTION</span>
+        <div class="vx-world-progress"><span data-vx-stage-progress></span></div>
+      </div>
+    </div>
+
+    <nav class="vx-rail" aria-label="专题章节导航" data-vx-rail>
       {{- range $i, $scene := $scenes }}
-      <section class="story-chapter{{ if eq $i 0 }} is-active{{ end }}" id="story-part-{{ add $i 1 }}" data-story-chapter="{{ $i }}" aria-labelledby="story-part-heading-{{ add $i 1 }}">
-        <span class="story-chapter-marker">{{ $scene.kicker }}</span>
-        <h2 id="story-part-heading-{{ add $i 1 }}">{{ $scene.title }}</h2>
-        <p>{{ $scene.text }}</p>
-        {{- with $scene.detail }}<p class="story-chapter-highlight">{{ . }}</p>{{- end }}
-        <figure class="story-chapter-mobile-figure">
-          <img src="{{ $scene.image | relURL }}" alt="{{ $scene.alt }}" loading="lazy">
-          <figcaption>{{ $scene.caption }}</figcaption>
-        </figure>
+      <a href="#vx-part-{{ add $i 1 }}" aria-label="前往第 {{ add $i 1 }} 节：{{ $scene.title }}" {{ if eq $i 0 }}aria-current="step"{{ end }} data-vx-dot="{{ $i }}"><span>{{ printf "%02d" (add $i 1) }}</span></a>
+      {{- end }}
+    </nav>
+
+    <div class="vx-chapters">
+      {{- range $i, $scene := $scenes }}
+      <section class="vx-chapter" id="vx-part-{{ add $i 1 }}" data-vx-chapter="{{ $i }}" aria-labelledby="vx-heading-{{ add $i 1 }}">
+        <div class="vx-copy">
+          <span class="vx-copy-number">{{ $scene.kicker }}</span>
+          <h2 id="vx-heading-{{ add $i 1 }}">{{ $scene.title }}</h2>
+          <p>{{ $scene.text }}</p>
+          {{- with $scene.detail }}<div class="vx-copy-takeaway">{{ . }}</div>{{- end }}
+          <figure class="vx-fallback-figure">
+            <img src="{{ $scene.image | relURL }}" alt="{{ $scene.alt }}" loading="lazy">
+            <figcaption>{{ $scene.caption }}</figcaption>
+          </figure>
+        </div>
       </section>
       {{- end }}
     </div>
   </div>
-  <footer class="story-outro">
-    <div class="story-outro-heading">
-      <p class="story-kicker">END OF TRANSMISSION</p>
-      <h2>网络通了。接下来，读读完整的技术解释。</h2>
-      <p>上面的分镜只保留主线。原文章节还包括 IPv4 报头、2001 年实验日志、TCP 超时机制、延迟与吞吐量的差异，以及对应的参考资料。</p>
+
+  <footer class="vx-outro">
+    <div><span class="vx-outro-overline">END OF TRANSMISSION / 07 OF 07</span><h2>实验结束。<br><em>现在换回正常网络。</em></h2>
+      <p>这七幕只是主线。完整文章还包含 IPv4 数据报结构、原始 Ping 日志、TCP 超时、吞吐量计算以及参考资料。</p>
+      <div class="vx-outro-actions">
+        {{- with .Params.source }}<a class="vx-primary-link" href="{{ . | relURL }}">阅读完整文章 <span aria-hidden="true">↗</span></a>{{- end }}
+        <a class="vx-outro-return" href="{{ "stories/" | relURL }}">返回专题叙事</a>
+      </div>
     </div>
-    {{- with .Params.source }}<a class="story-outro-cta" href="{{ . | relURL }}">阅读 RFC 1149 完整文章 <span aria-hidden="true">↗</span></a>{{- end }}
-    <div class="story-references">
-      <span>原始资料</span>
-      <a href="https://www.rfc-editor.org/rfc/rfc1149.html" target="_blank" rel="noopener noreferrer">RFC 1149</a>
-      <a href="https://blug.linux.no/rfc1149/pinglogg.txt" target="_blank" rel="noopener noreferrer">BLUG Ping 日志</a>
-      <a href="https://www.rfc-editor.org/rfc/rfc9171.html" target="_blank" rel="noopener noreferrer">RFC 9171</a>
-    </div>
+    <div class="vx-outro-sources"><span>ORIGINAL SOURCES</span><a href="https://www.rfc-editor.org/rfc/rfc1149.html" target="_blank" rel="noopener noreferrer">RFC 1149 ↗</a><a href="https://blug.linux.no/rfc1149/pinglogg.txt" target="_blank" rel="noopener noreferrer">BLUG Ping Log ↗</a><a href="https://www.rfc-editor.org/rfc/rfc9171.html" target="_blank" rel="noopener noreferrer">RFC 9171 ↗</a></div>
   </footer>
 </article>
+<script src="{{ "js/story-immersive.js" | relURL }}" defer></script>
 {{- end -}}
