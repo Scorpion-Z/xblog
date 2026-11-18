@@ -45,6 +45,7 @@
       });
       activate(chosen);
       var box = journey.getBoundingClientRect();
+      root.classList.toggle("vx-in-journey", box.top < window.innerHeight * 0.65 && box.bottom > window.innerHeight * 0.35);
       var total = Math.max(1, box.height - window.innerHeight);
       var fraction = clamp(-box.top / total);
       if (progress) progress.style.transform = "scaleX(" + fraction.toFixed(5) + ")";
