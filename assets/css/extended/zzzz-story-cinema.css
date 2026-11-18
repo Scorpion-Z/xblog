@@ -1,0 +1,199 @@
+/* STORY CINEMA v2.
+   A continuous WebGL sculpture occupies the visual stage. The original diagrams
+   remain as semantic fallbacks and supporting details. No external dependencies. */
+.vx-world {
+  isolation: isolate;
+  perspective: 1300px;
+}
+.vx-particle-field {
+  position: absolute;
+  z-index: 1;
+  top: 5%;
+  right: 0;
+  bottom: 8%;
+  width: 64%;
+  opacity: 0;
+  pointer-events: none;
+  transform-origin: 55% 51%;
+  transform: translate3d(2%,0,0) scale(.94);
+  transition: opacity .8s ease,transform 1.2s cubic-bezier(.19,1,.22,1);
+  contain: layout paint;
+}
+.vx-particle-field canvas {
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+.vx-particle-marks {
+  position: absolute;
+  left: 11%;
+  right: 10%;
+  top: 15%;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  color: var(--vx-fg);
+  font: 650 .64rem ui-monospace,SFMono-Regular,Menlo,monospace;
+  letter-spacing: .18em;
+  opacity: .49;
+  white-space: nowrap;
+}
+.vx-webgl-active .vx-particle-field {
+  opacity: 1;
+  transform: translate3d(0,0,0) scale(1);
+}
+.vx-webgl-active .vx-v0-illustration {
+  opacity: .045;
+  filter: blur(14px);
+  transition: opacity .65s ease;
+}
+.vx-webgl-active[data-active="0"] .vx-particle-field { opacity: 1; mix-blend-mode: screen; }
+.vx-webgl-active[data-active="1"] .vx-particle-field { opacity: .48; mix-blend-mode: multiply; }
+.vx-webgl-active[data-active="2"] .vx-particle-field { opacity: .44; mix-blend-mode: screen; }
+.vx-webgl-active[data-active="3"] .vx-particle-field { opacity: .34; mix-blend-mode: multiply; }
+.vx-webgl-active[data-active="4"] .vx-particle-field { opacity: .37; mix-blend-mode: screen; }
+.vx-webgl-active[data-active="5"] .vx-particle-field { opacity: .38; mix-blend-mode: screen; }
+.vx-webgl-active[data-active="6"] .vx-particle-field { opacity: .45; mix-blend-mode: multiply; }
+.vx-particle-field::after {
+  content: "";
+  position: absolute;
+  inset: 9% 15%;
+  z-index: -1;
+  border: 1px solid var(--vx-edge);
+  border-radius: 50%;
+  transform: rotateY(62deg) rotateX(22deg);
+  opacity: .65;
+  box-shadow: 0 0 95px color-mix(in srgb,var(--vx-fg) 8%,transparent);
+}
+.vx-world .vx-visual-stage { z-index: 2; }
+.vx-chapters { z-index: 4; }
+.vx-visual {
+  perspective: 1200px;
+  transform-style: preserve-3d;
+}
+.vx-cinema-matte {
+  z-index: 8;
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.vx-cinema-matte span {
+  position: absolute;
+  width: 100%;
+  height: 0;
+  left: 0;
+  background: #080f19;
+}
+.vx-cinema-matte span:first-child { top: 0; }
+.vx-cinema-matte span:last-child { bottom: 0; }
+.vx-turning .vx-cinema-matte span:first-child { animation: vx-film-top .75s cubic-bezier(.19,1,.22,1) both; }
+.vx-turning .vx-cinema-matte span:last-child { animation: vx-film-bottom .75s cubic-bezier(.19,1,.22,1) both; }
+@keyframes vx-film-top { 0%{height:0} 25%{height:3.1%} 100%{height:0} }
+@keyframes vx-film-bottom { 0%{height:0} 25%{height:3.1%} 100%{height:0} }
+
+/* Scene 0: light trails and a large bird sculpture replace a flat hero illustration. */
+.vx-v0 { background: radial-gradient(ellipse at 71% 52%,rgba(110,180,219,.12) 0%,transparent 44%); }
+.vx-v0 .vx-visual-tag { right: 6%; font-size: .9rem; }
+.vx-v0 .vx-visual-foot { bottom: 12%; right: 12%; }
+.vx-webgl-active[data-active="0"] .vx-v0 .vx-visual-tag { letter-spacing: .18em; }
+
+/* Scene 1: the paper floats as an actual object in perspective. */
+.vx-v1 .vx-paper-object {
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  box-shadow: 30px 35px 0 rgba(30,56,71,.10),20px 40px 75px rgba(17,40,56,.24);
+}
+.vx-v1.is-current .vx-paper-object {
+  animation: vx-sheet-camera 1.2s cubic-bezier(.16,.85,.26,1) both, vx-sheet-breathe 7s 1.2s ease-in-out infinite;
+}
+@keyframes vx-sheet-camera {
+  0% { opacity:0; transform: perspective(900px) rotateY(-64deg) rotateX(17deg) translateX(80px) scale(.5); }
+  100% { opacity:1; transform: perspective(900px) rotateY(-16deg) rotateX(9deg) rotateZ(4deg) scale(1); }
+}
+@keyframes vx-sheet-breathe {
+  0%,100% { transform: perspective(900px) rotateY(-16deg) rotateX(9deg) rotateZ(4deg) translateY(0); }
+  50% { transform: perspective(900px) rotateY(-9deg) rotateX(6deg) rotateZ(2deg) translateY(-12px); }
+}
+
+/* Scene 2: turn the flat protocol stack into a floating technical sculpture. */
+.vx-v2 .vx-stack {
+  transform-style: preserve-3d;
+  transform-origin: 50% 50%;
+  transform: perspective(1300px) rotateY(-19deg) rotateX(9deg);
+  filter: drop-shadow(18px 30px 0 rgba(0,10,26,.18));
+}
+.vx-v2.is-current .vx-stack { animation: vx-stack-camera 1.3s cubic-bezier(.2,.7,.25,1) both; }
+.vx-v2 .vx-stack > div { transform-style: preserve-3d; border-width: 1.5px; box-shadow: 18px 14px 0 rgba(4,19,31,.13); }
+.vx-v2 .vx-stack > div.vx-stack-bird { box-shadow: 18px 14px 0 #ca8738; }
+@keyframes vx-stack-camera {
+  from { opacity:0; transform: perspective(1300px) rotateY(42deg) rotateX(28deg) translateX(100px) scale(.7); }
+  to { opacity:1; transform: perspective(1300px) rotateY(-19deg) rotateX(9deg) translateX(0) scale(1); }
+}
+
+/* Scene 3: the size comparison arrives as a deliberately exaggerated collision. */
+.vx-v3 .vx-mtu-vs { font-size: clamp(2rem,4vw,5rem); color: #1b3445; }
+.vx-v3.is-current .vx-mtu-standard { animation: vx-scale-in-left 950ms cubic-bezier(.22,1,.36,1) both; }
+.vx-v3.is-current .vx-mtu-bird { animation: vx-scale-in-right 950ms 160ms cubic-bezier(.22,1,.36,1) both; }
+@keyframes vx-scale-in-left { from{opacity:0;transform:perspective(900px) translateZ(-400px) rotateY(60deg) translateX(-150px)}to{opacity:1;transform:perspective(900px) translateZ(0) rotateY(0) rotate(-5deg)} }
+@keyframes vx-scale-in-right { from{opacity:0;transform:perspective(900px) translateZ(-400px) rotateY(-60deg) translateX(150px)}to{opacity:1;transform:perspective(900px) translateZ(0) rotateY(0) rotate(6deg)} }
+
+/* Scene 4: a terminal that powers up rather than merely appearing. */
+.vx-v4 .vx-terminal { overflow: hidden; border-color: #6ca888; }
+.vx-v4 .vx-terminal::before {
+  content:""; position:absolute; inset:0; pointer-events:none;
+  background: repeating-linear-gradient(to bottom,transparent 0,transparent 3px,rgba(43,166,99,.045) 3.5px,transparent 4px);
+}
+.vx-v4 .vx-terminal::after {
+  content:""; position:absolute; left:0;right:0;top:-22%;height:30%;
+  pointer-events:none; background: linear-gradient(to bottom,transparent,rgba(112,255,175,.10),transparent); opacity:0;
+}
+.vx-v4.is-current .vx-terminal::after { animation: vx-terminal-scan 2.2s .35s linear 1; }
+@keyframes vx-terminal-scan { 0%{opacity:0;transform:translateY(0)} 10%{opacity:1} 90%{opacity:1} 100%{opacity:0;transform:translateY(510%)} }
+
+/* Scene 5: a technical exchange should feel like a carefully drawn message path. */
+.vx-v5 .vx-handshake { filter: drop-shadow(0 20px 25px rgba(13,9,34,.22)); }
+.vx-v5.is-current .vx-handshake { animation: vx-diagram-focus .95s cubic-bezier(.19,1,.22,1) both; }
+@keyframes vx-diagram-focus { from{opacity:0;transform:perspective(1100px) rotateY(18deg) scale(.7) translateX(50px);filter:blur(8px)}to{opacity:1;transform:perspective(1100px) rotateY(-5deg) scale(1);filter:blur(0)} }
+
+/* Scene 6: relays pulse in order, then the audience gets the complete line. */
+.vx-v6 .vx-dtn-network { filter: drop-shadow(13px 23px 0 rgba(38,69,73,.09)); }
+.vx-v6.is-current .vx-dtn-node { animation: vx-dtn-arrive .8s cubic-bezier(.2,.9,.3,1.2) both; }
+.vx-v6.is-current .vx-dtn-node:nth-of-type(3) { animation-delay:.2s; }
+.vx-v6.is-current .vx-dtn-node:nth-of-type(5) { animation-delay:.4s; }
+@keyframes vx-dtn-arrive { from{opacity:0;transform:translateY(-85px) rotate(-9deg) scale(.65)}to{opacity:1;transform:translateY(0) rotate(0) scale(1)} }
+
+/* Hero: produce stronger visual depth before entering the seven chapters. */
+.vx-hero {
+  background: radial-gradient(ellipse at 78% 41%,#235573 0%,transparent 33%),
+              radial-gradient(ellipse at 54% 60%,#102f46 0%,#061321 75%);
+}
+.vx-hero-drawing {
+  perspective: 1100px;
+  filter: drop-shadow(0 45px 85px rgba(0,0,0,.43));
+  animation: vx-hero-camera 1.45s cubic-bezier(.19,1,.22,1) both;
+}
+.vx-hero-bird {
+  animation: vx-sway 5.5s ease-in-out infinite;
+}
+@keyframes vx-hero-camera { from{opacity:0;transform:perspective(900px) translateX(160px) translateZ(-240px) rotateY(24deg)}to{opacity:1;transform:perspective(900px) translateX(0) translateZ(0) rotateY(-9deg)} }
+.vx-hero-title h1 span { animation: vx-copy-up 900ms 50ms both; }
+.vx-hero-title h1 em { animation: vx-copy-up 900ms 220ms both; }
+.vx-hero-title > p:not(.vx-eyebrow) { animation: vx-copy-up .9s .4s both; }
+.vx-hero-action { animation: vx-copy-up .9s .55s both; }
+
+@media(max-width:760px) {
+  .vx-particle-field { display:none!important; }
+  .vx-cinema-matte { display:none!important; }
+  .vx-v2 .vx-stack { transform:none;filter:none; }
+  .vx-v2.is-current .vx-stack { animation:none; }
+  .vx-v1.is-current .vx-paper-object { animation: vx-paper-enter .75s both; }
+  .vx-hero-drawing { animation:none; }
+}
+@media(prefers-reduced-motion:reduce) {
+  .vx-world .vx-particle-field { display:none!important; }
+  .vx-webgl-active .vx-v0-illustration { opacity:1!important;filter:none!important; }
+  .vx-v1.is-current .vx-paper-object, .vx-v2.is-current .vx-stack,
+  .vx-v3.is-current .vx-mtu-figures > div, .vx-v4.is-current .vx-terminal::after,
+  .vx-v5.is-current .vx-handshake, .vx-v6.is-current .vx-dtn-node,
+  .vx-hero-title h1 span, .vx-hero-title h1 em, .vx-hero-title > p, .vx-hero-action { animation:none!important; }
+}
