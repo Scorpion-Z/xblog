@@ -51,7 +51,7 @@
     function pageY() { return window.scrollY || document.documentElement.scrollTop || 0; }
     function inRange() {
       var y = pageY();
-      return y >= topOf(hero) - 30 && y <= topOf(outro) + window.innerHeight * 0.20;
+      return y >= topOf(hero) - Math.min(window.innerHeight * 0.30, 180) && y <= topOf(outro) + window.innerHeight * 0.20;
     }
     function nearestStop() {
       var position = pageY();
