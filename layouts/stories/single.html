@@ -15,7 +15,7 @@
       <p>{{ .Params.intro }}</p>
       <div class="vx-hero-action">
         <a href="#vx-chapters" class="vx-primary-link">进入实验 <span aria-hidden="true">↓</span></a>
-        <span>07 个场景 · 滚动讲述</span>
+        <span>07 个场景 · 整幕翻页</span>
       </div>
     </div>
     <div class="vx-hero-drawing" aria-hidden="true">
@@ -43,7 +43,7 @@
         <text x="595" y="538" font-family="monospace" font-size="16" fill="#a5bacb">1990 → 2001</text>
       </svg>
     </div>
-    <div class="vx-hero-bottom"><span>SCROLL TO SEND THE PACKET</span><span>01 — 07</span></div>
+    <div class="vx-hero-bottom"><span>SCROLL ONCE · ADVANCE ONE SCENE</span><span>01 — 07</span></div>
   </header>
 
   <div class="vx-journey" id="vx-chapters">
@@ -176,6 +176,13 @@
       <a href="#vx-part-{{ add $i 1 }}" aria-label="前往第 {{ add $i 1 }} 节：{{ $scene.title }}" {{ if eq $i 0 }}aria-current="step"{{ end }} data-vx-dot="{{ $i }}"><span>{{ printf "%02d" (add $i 1) }}</span></a>
       {{- end }}
     </nav>
+
+    <div class="vx-scene-controls" role="group" aria-label="分镜播放控制">
+      <button type="button" data-vx-prev aria-label="上一幕"><span aria-hidden="true">↑</span> 上一幕</button>
+      <span class="vx-playback-hint" data-vx-hint aria-live="off">滚轮 / ↑ ↓ 一次切换一幕</span>
+      <button type="button" data-vx-next aria-label="下一幕">下一幕 <span aria-hidden="true">↓</span></button>
+      <button type="button" class="vx-mode-toggle" data-vx-mode aria-pressed="true" title="切换整幕翻页或自由滚动">整幕切换：开</button>
+    </div>
 
     <div class="vx-chapters">
       {{- range $i, $scene := $scenes }}
