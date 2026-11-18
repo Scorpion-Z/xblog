@@ -1,0 +1,161 @@
+/*
+ * Atelier v4 — editorial art direction.
+ * A focused sculptural subject, small technical annotations and quiet transitions.
+ * PaperMod navigation and the validated one-wheel/one-scene player are unchanged.
+ */
+.vx-world { --art-guide: color-mix(in srgb,var(--vx-fg) 45%,transparent); }
+.vx-webgl-active .vx-particle-field {
+  z-index: 1;
+  width: 66%;
+  right: -1%;
+  top: 3%;
+  bottom: 7%;
+  opacity: .96;
+  filter: drop-shadow(0 20px 50px rgba(2,12,22,.14));
+  transform: translate3d(0,0,0) scale(1.04);
+  mix-blend-mode: normal;
+  transition: opacity .7s ease,transform 1.3s cubic-bezier(.22,1,.36,1),filter .7s ease;
+}
+.vx-webgl-active[data-active="0"] .vx-particle-field { opacity: 1; mix-blend-mode: screen; transform: translate3d(0,-1%,0) scale(1.12); }
+.vx-webgl-active[data-active="1"] .vx-particle-field { opacity: .83; mix-blend-mode: multiply; transform: translate3d(0,-1%,0) scale(1.10); }
+.vx-webgl-active[data-active="2"] .vx-particle-field { opacity: .88; mix-blend-mode: screen; transform: translate3d(2%,-1%,0) scale(1.08); }
+.vx-webgl-active[data-active="3"] .vx-particle-field { opacity: .80; mix-blend-mode: multiply; transform: translate3d(1%,0,0) scale(1.02); }
+.vx-webgl-active[data-active="4"] .vx-particle-field { opacity: .73; mix-blend-mode: screen; transform: translate3d(-2%,0,0) scale(1.00); }
+.vx-webgl-active[data-active="5"] .vx-particle-field { opacity: .80; mix-blend-mode: screen; transform: translate3d(0,0,0) scale(1.06); }
+.vx-webgl-active[data-active="6"] .vx-particle-field { opacity: .80; mix-blend-mode: multiply; transform: translate3d(0,-1%,0) scale(1.07); }
+.vx-particle-marks { left: 16%;right:9%;top:13%;opacity:.53; }
+.vx-particle-marks span:last-child { letter-spacing:.07em; }
+.vx-particle-field::after {
+  inset:12% 15%;
+  border-color: color-mix(in srgb,var(--vx-fg) 25%,transparent);
+  border-radius:50%;
+  box-shadow: 0 0 130px color-mix(in srgb,var(--vx-fg) 6%,transparent), inset 0 0 25px color-mix(in srgb,var(--vx-fg) 3%,transparent);
+  transform:rotateY(68deg) rotateX(-18deg);
+}
+.vx-particle-field::before {
+  content:"";
+  position:absolute;pointer-events:none;z-index:0;inset:17% 20%;
+  border:1px dashed color-mix(in srgb,var(--vx-fg) 18%,transparent);
+  border-radius:50%;
+  transform:rotateY(-55deg) rotateX(21deg);
+  animation:vx-at-orbit 22s linear infinite;
+}
+@keyframes vx-at-orbit {
+  from{transform:rotateY(-55deg) rotateX(21deg) rotateZ(0)}
+  to{transform:rotateY(-55deg) rotateX(21deg) rotateZ(360deg)}
+}
+.vx-world-grid { background-size:12vw 12vw;opacity:.08; }
+.vx-v0 { background: radial-gradient(ellipse at 71% 48%,rgba(120,188,220,.08),transparent 54%); }
+.vx-world:before {
+  content:"";position:absolute;inset:0;pointer-events:none;z-index:0;
+  background:
+    radial-gradient(ellipse at 81% 23%,color-mix(in srgb,var(--vx-fg) 9%,transparent),transparent 35%),
+    radial-gradient(ellipse at 66% 71%,color-mix(in srgb,var(--vx-fg) 5%,transparent),transparent 42%);
+  opacity:.83;
+}
+
+/* Subtle physical stage markings and calibrated corner ornaments. */
+.vx-at-design-grid { position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden;color:var(--vx-fg); }
+.vx-at-design-grid .vx-at-cross {
+  position:absolute;width:24px;height:24px;
+  border:1px solid var(--vx-edge);border-radius:50%;
+  opacity:.45;
+}
+.vx-at-cross::before,.vx-at-cross::after {content:"";position:absolute;background:var(--vx-fg);opacity:.47;}
+.vx-at-cross::before {width:36px;height:1px;left:-7px;top:11px;}
+.vx-at-cross::after {height:36px;width:1px;left:11px;top:-7px;}
+.vx-at-cross.a {top:25%;left:51%;}.vx-at-cross.b {bottom:24%;right:7%;width:17px;height:17px;}
+.vx-at-cross.b::before {width:28px;top:7px;left:-6px;}.vx-at-cross.b::after {height:28px;left:7px;top:-6px;}
+.vx-at-horizontal {position:absolute;top:50%;right:6%;width:34%;height:1px;background:linear-gradient(90deg,transparent,var(--vx-edge),transparent);opacity:.58;}
+.vx-at-design-grid .vx-at-coord {
+  position:absolute;right:7%;top:9%;font:600 .61rem ui-monospace,SFMono-Regular,Menlo,monospace;
+  letter-spacing:.14em;opacity:.5;
+}
+.vx-at-labels {position:absolute;bottom:18%;right:9%;z-index:3;pointer-events:none;color:var(--vx-fg);}
+.vx-at-labels > span {display:block;position:absolute;right:0;bottom:0;font:650 .65rem ui-monospace,monospace;letter-spacing:.14em;
+ opacity:0;transform:translateY(10px);transition:opacity .55s ease,transform .65s cubic-bezier(.22,1,.36,1);white-space:nowrap;}
+.vx-shell[data-active="0"] .vx-at-labels .c0,
+.vx-shell[data-active="1"] .vx-at-labels .c1,
+.vx-shell[data-active="2"] .vx-at-labels .c2,
+.vx-shell[data-active="3"] .vx-at-labels .c3,
+.vx-shell[data-active="4"] .vx-at-labels .c4,
+.vx-shell[data-active="5"] .vx-at-labels .c5,
+.vx-shell[data-active="6"] .vx-at-labels .c6 {opacity:.78;transform:translateY(0);}
+.vx-at-dash {position:absolute;z-index:2;bottom:17%;right:9%;width:140px;height:1px;background:var(--vx-edge);pointer-events:none;}
+.vx-at-counter-ruler {
+  position:absolute;z-index:3;top:12%;left:5.7%;width:1px;height:60px;
+  background:repeating-linear-gradient(180deg,var(--art-guide) 0,var(--art-guide) 1px,transparent 1px,transparent 8px);
+  opacity:.4;pointer-events:none;
+}
+
+/* Scene composition. Original diagrams now work as secondary editorial overlays. */
+.vx-webgl-active .vx-v0-illustration {opacity:.08;filter:blur(10px);transform:scale(.93);}
+.vx-v1 .vx-paper-object { width:min(340px,24vw);right:12%;top:29%; }
+.vx-v2 .vx-stack { width:min(435px,32%);right:5%;top:36%;gap:7px; }
+.vx-v2 .vx-stack > div {padding:clamp(11px,1.4vw,19px);}
+.vx-v2 .vx-stack small {font-size:.68rem;}
+.vx-v3 .vx-mtu-figures {width:min(720px,51%);top:40%;right:6%;}
+.vx-v4 .vx-terminal {top:31%;right:7%;width:min(650px,45%); }
+.vx-v5 .vx-handshake {top:32%;width:min(600px,43%);right:8%;}
+.vx-v6 .vx-dtn-network {width:min(690px,48%);right:8%;top:38%;}
+.vx-v6 .vx-dtn-quote {top:74%;}
+.vx-v0 .vx-visual-foot, .vx-v1 .vx-visual-foot, .vx-v2 .vx-visual-foot,
+.vx-v3 .vx-visual-foot, .vx-v4 .vx-visual-foot, .vx-v5 .vx-visual-foot,
+.vx-v6 .vx-visual-foot {right:8%;bottom:12%;opacity:.6;}
+.vx-visual-tag {color:var(--vx-fg);opacity:.78;}
+.vx-enhanced .vx-copy {max-width:510px;width:37vw; }
+.vx-enhanced .vx-copy h2 {font-size:clamp(2.2rem,4.05vw,4.45rem);line-height:1.28;letter-spacing:-.045em;}
+.vx-enhanced .vx-copy > p {font-size:clamp(1rem,1.15vw,1.17rem);letter-spacing:.009em;}
+.vx-enhanced .vx-copy-takeaway {max-width:28em;line-height:1.75;}
+.vx-rail {right:2%;}
+
+/* Recompose the handoff without a flash or black letterbox bars. */
+.vx-turning .vx-cinema-matte span {animation:none!important;}
+.vx-turning .vx-world::after {animation:none!important;}
+.vx-cinema-matte {display:none;}
+.vx-visual {transition:opacity .76s cubic-bezier(.22,1,.36,1), transform 1.05s cubic-bezier(.22,1,.36,1),visibility .77s;}
+.vx-visual:not(.is-current) {transform:translate3d(0,16px,0) scale(.985);}
+.vx-visual.is-current {transform:translate3d(0,0,0) scale(1);}
+.vx-particle-field {will-change:opacity,transform;}
+
+/* Give important details a readable plaque without replacing the artwork. */
+.vx-v1 .vx-flow {bottom:13%;right:13%;}
+.vx-v2 .vx-stack-beam {display:none;}
+.vx-v4 .vx-terminal-metrics b {font-variant-numeric:tabular-nums;}
+
+/* The original high-contrast illustration is the accessibility fallback. */
+@media(max-width:1300px) and (min-width:761px){
+ .vx-enhanced .vx-copy {max-width:440px;width:39vw;}
+ .vx-enhanced .vx-copy h2 {font-size:clamp(2rem,3.6vw,3.6rem);}
+ .vx-webgl-active .vx-particle-field{width:62%;right:-3%;}
+ .vx-at-labels{display:none;}
+}
+@media(min-width:761px) and (max-height:780px){
+ .vx-enhanced .vx-copy h2{font-size:clamp(2rem,3.3vw,3.4rem);margin:12px 0 16px;}
+ .vx-enhanced .vx-copy > p{line-height:1.72;}
+ .vx-particle-marks {top:10%;}
+ .vx-v1 .vx-paper-object{top:25%;}
+ .vx-v2 .vx-stack{top:27%;}
+ .vx-v4 .vx-terminal{top:25%;}
+ .vx-v5 .vx-handshake{top:25%;}
+}
+@media(max-width:760px){
+ .vx-at-design-grid,.vx-at-labels,.vx-at-dash,.vx-at-counter-ruler {display:none!important;}
+ .vx-webgl-active .vx-particle-field {display:none!important;}
+ .vx-enhanced .vx-copy {width:100%;max-width:640px;}
+ .vx-enhanced .vx-copy h2 {font-size:clamp(1.7rem,7.2vw,2.5rem);}
+ .vx-v1 .vx-paper-object {width:min(235px,48vw);right:27%;top:15%;}
+ .vx-v2 .vx-stack {width:75%;top:11%;right:12%;gap:5px;}
+ .vx-v2 .vx-stack > div {padding:9px 12px;}
+ .vx-v3 .vx-mtu-figures {top:23%;right:7%;width:86%;}
+ .vx-v4 .vx-terminal {top:12%;right:7%;width:86%;}
+ .vx-v5 .vx-handshake {width:70%;right:14%;top:12%;}
+ .vx-v6 .vx-dtn-network {top:19%;width:90%;right:5%;}
+ .vx-v6 .vx-dtn-quote{top:41%;}
+}
+@media(prefers-reduced-motion:reduce){
+ .vx-at-design-grid,.vx-at-labels,.vx-at-dash,.vx-at-counter-ruler{display:none!important;}
+ .vx-webgl-active .vx-particle-field{display:none!important;}
+ .vx-particle-field::before{animation:none!important;}
+ .vx-webgl-active .vx-v0-illustration{opacity:1!important;filter:none!important;transform:none!important;}
+}
