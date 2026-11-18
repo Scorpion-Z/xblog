@@ -220,8 +220,10 @@
           <p>{{ $scene.text }}</p>
           {{- with $scene.detail }}<div class="vx-copy-takeaway">{{ . }}</div>{{- end }}
           <figure class="vx-fallback-figure">
-            <img src="{{ $scene.image | relURL }}" alt="{{ $scene.alt }}" loading="lazy">
-            <figcaption>{{ $scene.caption }}</figcaption>
+            <a class="vx-figure-link" href="{{ $scene.image | relURL }}" target="_blank" rel="noopener noreferrer" aria-label="打开完整图解：{{ $scene.alt }}">
+              <img src="{{ $scene.image | relURL }}" alt="{{ $scene.alt }}" loading="lazy">
+            </a>
+            <figcaption>{{ $scene.caption }}<span class="vx-figure-zoom"> · 点击图片查看原图</span></figcaption>
           </figure>
         </div>
       </section>
