@@ -31,8 +31,9 @@
 
 - `layouts/stories/single.html`：七个叙事场景、章节导航和文字版链接。
 - `static/js/story-immersive.js`：桌面端一滚一幕、键盘切换、自由滚动和场景状态。
-- `static/js/story-particles.js`：可选的 WebGL2 三维粒子对象，在七个章节之间连续改变形态并随镜头移动。
-- `assets/css/extended/zzz-story-choreography.css` 和 `assets/css/extended/zzzz-story-cinema.css`：转场、文字动画、三维图形和分镜镜头样式。
+- `static/js/story-atelier-v4.js`：当前使用的 WebGL2 雕塑，约 8400 个表面采样点；信鸽、纸张、协议层、MTU、Ping、握手与 DTN 七种形态通过同一组粒子连续变形，包含光照、相机视角和转场中断恢复。
+- `static/js/story-particles.js`：早期版本保留作设计对照，线上页面已不再引用。
+- `assets/css/extended/zzz-story-choreography.css`、`assets/css/extended/zzzz-story-cinema.css` 和 `assets/css/extended/zzzzz-story-atelier.css`：文字与分镜动画、三维场景构图、光影和柔和场景切换。
 
 WebGL2 仅在支持的桌面浏览器中启用。移动端、减少动画偏好的读者和不支持 WebGL2 的环境保留原有 SVG 图解。无论动画是否加载，文字、原文链接和资料来源仍可正常阅读。
 
