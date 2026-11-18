@@ -257,6 +257,32 @@
     border-radius: 8px;
     background: #eaf0f4;
   }
+  .vx-shell .vx-figure-link {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    line-height: 0;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--vx-edge);
+  }
+  .vx-shell .vx-figure-link:focus-visible {
+    outline: 3px solid #f3be61;
+    outline-offset: 4px;
+  }
+  .vx-shell .vx-figure-zoom {
+    font-size: .74rem;
+    white-space: normal;
+  }
+  .vx-shell .vx-hero-title h1 span,
+  .vx-shell .vx-hero-title h1 em,
+  .vx-shell .vx-hero-title > p,
+  .vx-shell .vx-hero-action {
+    animation: none !important;
+    transform: none !important;
+    filter: none !important;
+    opacity: 1 !important;
+  }
   .vx-shell .vx-fallback-figure figcaption {
     position: static;
     margin: 10px 0 0;
