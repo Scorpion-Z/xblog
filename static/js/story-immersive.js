@@ -28,7 +28,7 @@
     if (!hero || !outro || !journey || !chapters.length || chapters.length !== visuals.length) return;
 
     var reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
-    var desktop = window.matchMedia("(min-width: 761px) and (pointer: fine)");
+    var desktop = window.matchMedia("(min-width: 901px) and (pointer: fine)");
     var snap = false;
     var current = -1;
     var ticking = false;

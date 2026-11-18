@@ -12,7 +12,7 @@
     var journey = root.querySelector(".vx-journey");
     if (!canvas || !journey) return;
     var reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
-    var small = window.matchMedia("(max-width: 760px)");
+    var small = window.matchMedia("(max-width: 900px)");
     if (reduced.matches || small.matches) return;
     var gl;
     try {
