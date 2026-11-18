@@ -1,0 +1,70 @@
+{{- define "main" -}}
+{{- $scenes := .Params.scenes -}}
+<article class="story-shell" data-story-root>
+  <div class="story-scroll-progress" aria-hidden="true"><span data-story-progress></span></div>
+  <header class="story-hero">
+    <div class="story-hero-top"><a href="{{ "stories/" | relURL }}">← 专题叙事</a><span>SUPER JOURNAL / STORY 01</span></div>
+    <div class="story-hero-grid">
+      <div class="story-hero-copy">
+        <p class="story-kicker">{{ .Params.kicker }}</p>
+        <h1>{{ .Title }}</h1>
+        <p class="story-hero-lead">{{ .Params.intro }}</p>
+        <div class="story-hero-actions">
+          <a class="story-cta" href="#story-chapters">开始阅读 <span aria-hidden="true">↓</span></a>
+          {{- with .Params.source }}<a class="story-text-link" href="{{ . | relURL }}">普通文章版</a>{{- end }}
+        </div>
+      </div>
+      <div class="story-hero-image">
+        {{- with .Params.cover }}<img src="{{ . | relURL }}" alt="信鸽运输 IP 数据包的原创示意图" fetchpriority="high">{{- end }}
+      </div>
+    </div>
+    <p class="story-hero-note">向下滚动，跟着一个数据包走完旅程。所有动画都可以跳过，正文可直接阅读。</p>
+  </header>
+
+  <div class="story-experience" id="story-chapters">
+    <aside class="story-stage" aria-hidden="true">
+      <div class="story-stage-heading">
+        <span>FIELD NOTES / RFC 1149</span>
+        <span class="story-stage-count"><b data-story-current>01</b> / {{ printf "%02d" (len $scenes) }}</span>
+      </div>
+      <div class="story-stage-figures">
+        {{- range $i, $scene := $scenes }}
+        <figure class="story-stage-figure{{ if eq $i 0 }} is-active{{ end }}" data-story-figure="{{ $i }}">
+          <img src="{{ $scene.image | relURL }}" alt="" {{ if gt $i 0 }}loading="lazy"{{ end }}>
+          <figcaption>{{ $scene.caption }}</figcaption>
+        </figure>
+        {{- end }}
+      </div>
+      <div class="story-stage-track"><span data-story-stage-progress style="transform:scaleX({{ div 1.0 (len $scenes) }})"></span></div>
+    </aside>
+    <div class="story-chapters" aria-label="故事章节">
+      {{- range $i, $scene := $scenes }}
+      <section class="story-chapter{{ if eq $i 0 }} is-active{{ end }}" id="story-part-{{ add $i 1 }}" data-story-chapter="{{ $i }}" aria-labelledby="story-part-heading-{{ add $i 1 }}">
+        <span class="story-chapter-marker">{{ $scene.kicker }}</span>
+        <h2 id="story-part-heading-{{ add $i 1 }}">{{ $scene.title }}</h2>
+        <p>{{ $scene.text }}</p>
+        {{- with $scene.detail }}<p class="story-chapter-highlight">{{ . }}</p>{{- end }}
+        <figure class="story-chapter-mobile-figure">
+          <img src="{{ $scene.image | relURL }}" alt="{{ $scene.alt }}" loading="lazy">
+          <figcaption>{{ $scene.caption }}</figcaption>
+        </figure>
+      </section>
+      {{- end }}
+    </div>
+  </div>
+  <footer class="story-outro">
+    <div class="story-outro-heading">
+      <p class="story-kicker">END OF TRANSMISSION</p>
+      <h2>网络通了。接下来，读读完整的技术解释。</h2>
+      <p>上面的分镜只保留主线。原文章节还包括 IPv4 报头、2001 年实验日志、TCP 超时机制、延迟与吞吐量的差异，以及对应的参考资料。</p>
+    </div>
+    {{- with .Params.source }}<a class="story-outro-cta" href="{{ . | relURL }}">阅读 RFC 1149 完整文章 <span aria-hidden="true">↗</span></a>{{- end }}
+    <div class="story-references">
+      <span>原始资料</span>
+      <a href="https://www.rfc-editor.org/rfc/rfc1149.html" target="_blank" rel="noopener noreferrer">RFC 1149</a>
+      <a href="https://blug.linux.no/rfc1149/pinglogg.txt" target="_blank" rel="noopener noreferrer">BLUG Ping 日志</a>
+      <a href="https://www.rfc-editor.org/rfc/rfc9171.html" target="_blank" rel="noopener noreferrer">RFC 9171</a>
+    </div>
+  </footer>
+</article>
+{{- end -}}

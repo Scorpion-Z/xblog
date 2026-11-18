@@ -1,0 +1,26 @@
+{{- define "main" -}}
+<section class="story-catalog" aria-labelledby="story-catalog-title">
+  <header class="story-catalog-intro">
+    <p class="story-catalog-eyebrow">SUPER JOURNAL / VISUAL STORIES</p>
+    <h1 id="story-catalog-title">{{ .Title }}</h1>
+    <p>{{ .Description }}</p>
+    <div class="story-catalog-description">{{ .Content }}</div>
+  </header>
+  <div class="story-catalog-list">
+    {{- range .Pages.ByWeight }}
+    <a class="story-catalog-card" href="{{ .RelPermalink }}">
+      <span class="story-catalog-card-art">
+        {{- with .Params.cover }}<img src="{{ . | relURL }}" alt="" loading="lazy">{{- end }}
+      </span>
+      <span class="story-catalog-card-copy">
+        <span class="story-catalog-eyebrow">{{ .Params.kicker }}</span>
+        <strong>{{ .Title }}</strong>
+        <span>{{ .Params.summary }}</span>
+        <span class="story-catalog-read">进入故事 <span aria-hidden="true">↗</span></span>
+      </span>
+    </a>
+    {{- end }}
+  </div>
+  <p class="story-catalog-back"><a href="{{ "topics/" | relURL }}">返回专题目录</a></p>
+</section>
+{{- end -}}

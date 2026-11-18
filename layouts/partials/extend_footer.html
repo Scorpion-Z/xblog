@@ -3,6 +3,10 @@
 <script src="{{ "js/reading-progress.js" | relURL }}" defer></script>
 {{- end }}
 
+{{- if and .IsPage (eq .Section "stories") }}
+<script src="{{ "js/story-scroll.js" | relURL }}" defer></script>
+{{- end }}
+
 {{- if eq .Section "prompts" }}
 <script src="{{ "js/prompt-library.js" | relURL }}" defer></script>
 {{- end }}

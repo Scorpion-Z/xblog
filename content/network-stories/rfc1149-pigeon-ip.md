@@ -14,6 +14,8 @@ TocOpen: true
 
 比如信鸽。
 
+> 这篇文章另有一个 [专题叙事版]({{< relref "/stories/pigeon-ip.md" >}})，可以跟随页面滚动，分场景理解这次实验。下文仍保留完整的技术解释、数据和参考资料。
+
 1990 年 4 月 1 日，一份编号为 **RFC 1149** 的互联网文档正式发表。标题很严肃：《A Standard for the Transmission of IP Datagrams on Avian Carriers》，翻译过来就是“鸟类载体传输 IP 数据报的标准”。
 
 它的核心方案十分直接：**把 IP 数据包打印在纸上，卷起来，绑在信鸽腿上，等它飞到目的地再扫描还原。**

@@ -6,6 +6,7 @@
 - 关于：https://scorpion-z.github.io/xblog/about/
 - 内容：技术、阅读、科普、趣谈网络与专题笔记
 - 趣谈网络：https://scorpion-z.github.io/xblog/network-stories/
+- 专题叙事：https://scorpion-z.github.io/xblog/stories/
 
 ## 写作风格
 

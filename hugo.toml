@@ -73,6 +73,12 @@ url = '/network-stories/'
 weight = 15
 
 [[menu.main]]
+identifier = 'stories'
+name = '专题叙事'
+url = '/stories/'
+weight = 18
+
+[[menu.main]]
 identifier = 'topics'
 name = '专题'
 url = '/topics/'

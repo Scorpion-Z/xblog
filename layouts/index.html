@@ -10,6 +10,18 @@
     <p>记一些读过的东西、遇到的问题和自己的理解。</p>
   </header>
 
+  <a class="journal-story-feature" href="{{ "stories/pigeon-ip/" | relURL }}" aria-label="进入专题叙事：信鸽如何传送 IP 数据包">
+    <span class="journal-story-feature-copy">
+      <span class="journal-story-feature-kicker">新栏目 · 专题叙事</span>
+      <strong>如果互联网的数据包，由一只信鸽送达</strong>
+      <span>沿着一次真实的 Ping 实验，通过滚动和插图理解网络分层、延迟与丢包。</span>
+      <span class="journal-story-feature-link">进入故事 <span aria-hidden="true">↗</span></span>
+    </span>
+    <span class="journal-story-feature-art" aria-hidden="true">
+      <img src="{{ "images/network-stories/rfc1149-cover.svg" | relURL }}" alt="" loading="lazy">
+    </span>
+  </a>
+
   <nav class="journal-topic-nav" aria-label="专题入口">
     <h2>按主题阅读</h2>
     <ul class="journal-topic-list">
@@ -53,6 +65,7 @@
     <a href="{{ "posts/" | relURL }}">全部文章</a>
     <a href="{{ "prompts/" | relURL }}">提示词</a>
     <a href="{{ "network-stories/" | relURL }}">趣谈网络</a>
+    <a href="{{ "stories/" | relURL }}">专题叙事</a>
     <a href="{{ "topics/" | relURL }}">专题目录</a>
   </nav>
 </section>
