@@ -31,7 +31,12 @@
           <path d="M360 292 505 190 422 355 478 322" fill="#a4c4dc"/>
           <path d="M422 355 348 469 365 382 158 348" fill="#83a9c9"/>
           <path d="M478 322 620 363 451 410 422 355" fill="#d7e7f2"/>
-          <circle cx="559" cy="358" r="5" fill="#0d2033"/>
+          <g fill="none" stroke="#477b9e" stroke-linecap="round" opacity=".7">
+            <path d="M360 291 Q387 305 420 354 M395 257 Q411 286 431 309 M430 214 Q441 254 442 290" stroke-width="2.6"/>
+            <path d="M324 344 Q360 355 398 380 M347 377 Q376 388 412 399 M295 347 Q326 356 353 376" stroke-width="2"/>
+            <path d="M476 336 Q501 343 521 353 M464 363 Q486 369 510 370 M444 382 Q470 390 489 387" stroke-width="1.5"/>
+          </g>
+          <circle cx="559" cy="358" r="5.8" fill="#112c45"/><circle cx="560.5" cy="356.4" r="1.8" fill="#fffbe9"/>
           <path d="M622 359 677 373 624 383" fill="#eebc60"/>
           <g class="vx-paper">
             <rect x="345" y="434" width="105" height="77" rx="5" transform="rotate(-8 345 434)" fill="#fff8e8"/>
@@ -49,6 +54,23 @@
   <div class="vx-journey" id="vx-chapters">
     <div class="vx-world" aria-hidden="true">
       <div class="vx-world-grid"></div>
+      <div class="vx-at-design-grid" aria-hidden="true">
+        <span class="vx-at-cross a"></span>
+        <span class="vx-at-cross b"></span>
+        <span class="vx-at-horizontal"></span>
+        <span class="vx-at-coord">X.1149 / EXPERIMENTAL</span>
+      </div>
+      <div class="vx-at-counter-ruler" aria-hidden="true"></div>
+      <div class="vx-at-dash" aria-hidden="true"></div>
+      <div class="vx-at-labels" aria-hidden="true">
+        <span class="c0">01 / AIRBORNE DATAGRAM</span>
+        <span class="c1">02 / PHYSICAL ENCODING</span>
+        <span class="c2">03 / PROTOCOL ABSTRACTION</span>
+        <span class="c3">04 / MASS VS BYTES</span>
+        <span class="c4">05 / EXPERIMENT LOG</span>
+        <span class="c5">06 / ROUND TRIP</span>
+        <span class="c6">07 / DELAY-TOLERANT RELAY</span>
+      </div>
       <span class="vx-world-giant" data-vx-giant>01</span>
       <div class="vx-world-upper">
         <span class="vx-world-label">RFC 1149 / NETWORK FIELD NOTES</span>
@@ -219,5 +241,5 @@
   </footer>
 </article>
 <script src="{{ "js/story-immersive.js" | relURL }}?v=20261118-scene3" defer></script>
-<script src="{{ "js/story-particles.js" | relURL }}?v=20261118-cinema1" defer></script>
+<script src="{{ "js/story-atelier-v4.js" | relURL }}?v=20261118-atelier4" defer></script>
 {{- end -}}
