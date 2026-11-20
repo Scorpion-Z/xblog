@@ -102,7 +102,7 @@
               <div class="control"><label for="densityInput">能量密度 <output id="densityLabel">100 Wh/kg</output></label><input id="densityInput" type="range" min="10" max="250" step="5" value="100"><div class="bounds"><span>10 Wh/kg</span><span>250 Wh/kg</span></div></div>
               <div class="control"><label for="crate">放电倍率 <output id="crateLabel">30 C</output></label><input id="crate" type="range" min="1" max="60" step="1" value="30"><div class="bounds"><span>1C</span><span>60C</span></div></div>
               <div class="control"><label for="load">外部负载 <output id="loadLabel">100 W</output></label><input id="load" type="range" min="10" max="5000" step="10" value="100"><div class="bounds"><span>10 W</span><span>5000 W</span></div></div>
-              <div class="control"><label for="retain">高倍率可用能量比例（假设） <output id="retainLabel">90%</output></label><input id="retain" type="range" min="40" max="100" step="5" value="90"><div class="bounds"><span>40%</span><span>100%</span></div></div>
+              <div class="control"><label for="retain">该工况可用能量比例（假设） <output id="retainLabel">90%</output></label><input id="retain" type="range" min="40" max="100" step="5" value="90"><div class="bounds"><span>40%</span><span>100%</span></div></div>
               <div class="control"><label for="eff">电能转换效率（假设） <output id="effLabel">95%</output></label><input id="eff" type="range" min="70" max="100" step="5" value="95"><div class="bounds"><span>70%</span><span>100%</span></div></div>
               <p class="control-warning">可用能量比例与效率是独立的教学假设，不随倍率自动变化，不是任何真实产品的实测值。</p>
             </div>
@@ -218,7 +218,7 @@
             <li><a href="https://onlinelibrary.wiley.com/doi/10.1002/smll.202401295" target="_blank" rel="noopener noreferrer">Solution-Based Deep Prelithiation for Lithium-Ion Capacitors with High Energy Density (2024)</a><span>一个有明确活性材料质量口径的研究实例。</span></li>
             <li><a href="https://samrepo.nlr.gov/help/battery_storage_btm.html" target="_blank" rel="noopener noreferrer">NREL SAM, Battery Storage: Behind the Meter</a><span>系统建模中的 C倍率与直流功率关系。</span></li>
           </ol>
-          <div class="boundary"><h3>关于实验结果</h3><p>所有交互计算均在浏览器本地完成，不上传输入，不代表产品检测结果。功率估算采用额定电压近似；运行时间采用恒定负载；内阻实验采用固定等效电阻；调频实验采用简单比例模型，均未覆盖完整电化学、温升、控制保护和安全验证。真实项目应以符合适用标准的测试及工程校核为准。</p></div>
+          <div class="boundary"><h3>关于实验结果</h3><p>所有交互计算均在浏览器本地完成，不上传输入，不代表产品检测结果。演示中的“SOC”是对剩余可用能量比例的简化展示，不能代替真实BMS的SOC估算。功率估算采用额定电压近似；运行时间采用恒定负载；内阻实验采用固定等效电阻；调频实验采用简单比例模型，均未覆盖完整电化学、温升、控制保护和安全验证。真实项目应以符合适用标准的测试及工程校核为准。</p></div>
           <div class="footer-links"><a href="../topics/">← 返回专题目录</a><a href="../">返回超能日志首页 ↑</a></div>
           <footer>超能日志 · 储能原理实验室 <span>内容与交互设计 / 2026-11</span></footer>
         </section>
