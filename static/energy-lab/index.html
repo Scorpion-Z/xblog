@@ -141,7 +141,19 @@
           <div class="takeaway"><span>实验观察</span><p>倍率决定这块电芯允许的名义最大电流；实际接了多大负载，就按多大的功率放电。因此，30C 电芯接一个小灯泡，并不会在 2 分钟后必然没电。</p></div>
         </section>
 
-        <section class="lesson section-pad alternating" id="types" data-section>
+        <section class="lesson section-pad" id="chemistries" data-section>
+ <div class="section-head"><span class="chapter-no">06 / 电池家族</span><h2>为什么电池有这么多种？</h2><p>不同电池的材料、制造与成本不同。选型要综合考虑能量、功率、寿命、温度、安全和经济性，不能靠一个参数给全部电池排名。</p></div>
+ <div class="family-grid">
+ <article><span>锂离子电池</span><h3>磷酸铁锂 LFP</h3><p>正极材料为磷酸铁锂，常用于固定式储能、电动车。一般具有较好的热稳定性和循环表现，具体依赖产品设计。</p><b>属于锂离子电池</b></article>
+ <article><span>锂离子电池</span><h3>三元锂 NMC 等</h3><p>某些配方兼顾较高能量密度，适用于对重量和空间敏感的应用，热管理与材料成本需一起考虑。</p><b>三元不等于所有性能更好</b></article>
+ <article><span>钠系</span><h3>钠离子电池</h3><p>依靠钠离子在正负极间移动存储能量。具有另一套材料取舍，资源丰富不保证成品一定更便宜。</p><b>要看成熟度与实测工况</b></article>
+ <article><span>传统电池</span><h3>铅酸电池</h3><p>汽车启动、备用电源中很常见。产业链成熟，不过重量、循环表现等通常存在一定限制。</p><b>不新，但仍有用途</b></article>
+ <article><span>电解液储罐</span><h3>液流电池</h3><p>活性物质存于电解液罐，通过电堆充放电。许多设计可以较独立地调整能量容量和额定功率。</p><b>仍属于电化学储能</b></article>
+ <article><span>研发方向</span><h3>固态电池</h3><p>主要指采用固态电解质的一类技术路线，可能搭配不同的电极化学体系，研发样品与量产需区分。</p><b>“固态”也不意味着没有风险</b></article></div>
+ <div class="readable-story"><h3>电池说明书应该怎么看？</h3><p><b>额定电压 V</b> 与 <b>容量 Ah</b> 可以估算额定 Wh；<b>持续充放电电流 A</b> 影响可用功率；<b>温度范围、循环寿命和安全测试</b> 限定了可靠使用场景。只有全部参数属于同一型号、同一可比条件时，比较才有意义。</p><p>还有一个常见误区：一次电池（例如普通不可充电干电池）不能随意反复充电；动力电池、储能电池通常属于可充电的二次电池。两者安全使用方法不同。</p></div>
+ <div class="note"><strong>学术研究与工业产品</strong><p>实验室材料性能、电芯样品性能和储能系统性能是不同层级。做材料研究时可按活性材料质量计算；采购储能产品时应关注完整电芯或系统级口径。</p></div>
+</section>
+<section class="lesson section-pad alternating" id="types" data-section>
           <div class="section-head"><span class="chapter-no">04 / 器件家族</span><h2>锂电池、超级电容与锂离子电容器</h2><p>三种器件解决的问题不同。很难用单一指标评定哪个“更先进”。</p></div>
           <div class="device-grid">
             <article class="device"><div class="device-icon icon-battery"><i></i><i></i><i></i><i></i></div><span class="device-tag">LIB</span><h3>锂离子电池</h3><p>强调较高能量密度，适合需要持续供电的场景。充放电受电极反应速度、热管理等约束。</p><div class="device-strength"><span>长处</span><strong>能存较多电</strong></div><small>应用示例：汽车动力电池、小时级储能</small></article>
@@ -200,7 +212,22 @@
           <div class="takeaway"><span>工程判断</span><p>“最高倍率”通常只说某种条件下的极限电流能力。30C 持续多久、能量剩多少、温升多少、寿命如何，才决定能不能在项目中使用。</p></div>
         </section>
 
-        <section class="lesson section-pad" id="grid" data-section>
+        <section class="lesson section-pad alternating" id="systems" data-section>
+ <div class="section-head"><span class="chapter-no">10 / 从电芯到电站</span><h2>储能电站，绝不只有电池</h2><p>从一片电极做成可供电网使用的储能系统，需要解决电能变换、调度、安全保护、冷却、消防与并网问题。</p></div>
+ <div class="system-diagram">
+ <div class="system-grid"><div class="sys-unit"><span>储电</span><b>电芯 → 模组 → 电池簇</b><small>直流 DC</small></div><strong class="sys-arrow">⇄</strong><div class="sys-unit accent"><span>转换</span><b>PCS 双向变流器</b><small>直流 DC ⇄ 交流 AC</small></div><strong class="sys-arrow">⇄</strong><div class="sys-unit"><span>使用</span><b>配电 / 变压器 / 电网</b><small>交流 AC</small></div></div>
+ <div class="system-control"><div><b>BMS</b><span>观察每块电芯，限流、均衡、保护</span></div><div><b>EMS</b><span>安排充放电时机与功率</span></div><div><b>冷却、消防和保护</b><span>控制运行风险、处理异常</span></div></div></div>
+ <div class="explain-grid">
+ <article><span>电芯 / PACK</span><h3>存电的仓库</h3><p>电芯串联可以提高电压，并联可以增加容量和电流能力，连接与均衡也会增加工程难度。</p></article>
+ <article><span>BMS</span><h3>电池的安全管理员</h3><p>采集电压、电流与温度，估算荷电和健康状态，协调均衡与限制异常工况。</p></article>
+ <article><span>PCS</span><h3>直流和交流的翻译官</h3><p>电池工作在直流侧，家庭和电网常采用交流。PCS负责双向转换并控制功率。</p></article>
+ <article><span>EMS</span><h3>何时充放电的调度员</h3><p>可以参考负荷、电价、光伏预测、电网指令和电池状态，但不能替代BMS的安全保护。</p></article>
+ <article><span>热管理</span><h3>给电芯控制温度</h3><p>电芯过热、过冷或温差大，都可能影响效率、可用功率、寿命和安全。</p></article>
+ <article><span>保护、消防、计量</span><h3>让工程能安全运行</h3><p>包括保护电器、计量、监测、气体与火灾风险管理、应急流程和运维制度。</p></article></div>
+ <div class="capacity-example"><span class="mini-label">读懂工程铭牌</span><div class="large-spec"><b>100 MW</b><span> / </span><b>200 MWh</b></div><p>100 MW 是名义输出功率，200 MWh 是名义储能量。200 ÷ 100 = <strong>2小时</strong>的名义持续时长，实际输出还要考虑放电窗口、效率、温度以及变流器限制。</p></div>
+ <p class="source-inline">参考：<a href="https://www.energy.gov/documents/2atcittysandiapdf" target="_blank" rel="noopener noreferrer">DOE 储能基础</a>、<a href="https://samrepo.nlr.gov/help/battery_storage_btm.html" target="_blank" rel="noopener noreferrer">NREL 储能系统建模</a>。</p>
+</section>
+<section class="lesson section-pad" id="grid" data-section>
           <div class="section-head"><span class="chapter-no">07 / 应用实验</span><h2>电力调频，为什么需要快速响应？</h2><p>电网频率偏离额定值时，储能可通过变流器快速充放电，辅助平衡有功功率。下面是教学用的简化比例控制。</p></div>
           <div class="grid-lab">
             <div class="grid-controls"><div class="lab-title"><span class="mini-label">LAB 05 · 电网功率调节</span><span class="grid-chip">额定频率：50 Hz</span></div>
