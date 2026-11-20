@@ -41,7 +41,7 @@ function updateDay(){
 function stopDay(){if(dayTimer!==null){clearInterval(dayTimer);dayTimer=null;}show("dayPlay","▶ 播放一天");}
 document.querySelectorAll("[data-daymode]").forEach(b=>b.addEventListener("click",()=>{mode=b.dataset.daymode;pressed("[data-daymode]","daymode",mode);updateDay();}));
 $("dayHour").addEventListener("input",()=>{hour=num("dayHour");updateDay()});
-$("dayPlay").addEventListener("click",()=>{if(dayTimer!==null){stopDay();return;}show("dayPlay","Ⅱ 暂停");dayTimer=setInterval(()=>{hour=(hour+1)%24;updateDay();if(hour===23)stopDay()},650);});
+$("dayPlay").addEventListener("click",()=>{if(dayTimer!==null){stopDay();return;}hour=0;updateDay();show("dayPlay","Ⅱ 暂停");dayTimer=setInterval(()=>{hour+=1;updateDay();if(hour===23)stopDay()},650);});
 $("dayReset").addEventListener("click",()=>{stopDay();hour=12;mode="battery";pressed("[data-daymode]","daymode",mode);updateDay()});
 // power and energy, 1 real second = 1 simulated hour
 const appliances={lamp:.1,heater:1.5,large:6},labels={lamp:"照明",heater:"电暖器",large:"大负载"};
