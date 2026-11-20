@@ -19,3 +19,13 @@
 @media(max-width:600px){.sitebar{padding:0 12px;height:60px}.brand small{font-size:9px}.brand b{font-size:13px}.toplinks{gap:1px}.toplinks button,.toplinks .top-cta{font-size:11px;padding:7px}.sidebar{top:60px}.intro{padding:40px 21px 31px}.intro-inner{grid-template-columns:1fr}.intro-visual{max-width:330px;margin:15px auto 0}.intro h1{font-size:37px}.intro p{font-size:14px}.workspace{padding:21px 16px 70px}.lesson-header h2{font-size:30px}.lesson-header .lead{font-size:15px}.objectives span{font-size:11px}.read-grid{display:block}.teach-sidebar{grid-template-columns:1fr;margin-top:22px}.lab-body{grid-template-columns:1fr}.figure-top{flex-direction:column;align-items:flex-start}.story-card{padding:20px}.prose{font-size:14px}.path-grid{grid-template-columns:1fr}.gloss-results{grid-template-columns:1fr}.formula{font-size:17px}.lesson-end{flex-direction:column;align-items:stretch}.lesson-end .end-buttons{justify-content:flex-start}.lab-values .value strong{font-size:16px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.sidebar,.line-progress,.btn{transition:none!important}}
 @media print{.sidebar,.sitebar,.teach-sidebar,.intro,.lab-controls,.lesson-end,.predict-options{display:none!important}.layout{display:block}.workspace{padding:15px}.read-grid{display:block}.figure-block,.checkpoint{break-inside:avoid}.footer{display:none}}
+/* 教学导航与阅读模式 */
+.module-entry{display:grid;gap:4px}
+.lesson-subnav{margin:0 8px 7px 41px;border-left:2px solid #dce9df;padding:4px 0 4px 10px;display:grid;gap:3px}
+.lesson-link{border:0;border-radius:7px;background:transparent;color:#708575;padding:7px 8px;text-align:left;font-size:11px;line-height:1.55}
+.lesson-link:hover{background:#e5efe7}
+.lesson-link.selected{color:#236a47;font-weight:760;background:#ddecdf}
+.read-grid.no-teach{grid-template-columns:minmax(0,1fr);max-width:990px}
+.teach-sidebar[hidden]{display:none!important}
+@media(max-width:1250px){.read-grid.no-teach{max-width:100%}}
+@media print{.lab{break-inside:avoid}.read-grid.no-teach{max-width:100%}}
