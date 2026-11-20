@@ -66,7 +66,14 @@
           <div class="hero-facts"><div><span>01</span><strong>储存电能</strong><small>Wh · kWh · Wh/kg</small></div><div><span>02</span><strong>释放速度</strong><small>W · kW · C 倍率</small></div><div><span>03</span><strong>真实边界</strong><small>损耗 · 温升 · 寿命</small></div></div>
         </section>
 
-        <section class="lesson section-pad" id="electricity" data-section>
+        <section class="lesson section-pad alternating" id="why" data-section>
+  <div class="section-head"><span class="chapter-no">01 / 从生活开始</span><h2>我们为什么要储能？</h2><p>中午太阳很亮，家里没几个人；晚上全家回家，用电多了，太阳却落山了。储能解决的就是能量供给和使用时间不一致的问题。</p></div>
+  <div class="teaching-pair"><article><span class="large-illustration">☀</span><h3>中午：有电暂时用不完</h3><p>光伏发电超过当时用电需求，多出的电可以送往电网，也可以给电池充电。</p></article><article><span class="large-illustration">☾</span><h3>晚上：要用电却没太阳</h3><p>电池可以释放先前存的电能，减少当时从电网购电的需要。能否停电备用取决于系统配置。</p></article></div>
+  <div class="readable-story"><h3>把储能想成一个水库</h3><p>有水时先存起来，需要时再放出来。储能也是先吸收能量，等需要的时候释放。它并不会凭空产生能量，而且每次充放电都可能损失一部分。</p><p>水库有两个独立指标：能装多少水，以及闸门每秒可以放出多少水。储能也是这样，用 <strong>kWh</strong> 表示能存多少电，用 <strong>kW</strong> 表示能多快输出。</p></div>
+  <div class="basic-principle"><div><b>充电</b><span>接收能量</span></div><strong>→</strong><div><b>储存</b><span>变为化学能等</span></div><strong>→</strong><div><b>放电</b><span>再释放电能</span></div></div>
+  <div class="note"><strong>生活里的例子</strong><p>一套标称 10kWh、2kW 的储能设备，理想情况下可按 2kW 连续供电 5 小时。另一套 10kWh、10kW 的储能设备同样存了 10 度电，却只能按 10kW 理想持续 1 小时。储量和输出速度是两回事。</p></div>
+</section>
+<section class="lesson section-pad" id="electricity" data-section>
           <div class="section-head"><span class="chapter-no">01 / 基础</span><h2>先把四个单位分清楚</h2><p>理解储能之前，最容易混淆的往往是 W 和 Wh。把它们放在同一个例子里看。</p></div>
           <div class="units-grid">
             <article class="unit"><span class="unit-num">01</span><span class="unit-symbol">V</span><h3>电压 · Voltage</h3><p>可以类比水管中的压差。电压越高，在相同电流下传递的功率越大。</p><code>单位：伏特（V）</code></article>
@@ -78,7 +85,19 @@
           <div class="note"><strong>从这里开始记</strong><p>W 像汽车的速度，Wh 像一段旅程的总里程。100W 与 100Wh 看起来相似，但衡量的是完全不同的事。</p></div>
         </section>
 
-        <section class="lesson section-pad alternating" id="density" data-section>
+        <section class="lesson section-pad" id="forms" data-section>
+  <div class="section-head"><span class="chapter-no">03 / 技术全景</span><h2>储能不只有电池</h2><p>电池是化学储能家族中的一员。抽水蓄能、压缩空气、飞轮、储热和氢储能同样可以先存后用。它们适用的时间尺度、成本、限制各不相同。</p></div>
+  <div class="family-grid">
+  <article><span>01 / 电化学</span><h3>电池</h3><p>用电化学反应保存能量。锂离子、钠离子、铅酸、液流电池都属于这一类。</p><b>像一个化学仓库</b></article>
+  <article><span>02 / 机械</span><h3>抽水蓄能</h3><p>用富余的电把水抽到高处，之后放水带动水轮机发电。需要地形、水库和较大工程。</p><b>像把水搬到山顶</b></article>
+  <article><span>03 / 机械</span><h3>压缩空气与飞轮</h3><p>一个把空气压缩起来，另一个让飞轮高速旋转。前者研究较长时长应用，后者可快速响应。</p><b>像压缩的弹簧和旋转的陀螺</b></article>
+  <article><span>04 / 热</span><h3>储热与储冷</h3><p>用热水、熔盐、冰等保存热量或冷量。若想重新发电，通常还需要额外的转换环节。</p><b>像一个保温大暖瓶</b></article>
+  <article><span>05 / 化学</span><h3>氢储能</h3><p>用电制氢，保存氢气，之后再作为燃料使用或转回电。多次能量转换会带来损耗。</p><b>像把电能制成燃料</b></article>
+  <article><span>06 / 电场等</span><h3>超级电容</h3><p>主要在电极表面储能，能迅速充放电，适用于许多短时高功率需求。</p><b>像一个进出水很快的小水箱</b></article></div>
+  <div class="compare-case"><h3>不要直接问“哪种储能最好”</h3><p>给汽车回收几秒钟的制动能量，与给家庭供电几个小时，需求完全不同；储存几小时与跨日储存，也不能只比电芯能量密度。比较前要写清功率、储能量、时长、效率、寿命和场地条件。</p></div>
+  <p class="source-inline">参考：<a href="https://www.energy.gov/oe/storage-innovations-2030" target="_blank" rel="noopener noreferrer">美国能源部储能技术评估</a>；<a href="https://storagewiki.epri.com/index.php/Energy_Storage_101" target="_blank" rel="noopener noreferrer">EPRI 储能基础</a>。</p>
+</section>
+<section class="lesson section-pad alternating" id="density" data-section>
           <div class="section-head"><span class="chapter-no">02 / 关键指标</span><h2>100Wh/kg 与 30C，分别管什么？</h2><p>能量密度看“同样重量存多少电”；倍率看“按额定容量的多少倍电流工作”。</p></div>
           <div class="concept-grid">
             <article class="concept">
