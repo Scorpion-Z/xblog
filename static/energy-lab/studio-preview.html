@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#102e25">
+<meta name="description" content="储能原理实验室：24节大学基础课程，科学图解、虚拟实验、逐步推导、教学提示、习题与工程案例。从零基础学习储能技术。">
+<meta property="og:title" content="储能原理实验室｜从原理到工程的数字教材">
+<meta property="og:description" content="8个模块、24节课、互动实验、24道形成性测验。">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="./studio.css">
+<script defer src="./curriculum.js"></script><script defer src="./figures.js"></script><script defer src="./labs.js"></script><script defer src="./studio.js"></script>
+<title>储能原理实验室 · 从原理到工程｜超能日志</title>
+</head>
+<body>
+<a class="skip" href="#lessonContent">跳转到课堂内容</a>
+<header class="sitebar">
+<a class="brand" href="../"><span class="brandmark">E</span><span><b>储能原理实验室</b><small>超能日志 · 数字教材</small></span></a>
+<div class="toplinks">
+<button id="openMenu" class="menu-btn" type="button" aria-expanded="false" aria-controls="courseMenu">☰ 目录</button>
+<button id="teacherToggle" type="button" aria-pressed="false">授课提示</button>
+<button id="glossaryOpen" type="button">术语速查</button>
+<a class="top-cta" href="./course.html">原版课程 ↗</a>
+</div>
+<div class="line-progress" id="topProgress" aria-hidden="true"></div>
+</header>
+<div class="layout">
+<aside class="sidebar" id="courseMenu" aria-label="课程目录">
+<div class="course-stats"><span class="eyebrow">LEARNING PATH · 2026</span><h2>从零学到工程判断</h2><p>8模块 · 24节课 · 实验与测验</p><div class="course-progress" role="progressbar" aria-label="课程完成进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="moduleProgress"><div id="moduleProgressFill"></div></div><div class="progress-detail"><span id="progressCount">0/24节已完成</span><span id="progressPercent">0%</span></div></div>
+<div class="sidebar-label">COURSE SYLLABUS / 课程大纲</div><nav class="modules" id="moduleNav" aria-label="教学模块"></nav>
+<div class="sidebar-etc"><p>阅读记录只保存在当前浏览器，未登录、不上传学习数据。</p><a href="./course.html">查看原版21章资料</a> · <a href="../topics/">博客专题目录</a></div></aside>
+<div class="main">
+<section class="intro" id="introduction"><div class="intro-inner"><div><span class="eyebrow">INTERACTIVE TEXTBOOK · 储能原理与技术</span><h1>从一度电开始，<br><em>学懂储能如何工作。</em></h1><p>这是一套能跟着老师讲、也适合自学的数字教材。每节课沿着“问题、现象、原理、公式、实验、案例、测验”展开。学完后，你应当能解释储能设备的工作原理、看懂关键技术指标，并完成基础容量计算与技术判断。</p>
+<div class="intro-buttons"><button id="startCourse" class="btn primary" type="button">开始学习第1课 ↘</button><button id="resumeCourse" class="btn ghost" type="button">继续上次进度</button></div>
+<div class="intro-facts"><span><b>8</b>个知识模块</span><span><b>24</b>节完整课程</span><span><b>24</b>道解析题</span><span>原理图与虚拟实验</span></div></div>
+<div class="intro-visual" aria-hidden="true"><svg viewBox="0 0 470 360" xmlns="http://www.w3.org/2000/svg">
+<defs><linearGradient id="heroGrad" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#398a66"/><stop offset="1" stop-color="#1d5743"/></linearGradient></defs>
+<circle cx="248" cy="175" r="149" fill="none" stroke="#c7e9ca35" stroke-width="1"/><circle cx="248" cy="175" r="112" fill="none" stroke="#d8f6d74d" stroke-width="1" stroke-dasharray="5 8"/>
+<rect x="187" y="78" width="118" height="192" rx="23" fill="#b9e6c0"/><rect x="196" y="89" width="100" height="171" rx="17" fill="url(#heroGrad)"/><rect x="229" y="70" width="35" height="14" rx="4" fill="#b5d9bc"/>
+<path d="M257 116L226 174H254L237 231L280 159H250Z" fill="#d2f6be"/>
+<rect x="24" y="74" width="115" height="70" rx="13" fill="#e8f4e2"/><text x="80" y="102" text-anchor="middle" fill="#1e5c3c" font-size="15" font-weight="700">储存能量</text><text x="80" y="124" text-anchor="middle" fill="#63816c" font-size="11">kWh</text>
+<rect x="330" y="209" width="120" height="70" rx="13" fill="#e8f4e2"/><text x="390" y="236" text-anchor="middle" fill="#1e5c3c" font-size="15" font-weight="700">释放功率</text><text x="390" y="258" text-anchor="middle" fill="#63816c" font-size="11">kW</text>
+<path d="M139 120Q169 125 185 143" fill="none" stroke="#c1efb6" stroke-width="3" stroke-dasharray="5 5"/><path d="M308 226L330 240" fill="none" stroke="#c1efb6" stroke-width="3" stroke-dasharray="5 5"/>
+<circle cx="250" cy="25" r="10" fill="#e6b766"/><circle cx="364" cy="66" r="5" fill="#a9d9ad"/><circle cx="100" cy="268" r="7" fill="#b3dcb9"/>
+<text x="245" y="333" text-anchor="middle" fill="#c0e8cb" font-size="12" letter-spacing="2">ENERGY • POWER • TIME</text></svg></div></div></section>
+<main id="lessonContent" class="workspace" tabindex="-1">
+<div class="workspace-header"><div><span class="tag" id="chapterTag">第一模块</span><span class="tag subtle" id="levelTag">入门</span><span class="tag subtle" id="readingTime">约15分钟</span></div><button class="quiet-link" id="shareLesson" type="button">复制本节链接</button></div>
+<div class="lesson-header"><div class="crumb" id="lessonCrumb">课程目录 / 第1节</div><h2 id="lessonTitle">电为什么需要储存？</h2><p class="lead" id="lessonLead">从生活中的一个问题开始。</p><div id="lessonObjectives" class="objectives"></div></div>
+<div class="read-grid"><article class="reading">
+<section class="story-card"><span class="eyebrow">01 / 提出问题</span><p id="lessonStory"></p></section>
+<section class="figure-block"><div class="figure-top"><strong id="figureTitle">02 / 观察现象 · 原理图解</strong><small>原创教学图 · 非实测</small></div><div class="figure-body" id="lessonFigure"></div><div class="figure-caption" id="figureCaption">观察示意图，思考能量如何传递。</div></section>
+<div class="prose"><h3>03 / 原理讲清楚</h3><div id="lessonParas"></div></div>
+<section class="formula" id="lessonFormula"></section>
+<div class="worked"><h4>04 / 例题：把数字代入</h4><p id="lessonWorked"></p></div>
+<div class="predict" id="predictionBlock" hidden><span class="eyebrow">先预测，再动手</span><h4 id="predictQuestion"></h4><div class="predict-options" id="predictOptions"></div><div class="prediction-result" id="predictionResult" aria-live="polite"></div></div>
+<div id="labMount"></div>
+<div class="misconception"><h4>容易想错的地方</h4><p id="lessonWrong"></p></div>
+<div class="mastery"><h4>这节课你应该带走什么？</h4><p id="lessonTakeaway"></p></div>
+<section class="checkpoint"><span class="eyebrow">KNOWLEDGE CHECK · 课堂小测</span><h3 id="quizQuestion"></h3><div id="quizAnswers" class="answer-options"></div><div id="quizFeedback" class="answer-feedback" aria-live="polite">选一个答案，查看解析。</div></section>
+<div class="lesson-end"><div><button class="btn dark" id="markDone" type="button">标记本课已学完 ✓</button><small id="lessonDoneState"></small></div><div class="end-buttons"><button class="btn outline" id="prevLesson" type="button">上一节</button><button class="btn dark" id="nextLesson" type="button">下一节 →</button></div></div>
+<div class="sources" id="lessonSources"></div>
+</article>
+<aside class="teach-sidebar" id="teachSidebar" aria-label="讲授与自学提示">
+<div><span class="eyebrow">TEACHER'S NOTES</span><h3>本节教学设计</h3><p id="teacherPlan"></p></div><div class="teaching-box"><h4>课堂追问</h4><p id="teacherAsk"></p></div><div class="teaching-box"><h4>板书重点</h4><p id="teacherBoard"></p></div><div class="teaching-box"><h4>课后任务</h4><p id="teacherTask"></p></div>
+</aside></div>
+</main>
+</div></div>
+<footer class="footer"><span>储能原理实验室 · 超能日志　|　大学基础教学型数字教材</span><span>教学模型与实测数据分开标识。<a href="./course.html">旧版完整课程</a>　<a href="../">博客首页</a></span></footer>
+<dialog class="dialog" id="glossaryDialog" aria-label="储能术语速查"><div class="dialog-inner"><div class="dialog-header"><h3>储能术语速查</h3><button type="button" class="dialog-close" id="glossaryClose">关闭</button></div><input id="glossarySearch" class="search-input" type="search" placeholder="搜索 Wh、SOC、内阻、PCS…" aria-label="搜索术语"><p style="color:#708777;font-size:12px;margin:0 0 12px">仅本地搜索，点击相应课程可以进一步学习。</p><div class="gloss-results" id="glossaryResults"></div></div></dialog>
+</body></html>
