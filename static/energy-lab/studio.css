@@ -29,3 +29,16 @@
 .teach-sidebar[hidden]{display:none!important}
 @media(max-width:1250px){.read-grid.no-teach{max-width:100%}}
 @media print{.lab{break-inside:avoid}.read-grid.no-teach{max-width:100%}}
+
+/* 统一资源入口：一套主课程，三个配套学习工具 */
+.resource-nav{display:none}
+.course-resource-links{border-top:1px solid #dce9de;padding-top:14px;margin-top:20px;display:flex;flex-wrap:wrap;gap:10px}
+.course-resource-links h4{flex-basis:100%;margin:0;font-size:13px;color:#39734d}
+.course-resource-links a{font-size:12px;color:#286e49;background:#edf6ed;border:1px solid #d6e8d8;border-radius:8px;padding:8px 11px;text-decoration:none}
+.course-resource-links a:hover{background:#dceddf}
+@media(max-width:850px){
+.resource-nav{display:flex;align-items:center;justify-content:space-around;gap:6px;background:#fff;border-bottom:1px solid #e1eae2;padding:9px 11px;flex-wrap:wrap}
+.resource-nav a{font-size:11px;line-height:1.4;border-radius:7px;padding:7px 9px;background:#ecf4ed;color:#356246;white-space:nowrap}
+.resource-nav a[aria-current=page]{background:#275e44;color:#fff}
+}
+@media(max-width:470px){.resource-nav{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:4px;padding:7px}.resource-nav a{font-size:10px;padding:7px 2px;text-align:center;white-space:normal}}
