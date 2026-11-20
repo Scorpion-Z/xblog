@@ -166,6 +166,18 @@
             <div class="formula-controls"><div class="control"><label for="ohmV">开路电压 <output id="ohmVLabel">3.7 V</output></label><input type="range" id="ohmV" min="2.5" max="4.2" step="0.1" value="3.7"></div><div class="control"><label for="ohmI">放电电流 <output id="ohmILabel">100 A</output></label><input type="range" id="ohmI" min="10" max="300" step="10" value="100"></div><div class="control"><label for="ohmR">等效内阻 <output id="ohmRLabel">5 mΩ</output></label><input type="range" id="ohmR" min="1" max="30" step="1" value="5"></div><div class="ohm-results"><div><small>电压跌落</small><strong id="ohmDrop">0.50 V</strong></div><div><small>端电压</small><strong id="ohmTerminal">3.20 V</strong></div><div><small>电阻发热功率</small><strong id="ohmHeat">50 W</strong></div></div><p class="fine" id="ohmNote">演示值不代表实际电芯参数。</p></div>
           </div>
           <div class="engineering-grid"><div><span>能量密度</span><h3>存得多</h3><p>材料、电压窗口、极片厚度和非活性材料比例都会影响。</p></div><div><span>功率密度</span><h3>放得快</h3><p>离子传输、电子导电、内阻及散热能力是关键。</p></div><div><span>循环寿命</span><h3>用得久</h3><p>要写清测试温度、倍率、SOC窗口和容量保持率判据。</p></div><div><span>系统成本</span><h3>用得划算</h3><p>除电芯外，还要计入变流器、BMS、冷却、运维与更换。</p></div></div>
+          <div class="advanced-panel">
+            <span class="mini-label">从电芯到储能系统</span><h3>电芯参数，为什么不能直接写成系统参数？</h3>
+            <div class="stack-steps"><div><b>电芯</b><small>材料 · 电极 · 外壳</small></div><span>→</span><div><b>模组 / 电池簇</b><small>连接 · 结构 · 保护</small></div><span>→</span><div><b>储能系统</b><small>冷却 · BMS · 变流器</small></div></div>
+            <p>假设完整电芯标称能量是 100Wh/kg，模组和系统加入其他部件后，按相同电能除以更大的总质量，系统级能量密度通常会降低。能量损耗、SOC窗口、直流和交流侧口径，也会改变可交付电能。</p>
+            <div class="advanced-tiles">
+              <article><span> SOC / State of Charge </span><h4>还剩多少电？</h4><p>荷电状态。BMS 根据电压、电流和模型估计，通常以百分比表示；在恒电流、稳定条件下可以做粗略容量估算。它不等同于电压百分比。</p></article>
+              <article><span> SOH / State of Health </span><h4>电芯老化到什么程度？</h4><p>健康状态。可基于剩余容量、内阻或功率能力等定义，不同产品算法和判据可能不同。</p></article>
+              <article><span> DOD / Depth of Discharge </span><h4>每次用了多少？</h4><p>放电深度。常见近似下，从100% SOC放到20% SOC，相当于80% DOD；具体以SOC定义和工况为准。</p></article>
+              <article><span> BMS / Battery Management System </span><h4>监测、保护与均衡</h4><p>采集电压、电流、温度，估算状态，管理均衡、限流及故障保护。BMS能够管理电芯的工作边界，但不会凭空提高电芯材料的储能能力。</p></article>
+            </div>
+            <div class="advanced-equations"><div><strong>实际放电电能</strong><code>E<sub>out</sub> = ∫ U(t) × I(t) dt ÷ 3600</code><small>时间 t 以秒计；U 为伏特、I 为安培，结果单位 Wh。</small></div><div><strong>往返效率</strong><code>η = E<sub>out</sub> ÷ E<sub>in</sub> × 100%</code><small>必须说明测量边界与充放电工况，例如电芯直流侧还是系统交流侧。</small></div><div><strong>容量保持率</strong><code>R<sub>n</sub> = Q<sub>n</sub> ÷ Q<sub>0</sub> × 100%</code><small>第 n 次循环与初始容量的比值，要说明容量检测所用的倍率、温度及截止电压。</small></div></div>
+          </div>
           <div class="takeaway"><span>工程判断</span><p>“最高倍率”通常只说某种条件下的极限电流能力。30C 持续多久、能量剩多少、温升多少、寿命如何，才决定能不能在项目中使用。</p></div>
         </section>
 
