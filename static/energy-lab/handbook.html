@@ -1,0 +1,290 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#102e25"><meta name="description" content="储能原理实验室知识手册：详解储能技术、锂离子电容器、倍率、BMS、光伏、调频、安全与工程；包含24项公式与51个术语。">
+<title>知识手册｜储能原理实验室 · 超能日志</title>
+<link rel="stylesheet" href="./studio.css"><link rel="stylesheet" href="./handbook.css"><script defer src="./handbook.js"></script></head><body>
+<a class="skip" href="#manualContent">跳转到知识手册</a>
+<header class="sitebar"><a class="brand" href="./"><span class="brandmark">E</span><span><b>储能原理实验室</b><small>知识手册 / REFERENCE</small></span></a><div class="toplinks"><a href="./">系统课程</a><a href="./labs.html">虚拟实验室</a><a href="./workbook.html">计算训练</a><a class="top-cta" href="./">返回课程</a></div></header>
+<main id="manualContent" class="manual-main">
+<section class="manual-hero"><div class="eyebrow">ENERGY REFERENCE · 统一知识资料</div><h1>知识手册</h1><p>查术语、查公式、查专业细节。这里保留并整理了早期专题中有价值的知识讲解，作为24节正式课程的延伸参考。学习仍以主课程为准。</p><div class="manual-stats"><span>16个专题</span><span>24项公式</span><span>51个术语</span></div></section>
+<section class="manual-toolbar" aria-label="手册查询工具"><label for="manualSearch">检索知识、公式或术语</label><div class="manual-searchrow"><input type="search" id="manualSearch" placeholder="例如：LIC、C倍率、SOC、内阻、储能时长…" autocomplete="off"><button type="button" id="manualClear">清除</button></div>
+<div class="manual-tabs" role="group" aria-label="筛选内容"><button type="button" data-filter="all" aria-pressed="true">全部内容</button><button type="button" data-filter="topics" aria-pressed="false">知识专题</button><button type="button" data-filter="formulas" aria-pressed="false">公式索引</button><button type="button" data-filter="glossary" aria-pressed="false">术语解释</button></div>
+<p id="manualStatus" aria-live="polite" class="manual-status">正在加载检索结果…</p></section>
+<div class="manual-content">
+<nav class="manual-toc" aria-label="知识手册主题导航"><strong>专题目录</strong><a href="#why">01 · 我们为什么要储能？</a>
+<a href="#electricity">02 · 先把四个单位分清楚</a>
+<a href="#forms">03 · forms</a>
+<a href="#density">04 · 100Wh/kg 与 30C，分别管什么？</a>
+<a href="#chemistries">05 · 为什么电池有这么多种？</a>
+<a href="#types">06 · 锂电池、超级电容与锂离子电容器</a>
+<a href="#physics">07 · 电芯内部怎样存电？</a>
+<a href="#engineering">08 · 为什么高倍率更难做？</a>
+<a href="#systems">09 · 储能电站，绝不只有电池</a>
+<a href="#solar">10 · 为什么中午发电，晚上却可能不够用？</a>
+<a href="#economics">11 · 储能值不值得做，不能只看购买价</a>
+<a href="#scenarios">12 · 储能最常见的六种用途</a>
+<a href="#grid">13 · 电力调频，为什么需要快速响应？</a>
+<a href="#safety">14 · 储能系统怎样安全地运行？</a>
+<a href="#audit">15 · 怎样审查“100Wh/kg、30C”？</a>
+<a href="#design">16 · 需要一套多大的储能系统？</a><a href="#formulas">公式索引</a><a href="#glossary">术语解释</a><a href="#references">参考资料</a></nav>
+<div class="manual-articles"><section class="manual-section" id="topics"><div class="manual-section-head"><span class="eyebrow">01 / TOPICS</span><h2>深入阅读</h2><p>这些内容来自原专题的知识讲解部分，已去除重复的课程入口和旧版练习；点击章节可回到新版对应课程。</p></div><article class="manual-entry" id="why" data-kind="topics" data-keywords="我们为什么要储能？">
+<div class="manual-entry-title"><div><span class="manual-kicker">专题 01 / REFERENCE</span><h2>我们为什么要储能？</h2></div><a href="./#why" class="manual-course-link">进入对应课程 →</a></div>
+<div class="manual-rich"><p class="manual-paragraph">中午太阳很亮，家里没几个人；晚上全家回家，用电多了，太阳却落山了。储能解决的就是能量供给和使用时间不一致的问题。</p>
+<p class="manual-paragraph">光伏发电超过当时用电需求，多出的电可以送往电网，也可以给电池充电。</p>
+<p class="manual-paragraph">电池可以释放先前存的电能，减少当时从电网购电的需要。能否停电备用取决于系统配置。</p>
+<p class="manual-paragraph">有水时先存起来，需要时再放出来。储能也是先吸收能量，等需要的时候释放。它并不会凭空产生能量，而且每次充放电都可能损失一部分。</p>
+<p class="manual-paragraph">水库有两个独立指标：能装多少水，以及闸门每秒可以放出多少水。储能也是这样，用 kWh 表示能存多少电，用 kW 表示能多快输出。</p>
+<p class="manual-paragraph">一套标称 10kWh、2kW 的储能设备，理想情况下可按 2kW 连续供电 5 小时。另一套 10kWh、10kW 的储能设备同样存了 10 度电，却只能按 10kW 理想持续 1 小时。储量和输出速度是两回事。</p></div></article>
+<article class="manual-entry" id="electricity" data-kind="topics" data-keywords="先把四个单位分清楚">
+<div class="manual-entry-title"><div><span class="manual-kicker">专题 02 / REFERENCE</span><h2>先把四个单位分清楚</h2></div><a href="./#units" class="manual-course-link">进入对应课程 →</a></div>
+<div class="manual-rich"><p class="manual-paragraph">理解储能之前，最容易混淆的往往是 W 和 Wh。把它们放在同一个例子里看。</p>
+<p class="manual-paragraph">可以类比水管中的压差。电压越高，在相同电流下传递的功率越大。</p>
+<p class="manual-paragraph">单位时间内流过的电荷量。可以类比水管中的水流量。</p>
+<p class="manual-paragraph">每秒传递或消耗电能的速度。100W 的灯每秒消耗 100J 电能。</p>
+<p class="manual-paragraph">一段时间内总共传递或消耗多少电。100W 的灯亮 1 小时，消耗 100Wh。</p>
+<p class="manual-paragraph">用实际生活中最常见的电器功率、使用时间和电价来计算。这里假设功率保持不变，真实设备往往会随运行状态变化。</p>
+<p class="manual-paragraph">功率（W）= 电压（V）× 电流（A），适用于直流瞬时功率。</p>
+<p class="manual-paragraph">电能（Wh）= 功率（W）× 时间（小时）。1 度电 = 1 kWh = 1000 Wh。</p>
+<p class="manual-paragraph">Ah（安时）是电荷容量 ，类似水桶能流出多少水； Wh（瓦时）是电能 ，还要看电压这个“水压”。同样 10Ah 的电池，按标称电压 3.7V 算约 37Wh；按 12V 算约 120Wh。两块电池的 Ah 一样，能储存的电能却不一样。</p>
+<p class="manual-paragraph">这里采用标称电压近似，精确计算仍要积分。日常看到的手机电池“5000mAh”表示 5Ah，不能单凭这个数字判断设备有多少 Wh。</p>
+<p class="manual-paragraph">手机、电芯内部主要使用直流电（DC），电网和家里插座常用交流电（AC）。直流电方向不周期反转；交流电方向随时间周期变化。逆变器把电池直流转换为交流，为家庭设备或电网供电，转换过程有损失。</p>
+<p class="manual-paragraph">前面的 P = U × I 适用于直流瞬时功率。对常见单相正弦交流，按有效值有 P = U × I × 功率因数 。因此看到家用电器的电压和电流，也不能总是直接相乘就得到实际有功功率。</p>
+<p class="manual-paragraph">W 像汽车的速度，Wh 像一段旅程的总里程。100W 与 100Wh 看起来相似，但衡量的是完全不同的事。</p></div></article>
+<article class="manual-entry" id="forms" data-kind="topics" data-keywords="forms">
+<div class="manual-entry-title"><div><span class="manual-kicker">专题 03 / REFERENCE</span><h2>forms</h2></div><a href="./#families" class="manual-course-link">进入对应课程 →</a></div>
+<div class="manual-rich"><p class="manual-paragraph">电池是化学储能家族中的一员。抽水蓄能、压缩空气、飞轮、储热和氢储能同样可以先存后用。它们适用的时间尺度、成本、限制各不相同。</p>
+<p class="manual-paragraph">用电化学反应保存能量。锂离子、钠离子、铅酸、液流电池都属于这一类。</p>
+<p class="manual-paragraph">用富余的电把水抽到高处，之后放水带动水轮机发电。需要地形、水库和较大工程。</p>
+<p class="manual-paragraph">一个把空气压缩起来，另一个让飞轮高速旋转。前者研究较长时长应用，后者可快速响应。</p>
+<p class="manual-paragraph">用热水、熔盐、冰等保存热量或冷量。若想重新发电，通常还需要额外的转换环节。</p>
+<p class="manual-paragraph">用电制氢，保存氢气，之后再作为燃料使用或转回电。多次能量转换会带来损耗。</p>
+<p class="manual-paragraph">主要在电极表面储能，能迅速充放电，适用于许多短时高功率需求。</p>
+<p class="manual-paragraph">给汽车回收几秒钟的制动能量，与给家庭供电几个小时，需求完全不同；储存几小时与跨日储存，也不能只比电芯能量密度。比较前要写清功率、储能量、时长、效率、寿命和场地条件。</p>
+<p class="manual-paragraph">参考： 美国能源部储能技术评估 ； EPRI 储能基础 。</p></div></article>
+<article class="manual-entry" id="density" data-kind="topics" data-keywords="100Wh/kg 与 30C，分别管什么？">
+<div class="manual-entry-title"><div><span class="manual-kicker">专题 04 / REFERENCE</span><h2>100Wh/kg 与 30C，分别管什么？</h2></div><a href="./#crate" class="manual-course-link">进入对应课程 →</a></div>
+<div class="manual-rich"><p class="manual-paragraph">能量密度看“同样重量存多少电”；倍率看“按额定容量的多少倍电流工作”。</p>
+<p class="manual-paragraph">1 kg 电芯，标称能量为 100 Wh；10 kg 电芯，标称能量为 1000 Wh，也就是 1 度电。</p>
+<p class="manual-paragraph">E 是电能（Wh），m 是质量（kg），D 是质量能量密度（Wh/kg）。</p>
+<p class="manual-paragraph">30C 放电电流等于额定 Ah 容量的 30 倍。若电流始终保持这一数值，理论上 1/30 小时放出额定 Ah 容量。</p>
+<p class="manual-paragraph">I 为安培（A），r 为倍率（h⁻¹），Q 为额定安时容量（Ah）。</p>
+<p class="manual-paragraph">60 只来自“1 小时 = 60 分钟”。这里的 2 分钟是理想恒流时间，不保证真实电芯在 30C 下释放全部标称 Wh 能量。充电的 30C 能力也不能从放电 30C 自动推导。</p>
+<p class="manual-paragraph">按额定电压 U nom ，有 E nom ≈U nom ×Q。倍率电流 I=r×Q，因此 P nom ≈U nom ×I≈E nom ×r。实际电压 U 会随 SOC、电流与温度变化，P=U(t)I(t)。必须用实测电压与电流积分得到实际放电能量。</p></div></article>
+<article class="manual-entry" id="chemistries" data-kind="topics" data-keywords="为什么电池有这么多种？">
+<div class="manual-entry-title"><div><span class="manual-kicker">专题 05 / REFERENCE</span><h2>为什么电池有这么多种？</h2></div><a href="./#families" class="manual-course-link">进入对应课程 →</a></div>
+<div class="manual-rich"><p class="manual-paragraph">不同电池的材料、制造与成本不同。选型要综合考虑能量、功率、寿命、温度、安全和经济性，不能靠一个参数给全部电池排名。</p>
+<p class="manual-paragraph">正极材料为磷酸铁锂，常用于固定式储能、电动车。一般具有较好的热稳定性和循环表现，具体依赖产品设计。</p>
+<p class="manual-paragraph">某些配方兼顾较高能量密度，适用于对重量和空间敏感的应用，热管理与材料成本需一起考虑。</p>
+<p class="manual-paragraph">依靠钠离子在正负极间移动存储能量。具有另一套材料取舍，资源丰富不保证成品一定更便宜。</p>
+<p class="manual-paragraph">汽车启动、备用电源中很常见。产业链成熟，不过重量、循环表现等通常存在一定限制。</p>
+<p class="manual-paragraph">活性物质存于电解液罐，通过电堆充放电。许多设计可以较独立地调整能量容量和额定功率。</p>
+<p class="manual-paragraph">主要指采用固态电解质的一类技术路线，可能搭配不同的电极化学体系，研发样品与量产需区分。</p>
+<p class="manual-paragraph">额定电压 V 与 容量 Ah 可以估算额定 Wh； 持续充放电电流 A 影响可用功率； 温度范围、循环寿命和安全测试 限定了可靠使用场景。只有全部参数属于同一型号、同一可比条件时，比较才有意义。</p>
+<p class="manual-paragraph">还有一个常见误区：一次电池（例如普通不可充电干电池）不能随意反复充电；动力电池、储能电池通常属于可充电的二次电池。两者安全使用方法不同。</p>
+<p class="manual-paragraph">实验室材料性能、电芯样品性能和储能系统性能是不同层级。做材料研究时可按活性材料质量计算；采购储能产品时应关注完整电芯或系统级口径。</p></div></article>
+<article class="manual-entry" id="types" data-kind="topics" data-keywords="锂电池、超级电容与锂离子电容器">
+<div class="manual-entry-title"><div><span class="manual-kicker">专题 06 / REFERENCE</span><h2>锂电池、超级电容与锂离子电容器</h2></div><a href="./#families" class="manual-course-link">进入对应课程 →</a></div>
+<div class="manual-rich"><p class="manual-paragraph">三种器件解决的问题不同。很难用单一指标评定哪个“更先进”。</p>
+<p class="manual-paragraph">强调较高能量密度，适合需要持续供电的场景。充放电受电极反应速度、热管理等约束。</p>
+<p class="manual-paragraph">通过电极表面电荷吸附储能，功率和循环寿命通常突出，但单位质量存储的电能较少。</p>
+<p class="manual-paragraph">在同一器件中组合电池型负极和电容型正极，尝试兼顾能量密度与输出功率。</p>
+<p class="manual-paragraph">本图只说明一般性能取向，并非按比例绘制。真实 Ragone 图需要用同一测试对象、同一质量口径、明确工况的实测能量和功率作图。参考资料见文末 [1][2]。</p>
+<p class="manual-paragraph">论文中 100Wh/kg 可能只除以两极活性物质的质量；商品电芯还包括集流体、隔膜、电解液、外壳等。比较时必须看分母到底包含什么。</p></div></article>
+<article class="manual-entry" id="physics" data-kind="topics" data-keywords="电芯内部怎样存电？">
+<div class="manual-entry-title"><div><span class="manual-kicker">专题 07 / REFERENCE</span><h2>电芯内部怎样存电？</h2></div><a href="./#ion" class="manual-course-link">进入对应课程 →</a></div>
+<div class="manual-rich"><p class="manual-paragraph">锂离子电容器把两种储能机制放进同一个器件：负极具有电池型嵌锂行为，正极主要通过表面吸附储能。</p>
+<p class="manual-paragraph">示意用途：区分两极储能机制，不表达电子与离子的完整传输路径。资料见 [1][3]。</p>
+<p class="manual-paragraph">电极表面与电解液离子之间形成双电层。功率响应快，但受可利用表面积和工作电压等因素制约。</p>
+<p class="manual-paragraph">电池型负极通过嵌入和脱嵌锂离子储能。预嵌锂有助于建立合适的电极电位，制造一致性也是难点。</p>
+<p class="manual-paragraph">电极容量配比、离子传输速度、内阻、工作电压窗口，都会同时影响能量、功率和寿命。</p>
+<p class="manual-paragraph">对近似恒定电容，放电从上限电压到下限电压，释放的能量与两个电压的平方差有关。</p>
+<p class="manual-paragraph">E 单位 Wh，F 为电容（法拉），U 为伏特。除以 3600 是把焦耳换成瓦时：1Wh=3600J。</p>
+<p class="manual-paragraph">½FΔU² 是常电容近似模型。锂离子电容器的等效电容可能随电压、倍率、温度变化，准确可用能量需要对实测电压、电流进行积分。</p></div></article>
+<article class="manual-entry" id="engineering" data-kind="topics" data-keywords="为什么高倍率更难做？">
+<div class="manual-entry-title"><div><span class="manual-kicker">专题 08 / REFERENCE</span><h2>为什么高倍率更难做？</h2></div><a href="./#resistance" class="manual-course-link">进入对应课程 →</a></div>
+<div class="manual-rich"><p class="manual-paragraph">大电流会造成内阻压降与发热。设计必须同时考虑热管理、工作电压窗口和寿命。</p>
+<p class="manual-paragraph">电流越大，端电压下降越明显，可能更早触及截止电压。</p>
+<p class="manual-paragraph">电流变成 2 倍，电阻热功率在电阻不变时变成 4 倍。</p>
+<p class="manual-paragraph">调节电流与内阻。此处 R 是固定等效直流内阻，忽略极化随时间变化。</p>
+<p class="manual-paragraph">材料、电压窗口、极片厚度和非活性材料比例都会影响。</p>
+<p class="manual-paragraph">离子传输、电子导电、内阻及散热能力是关键。</p>
+<p class="manual-paragraph">要写清测试温度、倍率、SOC窗口和容量保持率判据。</p>
+<p class="manual-paragraph">除电芯外，还要计入变流器、BMS、冷却、运维与更换。</p>
+<h3>电芯参数，为什么不能直接写成系统参数？</h3>
+<p class="manual-paragraph">假设完整电芯标称能量是 100Wh/kg，模组和系统加入其他部件后，按相同电能除以更大的总质量，系统级能量密度通常会降低。能量损耗、SOC窗口、直流和交流侧口径，也会改变可交付电能。</p>
+<p class="manual-paragraph">荷电状态。BMS 根据电压、电流和模型估计，通常以百分比表示；在恒电流、稳定条件下可以做粗略容量估算。它不等同于电压百分比。</p>
+<p class="manual-paragraph">健康状态。可基于剩余容量、内阻或功率能力等定义，不同产品算法和判据可能不同。</p>
+<p class="manual-paragraph">放电深度。常见近似下，从100% SOC放到20% SOC，相当于80% DOD；具体以SOC定义和工况为准。</p>
+<p class="manual-paragraph">采集电压、电流、温度，估算状态，管理均衡、限流及故障保护。BMS能够管理电芯的工作边界，但不会凭空提高电芯材料的储能能力。</p>
+<p class="manual-paragraph">“最高倍率”通常只说某种条件下的极限电流能力。30C 持续多久、能量剩多少、温升多少、寿命如何，才决定能不能在项目中使用。</p></div></article>
+<article class="manual-entry" id="systems" data-kind="topics" data-keywords="储能电站，绝不只有电池">
+<div class="manual-entry-title"><div><span class="manual-kicker">专题 09 / REFERENCE</span><h2>储能电站，绝不只有电池</h2></div><a href="./#systemParts" class="manual-course-link">进入对应课程 →</a></div>
+<div class="manual-rich"><p class="manual-paragraph">从一片电极做成可供电网使用的储能系统，需要解决电能变换、调度、安全保护、冷却、消防与并网问题。</p>
+<p class="manual-paragraph">电芯串联可以提高电压，并联可以增加容量和电流能力，连接与均衡也会增加工程难度。</p>
+<p class="manual-paragraph">采集电压、电流与温度，估算荷电和健康状态，协调均衡与限制异常工况。</p>
+<p class="manual-paragraph">电池工作在直流侧，家庭和电网常采用交流。PCS负责双向转换并控制功率。</p>
+<p class="manual-paragraph">可以参考负荷、电价、光伏预测、电网指令和电池状态，但不能替代BMS的安全保护。</p>
+<p class="manual-paragraph">电芯过热、过冷或温差大，都可能影响效率、可用功率、寿命和安全。</p>
+<p class="manual-paragraph">包括保护电器、计量、监测、气体与火灾风险管理、应急流程和运维制度。</p>
+<p class="manual-paragraph">100 MW 是名义输出功率，200 MWh 是名义储能量。200 ÷ 100 = 2小时 的名义持续时长，实际输出还要考虑放电窗口、效率、温度以及变流器限制。</p>
+<p class="manual-paragraph">参考： DOE 储能基础 、 NREL 储能系统建模 。</p></div></article>
+<article class="manual-entry" id="solar" data-kind="topics" data-keywords="为什么中午发电，晚上却可能不够用？">
+<div class="manual-entry-title"><div><span class="manual-kicker">专题 10 / REFERENCE</span><h2>为什么中午发电，晚上却可能不够用？</h2></div><a href="./#solarDispatch" class="manual-course-link">进入对应课程 →</a></div>
+<div class="manual-rich"><p class="manual-paragraph">家庭或电站的发电曲线与用电曲线通常并不完全一致。储能能把一部分电能从某个时段搬到另一个时段。</p>
+<p class="manual-paragraph">光伏正在发电。如果即时负荷低于发电功率，多余电能可能给电池充电，也可能上网。</p>
+<p class="manual-paragraph">电池可以承担部分负荷。能供多久取决于可用电量，能不能同时开几台大功率电器取决于输出功率。</p>
+<p class="manual-paragraph">纯教学曲线，未使用特定地点、日期或住户的测量数据。纵轴为相对功率；曲线下方的面积对应一段时间的电能。</p>
+<p class="manual-paragraph">有光伏和电池，不代表停电时自动有电。 并网系统可能因防孤岛保护停机。必须有支持备电运行的设备、适当隔离和切换方案，才能按设计为关键负载供电。</p>
+<p class="manual-paragraph">光伏发电量大，也不代表电池都能存下。 受最大充电功率、空余容量、效率、天气、系统设置及电网限制影响，某些时段可能无法全部吸收富余电量。</p>
+<p class="manual-paragraph">曲线高度表示当时的 W 或 kW。把一段时间里的功率乘以时间并累加，才得到 Wh 或 kWh。发电量和发电功率经常被错误混用。</p></div></article>
+<article class="manual-entry" id="economics" data-kind="topics" data-keywords="储能值不值得做，不能只看购买价">
+<div class="manual-entry-title"><div><span class="manual-kicker">专题 11 / REFERENCE</span><h2>储能值不值得做，不能只看购买价</h2></div><a href="./#tariff" class="manual-course-link">进入对应课程 →</a></div>
+<div class="manual-rich"><p class="manual-paragraph">储能有充放电损耗，电池会衰减，其他设备也有成本。因此“低价充电，高价放电”并不天然保证赚钱。</p>
+<p class="manual-paragraph">假设从计量边界输入 10 度电，最终只能取出 9 度，那么同一边界下的往返效率是 90%。效率口径必须区分电芯直流侧与系统交流侧。</p>
+<p class="manual-paragraph">建设投入、运维、换电池、充电损耗以及电池衰减都可能形成费用。真实项目还要考虑电价机制、市场规则与税费。</p>
+<p class="manual-paragraph">假设每次都能按给定价格买电和出售或等价抵扣用电，计算一次理想循环的电量与毛差额。实际市场并不一定允许按零售价卖电。</p>
+<p class="manual-paragraph">LCOS（平准化储能成本）试图把初始投资、后续运维和更换等生命周期支出，与折现后的实际交付电量放到一起比较。不同技术、折现率、使用次数和寿命假设会让结果差很多。</p>
+<p class="manual-paragraph">一个储能设备如果几乎每天都能用，成本分摊和一年只用几次的备用电源大不相同。备用电源可能主要看“停电损失避免了多少”，而不是每日价差。</p>
+<p class="manual-paragraph">参考： NREL 储能成本与效率建模 、 DOE 储能经济评估 。</p></div></article>
+<article class="manual-entry" id="scenarios" data-kind="topics" data-keywords="储能最常见的六种用途">
+<div class="manual-entry-title"><div><span class="manual-kicker">专题 12 / REFERENCE</span><h2>储能最常见的六种用途</h2></div><a href="./#services" class="manual-course-link">进入对应课程 →</a></div>
+<div class="manual-rich"><p class="manual-paragraph">很多人听到储能，只想到“半夜低价充电、白天高价卖电”。实际上，储能提供的服务远不止这一种。</p>
+<p class="manual-paragraph">把白天部分光伏电能留到晚上使用。收益取决于发电时段、上网价格、购电价格与损耗。</p>
+<p class="manual-paragraph">在合适时段充放电，改变电网侧负荷曲线；是否节省电费，要看当地计费规则与调度策略。</p>
+<p class="manual-paragraph">遇到功率失衡引起的频率偏差，储能可迅速改变有功功率。但需要符合控制与并网要求。</p>
+<p class="manual-paragraph">电网故障时给重要设备供电。关键是切换、保护和需要坚持多久，并非只有容量越大越好。</p>
+<p class="manual-paragraph">在风光发电较多时充电、其他时段释放，使可再生能源发电与负荷更好匹配。</p>
+<p class="manual-paragraph">在特定地点、时段为供电和输配电设备减压，价值依赖实际网架、负荷与运行条件。</p>
+<p class="manual-paragraph">可能有多种用途，但未必能同时满足。例如，电池已经为了调峰放到很低的 SOC，就可能无法马上承担足够长的备用供电。规划应写清优先级、预留电量和调度冲突。</p>
+<p class="manual-paragraph">参考： IEA：储能在电力系统中的作用 。</p></div></article>
+<article class="manual-entry" id="grid" data-kind="topics" data-keywords="电力调频，为什么需要快速响应？">
+<div class="manual-entry-title"><div><span class="manual-kicker">专题 13 / REFERENCE</span><h2>电力调频，为什么需要快速响应？</h2></div><a href="./#frequency" class="manual-course-link">进入对应课程 →</a></div>
+<div class="manual-rich"><p class="manual-paragraph">电网频率偏离额定值时，储能可通过变流器快速充放电，辅助平衡有功功率。下面是教学用的简化比例控制。</p>
+<p class="manual-paragraph">比例响应教学模型，不含死区、频率动态、SOC约束、效率和并网控制细节。</p>
+<p class="manual-paragraph">调频服务往往需要较快的功率响应和频繁的充放电，但实际还取决于调节信号、持续时间、每天吞吐量、SOC回归策略、可用容量以及并网规范。把这些条件带进来，才知道需要多少电芯、多少变流器容量，以及哪类储能技术更合适。</p>
+<p class="manual-paragraph">本节工况和数值完全为教学假设。频率响应的专业背景可参见 NREL 的电网服务技术材料 [4]。</p></div></article>
+<article class="manual-entry" id="safety" data-kind="topics" data-keywords="储能系统怎样安全地运行？">
+<div class="manual-entry-title"><div><span class="manual-kicker">专题 14 / REFERENCE</span><h2>储能系统怎样安全地运行？</h2></div><a href="./#aging" class="manual-course-link">进入对应课程 →</a></div>
+<div class="manual-rich"><p class="manual-paragraph">储能把大量能量集中在有限空间里，正常运行需要安全边界。了解风险是为了选择正规产品和正确运维，不建议自行拆解或改造高能电池。</p>
+<p class="manual-paragraph">部分电池在内部短路、过充、过热、受到外力损伤等异常条件下，可能发生持续的放热反应，热量增加又使反应加剧。这叫热失控。它可能引发喷气、起火甚至蔓延，具体风险因电芯化学体系和工程配置而异。</p>
+<p class="manual-paragraph">材料、电极和隔膜设计、制造质量与一致性影响安全基础，测试应覆盖预期和异常工况。</p>
+<p class="manual-paragraph">监测单体电压、电流、温度，限制超范围运行，异常时告警或触发保护。</p>
+<p class="manual-paragraph">降低过热与过大温差风险。液冷或风冷选择取决于系统负载与环境条件。</p>
+<p class="manual-paragraph">根据场站风险评估配置探测、报警、隔离与消防方案。单一设备不能保证消除全部风险。</p>
+<p class="manual-paragraph">电气保护、通风、间距、人员通道、设备防护及地方规范要求都需核查。</p>
+<p class="manual-paragraph">落实巡检、报警处理、维保、事故隔离与专业应急预案；发生异常应按现场预案疏散并联系专业人员。</p>
+<h3>为什么循环寿命不能只看“能循环多少次”？</h3>
+<p class="manual-paragraph">比如厂家说“6000次循环后容量保持80%”，还要看测试温度、充放电倍率、放电深度、截止电压和容量复测方法。每天充放电一次并不意味着简单把6000除以365就得到可靠使用年限。电池不使用也可能发生日历老化，系统还能受环境、维护和设备寿命限制。</p>
+<p class="manual-paragraph">容量保持率 说明经过一定工况后还能存多少电； 内阻变化 会影响放电性能。SOC表示当前剩多少电，SOH表示电池健康程度，两者不是一回事。</p>
+<p class="manual-paragraph">不同地区、系统类型和应用场景的适用规范不同。比如 UL 9540A 是一种热失控火灾传播测试方法，并不是“通过一次测试就绝对安全”的保证。采购、安装、消防验收应核对适用的最新标准与当地要求。</p>
+<p class="manual-paragraph">参考： DOE 储能安全战略 、 EPA 储能系统安全与应急指南 、 加州能源委员会储能安全资料 。</p></div></article>
+<article class="manual-entry" id="audit" data-kind="topics" data-keywords="怎样审查“100Wh/kg、30C”？">
+<div class="manual-entry-title"><div><span class="manual-kicker">专题 15 / REFERENCE</span><h2>怎样审查“100Wh/kg、30C”？</h2></div><a href="./#verification" class="manual-course-link">进入对应课程 →</a></div>
+<div class="manual-rich"><p class="manual-paragraph">现在回到最初的研发规划。一组好看的数字，还需要完整的测量条件与产品定义。</p>
+<p class="manual-paragraph">“能量密度提升至 100Wh/kg ，充放电倍率达 30C 。”</p>
+<p class="manual-paragraph">完成清单后可看到审核准备度提示。勾选行为仅代表你认为证据已提供，不验证其真实性。</p>
+<h3>论文中的 100Wh/kg，不一定是产品的 100Wh/kg</h3>
+<p class="manual-paragraph">有些高能量密度成果采用两极活性物质质量作为分母。把集流体、隔膜、电解液、封装和管理系统算进去后，指标可能显著下降。同样，低倍率下的最大能量与高倍率下的最大功率不能随意拼成一个同时成立的工况点。</p>
+<p class="manual-paragraph">例：2024 年一篇预嵌锂研究报告约 106.6Wh/kg，但其分母明确是正负极活性材料总质量（AC+SC），不能直接称为完整电芯能量密度 [5]。</p></div></article>
+<article class="manual-entry" id="design" data-kind="topics" data-keywords="需要一套多大的储能系统？">
+<div class="manual-entry-title"><div><span class="manual-kicker">专题 16 / REFERENCE</span><h2>需要一套多大的储能系统？</h2></div><a href="./#sizing" class="manual-course-link">进入对应课程 →</a></div>
+<div class="manual-rich"><p class="manual-paragraph">从家庭应急电源开始算。想清楚要带哪些电器、同时开启时的最大功率、计划持续多久，再考虑留有多少备用电量和系统效率。</p>
+<p class="manual-paragraph">在示例中，假设三种设备同时工作指定小时数，按恒定功率计算。对于电机、压缩机等还有启动冲击功率，实际逆变器需要额外校核。</p>
+<p class="manual-paragraph">• 确定用途。 是调频、晚间供电、备用电源还是峰谷套利？任务不同，设计不同。</p>
+<p class="manual-paragraph">• 画负荷曲线。 记录每个时段需要多少kW、持续多久，不能只看平均负荷。</p>
+<p class="manual-paragraph">• 定义能量边界。 明确容量是电芯直流侧还是系统交流侧，考虑可用SOC窗口和损耗。</p>
+<p class="manual-paragraph">• 检查约束。 包括电压电流、热管理、消防、空间、并网标准和维护能力。</p>
+<p class="manual-paragraph">• 算长期经济账。 把投资、充电成本、损耗、衰减、运维、更换及收益机制放在一起。</p>
+<p class="manual-paragraph">• 用数据复核。 验证典型和极端工况，核对产品测试报告，避免只靠宣传参数。</p>
+<p class="manual-paragraph">如果一台空调需要 1500W，而储能设备的逆变器只能持续输出 500W，即使它有 20kWh 电能，也无法按预期驱动这台空调。先确认功率能不能带得动，再确认电量能用多久。</p></div></article></section>
+<section class="manual-section" id="formulas"><div class="manual-section-head"><span class="eyebrow">02 / FORMULA INDEX</span><h2>公式索引</h2><p>列出主课程24个教学单元的公式和适用条件。需要完整推导与例题时进入对应课程。</p></div><div class="formula-grid"><article class="formula-item" data-kind="formulas"><span class="manual-kicker">公式 01</span><h3>电为什么需要储存？</h3><div class="formula-expression">电能 E = ∫ 功率 P(t) dt</div><p>电能是功率对时间的累计。功率以kW、时间以小时计，结果是kWh。</p><a href="./#why">查看推导与例题 →</a></article>
+<article class="formula-item" data-kind="formulas"><span class="manual-kicker">公式 02</span><h3>电压、电流、功率、电能</h3><div class="formula-expression">P = U × I　；　E = P × t</div><p>上述P=UI是直流瞬时功率，E=Pt须在恒功率时使用。更一般的情形应对瞬时功率积分。</p><a href="./#units">查看推导与例题 →</a></article>
+<article class="formula-item" data-kind="formulas"><span class="manual-kicker">公式 03</span><h3>直流、交流与功率因数</h3><div class="formula-expression">直流：P = UI　；　单相正弦交流：P = UI cosφ</div><p>电压与电流均采用有效值。对于三相对称正弦系统，P=√3×U线×I线×cosφ。</p><a href="./#acdc">查看推导与例题 →</a></article>
+<article class="formula-item" data-kind="formulas"><span class="manual-kicker">公式 04</span><h3>Ah、Wh和能量密度</h3><div class="formula-expression">E ≈ U标称 × Q　；　D = E ÷ m</div><p>E单位Wh，U单位V，Q单位Ah，m单位kg。精确放电能量为∫U(t)I(t)dt。</p><a href="./#whah">查看推导与例题 →</a></article>
+<article class="formula-item" data-kind="formulas"><span class="manual-kicker">公式 05</span><h3>C倍率到底意味着什么</h3><div class="formula-expression">I（A）= C（h⁻¹）× Q（Ah）　；　t（min）= 60 ÷ C</div><p>公式中的t是理想恒流放出全部额定Ah的时间。实际可用能量必须测量。</p><a href="./#crate">查看推导与例题 →</a></article>
+<article class="formula-item" data-kind="formulas"><span class="manual-kicker">公式 06</span><h3>功率、储能时长与损耗</h3><div class="formula-expression">名义时长 t = E ÷ P　；　输出电能≈E名义×可用比例×放电效率</div><p>工程设计中还需要计入功率约束、温度、电池退化和备用SOC。</p><a href="./#efficiency">查看推导与例题 →</a></article>
+<article class="formula-item" data-kind="formulas"><span class="manual-kicker">公式 07</span><h3>电芯里究竟装了什么</h3><div class="formula-expression">电化学反应释放的吉布斯自由能与可输出电功有关</div><p>具体推导涉及电极电位和反应热力学，本课程在基础阶段先理解化学势差。</p><a href="./#structure">查看推导与例题 →</a></article>
+<article class="formula-item" data-kind="formulas"><span class="manual-kicker">公式 08</span><h3>充电时，锂离子去哪儿了？</h3><div class="formula-expression">外电路电流与电极反应速率相关；电能 E = ∫U(t)I(t) dt</div><p>时间用小时则输出Wh，时间用秒则先得到J，需要除以3600。</p><a href="./#ion">查看推导与例题 →</a></article>
+<article class="formula-item" data-kind="formulas"><span class="manual-kicker">公式 09</span><h3>磷酸铁锂、钠电池、液流与电容</h3><div class="formula-expression">比能量 = 实际能量 ÷ 质量　；　比功率 = 实际功率 ÷ 质量</div><p>只对质量口径与工况一致的对象进行比较。</p><a href="./#families">查看推导与例题 →</a></article>
+<article class="formula-item" data-kind="formulas"><span class="manual-kicker">公式 10</span><h3>为什么电流变大后发热更厉害</h3><div class="formula-expression">U端≈U开路−IR　；　P热≈I²R</div><p>采用固定等效电阻的教学近似，不能用于电池热失控预测或认证。</p><a href="./#resistance">查看推导与例题 →</a></article>
+<article class="formula-item" data-kind="formulas"><span class="manual-kicker">公式 11</span><h3>放电曲线应该怎样读</h3><div class="formula-expression">E放电（Wh）= ∫U(t) I(t) dt　；　Q放电（Ah）= ∫I(t)dt</div><p>t以小时计。电压-容量曲线积分U dQ也可得到Wh。</p><a href="./#curves">查看推导与例题 →</a></article>
+<article class="formula-item" data-kind="formulas"><span class="manual-kicker">公式 12</span><h3>SOC、SOH、安全与寿命</h3><div class="formula-expression">容量保持率 = Q第n次 ÷ Q初始 × 100%</div><p>必须注明容量测试倍率、温度、截止电压及循环寿命判据。</p><a href="./#aging">查看推导与例题 →</a></article>
+<article class="formula-item" data-kind="formulas"><span class="manual-kicker">公式 13</span><h3>串联与并联怎样改变系统参数</h3><div class="formula-expression">U组≈Ns×U单　；　Q组≈Np×Q单　；　E组≈U组×Q组</div><p>Ns为串联数量，Np为并联支路数。理想一致电芯条件下近似成立。</p><a href="./#series">查看推导与例题 →</a></article>
+<article class="formula-item" data-kind="formulas"><span class="manual-kicker">公式 14</span><h3>BMS、PCS、EMS分别负责什么</h3><div class="formula-expression">系统交流侧输出 = 电池直流侧输出 × 相关转换效率（简化）</div><p>实际应按照规定边界、真实功率曲线与辅助负载分别计量。</p><a href="./#systemParts">查看推导与例题 →</a></article>
+<article class="formula-item" data-kind="formulas"><span class="manual-kicker">公式 15</span><h3>电站安全与并网的工程边界</h3><div class="formula-expression">系统风险 = 危险源 × 暴露 × 防护失效的综合影响（定性）</div><p>本式只是风险分析的口语化表达，不是可直接计算的数学定律。</p><a href="./#safetySite">查看推导与例题 →</a></article>
+<article class="formula-item" data-kind="formulas"><span class="manual-kicker">公式 16</span><h3>从白天光伏到晚间用电</h3><div class="formula-expression">E电网购入 = ∑max(0, P负荷−P光伏−P电池放电+P电池充电)×Δt</div><p>求和需执行SOC、功率与效率约束。模型中电池放电与充电取正值，按各小时积分。</p><a href="./#solarDispatch">查看推导与例题 →</a></article>
+<article class="formula-item" data-kind="formulas"><span class="manual-kicker">公式 17</span><h3>电网频率为什么需要调节</h3><div class="formula-expression">P指令 = clip[K(50−f), −Pmax, +Pmax]　；　ΔE = P×Δt</div><p>50Hz仅为示例电网额定频率；P放电取正，P充电取负，时间统一为小时。</p><a href="./#frequency">查看推导与例题 →</a></article>
+<article class="formula-item" data-kind="formulas"><span class="manual-kicker">公式 18</span><h3>调峰、备用和电网服务冲突</h3><div class="formula-expression">可用能量 ≥ 已承诺任务所需能量 + 必须保留的备用电量</div><p>这是规划约束表达，实际还需计及响应功率与效率。</p><a href="./#services">查看推导与例题 →</a></article>
+<article class="formula-item" data-kind="formulas"><span class="manual-kicker">公式 19</span><h3>峰谷价差为什么不等于利润</h3><div class="formula-expression">单次毛差额 = 输入电能×RTE×高峰价值 − 输入电能×低谷购电价</div><p>“高峰价值”可能是避免购买电费，不等于能够按零售电价卖电。</p><a href="./#tariff">查看推导与例题 →</a></article>
+<article class="formula-item" data-kind="formulas"><span class="manual-kicker">公式 20</span><h3>平准化储能成本与寿命</h3><div class="formula-expression">LCOS ≈ 生命周期折现总成本 ÷ 生命周期折现交付电量</div><p>这是结构性概念公式。实际财务模型应明确折现率、年吞吐量、税收与残值。</p><a href="./#lcos">查看推导与例题 →</a></article>
+<article class="formula-item" data-kind="formulas"><span class="manual-kicker">公式 21</span><h3>怎么比较抽蓄、锂电与其他储能</h3><div class="formula-expression">技术适配性 = 多维约束满足程度（不应简化为单一指标）</div><p>专业评审一般采用明确的准入门槛与带权评分，并保留安全、合规的一票否决项。</p><a href="./#selection">查看推导与例题 →</a></article>
+<article class="formula-item" data-kind="formulas"><span class="manual-kicker">公式 22</span><h3>设计一套最小可用的储能方案</h3><div class="formula-expression">E电池名义 ≥ P负载 × t ÷（可用比例×放电效率）</div><p>保证持续功率P_PCS≥P负载；还应加上需求侧冲击功率、老化及可靠性裕度。</p><a href="./#sizing">查看推导与例题 →</a></article>
+<article class="formula-item" data-kind="formulas"><span class="manual-kicker">公式 23</span><h3>怎么核查100Wh/kg与30C研发指标</h3><div class="formula-expression">实得比能量 = ∫U(t)I(t)dt ÷ 电芯实测质量</div><p>积分单位应一致。第三方数据需要能复核测量对象和条件。</p><a href="./#verification">查看推导与例题 →</a></article>
+<article class="formula-item" data-kind="formulas"><span class="manual-kicker">公式 24</span><h3>课程结业：做一次完整工程判断</h3><div class="formula-expression">工程方案 = 需求工况 + 功率/能量计算 + 控制边界 + 安全保障 + 经济评估 + 证据</div><p>该式用于组织方案逻辑，不是物理定律。</p><a href="./#capstone">查看推导与例题 →</a></article></div></section>
+<section class="manual-section" id="glossary"><div class="manual-section-head"><span class="eyebrow">03 / GLOSSARY</span><h2>术语解释</h2><p>简明解释与详细课程相互关联。技术缩写和量纲都可以用上方搜索框检索。</p></div><div class="term-grid"><details class="term-item" data-kind="glossary"><summary>储能 ESS</summary><p>Energy Storage System。把能量先存起来，在其他时间释放的设备或系统，不限于电池。</p></details>
+<details class="term-item" data-kind="glossary"><summary>BESS</summary><p>Battery Energy Storage System，电池储能系统，包括电池、控制、变流、安全和辅助设备。</p></details>
+<details class="term-item" data-kind="glossary"><summary>电压 V</summary><p>电势差。可以简单类比为推动电荷流动的压力。</p></details>
+<details class="term-item" data-kind="glossary"><summary>电流 A</summary><p>电荷流过某处的快慢，单位安培。</p></details>
+<details class="term-item" data-kind="glossary"><summary>功率 W</summary><p>单位时间传输或消耗能量的速度。1000W=1kW。</p></details>
+<details class="term-item" data-kind="glossary"><summary>电能 Wh</summary><p>一段时间内传递的能量。1kWh=1000Wh，也就是1度电。</p></details>
+<details class="term-item" data-kind="glossary"><summary>容量 Ah</summary><p>安时，电荷容量。只有结合电压，才能估算储存了多少Wh。</p></details>
+<details class="term-item" data-kind="glossary"><summary>C倍率</summary><p>放电或充电电流相对额定Ah容量的倍数。10Ah电芯的2C是20A。</p></details>
+<details class="term-item" data-kind="glossary"><summary>能量密度 Wh/kg</summary><p>单位质量储存的电能，比较之前确认分母是材料、电芯、模组还是系统。</p></details>
+<details class="term-item" data-kind="glossary"><summary>功率密度 W/kg</summary><p>单位质量在规定工况下能提供的功率，测试持续时间很重要。</p></details>
+<details class="term-item" data-kind="glossary"><summary>kW / MW</summary><p>功率单位。1MW=1000kW。</p></details>
+<details class="term-item" data-kind="glossary"><summary>kWh / MWh</summary><p>电能单位。1MWh=1000kWh。</p></details>
+<details class="term-item" data-kind="glossary"><summary>储能时长 E/P</summary><p>标称能量（kWh）除以功率（kW），得到小时；真实时长受损耗和放电限制影响。</p></details>
+<details class="term-item" data-kind="glossary"><summary>SOC</summary><p>State of Charge，荷电状态。一般表示当前剩余可用电荷占参考容量的比例。</p></details>
+<details class="term-item" data-kind="glossary"><summary>SOH</summary><p>State of Health，健康状态。可基于容量、内阻等指标定义，不同算法口径不同。</p></details>
+<details class="term-item" data-kind="glossary"><summary>DOD</summary><p>Depth of Discharge，放电深度。用于描述一次放电动用了多大比例的参考容量。</p></details>
+<details class="term-item" data-kind="glossary"><summary>BMS</summary><p>Battery Management System，监测电芯状态、估算SOC、均衡并执行保护。</p></details>
+<details class="term-item" data-kind="glossary"><summary>EMS</summary><p>Energy Management System，依据负荷、电价等调度储能充放电。</p></details>
+<details class="term-item" data-kind="glossary"><summary>PCS</summary><p>Power Conversion System，双向变流器，负责直流与交流转换和功率控制。</p></details>
+<details class="term-item" data-kind="glossary"><summary>逆变器 Inverter</summary><p>将直流转换为交流的电力电子设备。储能PCS通常包含双向能量变换能力。</p></details>
+<details class="term-item" data-kind="glossary"><summary>DC / AC</summary><p>直流 / 交流。电池端通常为直流，家庭插座及电网一般为交流。</p></details>
+<details class="term-item" data-kind="glossary"><summary>串联</summary><p>电芯首尾相接，组合电压升高，总Ah容量在理想一致电芯的串联系统中不叠加。</p></details>
+<details class="term-item" data-kind="glossary"><summary>并联</summary><p>同电压电芯并接，可提高总Ah容量和总电流能力，须符合连接及保护要求。</p></details>
+<details class="term-item" data-kind="glossary"><summary>内阻 mΩ</summary><p>电芯对电流的等效阻碍。高电流下会产生压降和发热，且内阻随工况变化。</p></details>
+<details class="term-item" data-kind="glossary"><summary>热失控</summary><p>异常放热反应持续加速的过程，可能引发喷气、火灾和蔓延等风险。</p></details>
+<details class="term-item" data-kind="glossary"><summary>循环寿命</summary><p>在规定充放电与温度条件下，性能下降到指定阈值之前的循环次数。</p></details>
+<details class="term-item" data-kind="glossary"><summary>日历寿命</summary><p>即使不频繁循环，电池性能也随时间、温度和存储条件变化。</p></details>
+<details class="term-item" data-kind="glossary"><summary>往返效率 RTE</summary><p>同一测量边界下，放电可取出的电能除以充电输入电能。</p></details>
+<details class="term-item" data-kind="glossary"><summary>转换效率</summary><p>某一转换环节输出有效电能与输入电能的比值。</p></details>
+<details class="term-item" data-kind="glossary"><summary>PCS效率</summary><p>变流器工作时的转换效率，随功率、环境和模式变化。</p></details>
+<details class="term-item" data-kind="glossary"><summary>峰谷套利</summary><p>在较低电价时充电，在较高电价时放电使用或出售，需要算损耗与全部成本。</p></details>
+<details class="term-item" data-kind="glossary"><summary>削峰填谷</summary><p>调整负荷曲线，减小某些时段的高峰用电需求。</p></details>
+<details class="term-item" data-kind="glossary"><summary>调频</summary><p>电力系统频率偏离额定值时，通过有功功率响应帮助平衡供需。</p></details>
+<details class="term-item" data-kind="glossary"><summary>抽水蓄能</summary><p>用电抽水到高水位，放水时利用重力势能驱动水轮发电机。</p></details>
+<details class="term-item" data-kind="glossary"><summary>压缩空气储能</summary><p>在压力介质中保存能量，之后释放并驱动发电过程。</p></details>
+<details class="term-item" data-kind="glossary"><summary>飞轮储能</summary><p>利用高速旋转物体的动能储能，常适用于快速响应。</p></details>
+<details class="term-item" data-kind="glossary"><summary>液流电池</summary><p>将活性物质储存在电解液储罐中，通过电堆发生电化学充放电反应。</p></details>
+<details class="term-item" data-kind="glossary"><summary>锂离子电容器 LIC</summary><p>结合电池型电极与电容型电极特征的混合储能器件。</p></details>
+<details class="term-item" data-kind="glossary"><summary>超级电容 EDLC</summary><p>通过电极界面双电层等机制储能，通常功率较高、能量密度相对较低。</p></details>
+<details class="term-item" data-kind="glossary"><summary>磷酸铁锂 LFP</summary><p>锂离子电池的一种正极化学体系，不等于一种独立于锂离子之外的电池。</p></details>
+<details class="term-item" data-kind="glossary"><summary>钠离子电池</summary><p>采用钠离子在电极间迁移的可充电电池体系。</p></details>
+<details class="term-item" data-kind="glossary"><summary>固态电池</summary><p>以固态电解质为重要特征的技术路线，不必然意味着完全无风险。</p></details>
+<details class="term-item" data-kind="glossary"><summary>氢储能</summary><p>把输入电能转化为氢等化学能，再在需要时使用，电-氢-电有转换损耗。</p></details>
+<details class="term-item" data-kind="glossary"><summary>光伏自发自用</summary><p>光伏电力优先就地消纳，配储能后还可把部分电能移至其他时段。</p></details>
+<details class="term-item" data-kind="glossary"><summary>孤岛运行</summary><p>局部电网在与主电网断开后独立维持供电，需要相应控制、保护和合规配置。</p></details>
+<details class="term-item" data-kind="glossary"><summary>防孤岛保护</summary><p>在某些电网失电或孤岛条件下检测并切离并网设备，保障人员和电网安全。</p></details>
+<details class="term-item" data-kind="glossary"><summary>LCOS</summary><p>Levelized Cost of Storage，按一定财务假设将生命周期成本与交付电能进行平准比较。</p></details>
+<details class="term-item" data-kind="glossary"><summary>LCOE</summary><p>Levelized Cost of Energy，发电平准化成本，不能直接等同于储能LCOS。</p></details>
+<details class="term-item" data-kind="glossary"><summary>热管理</summary><p>控制电芯与系统温度及温差的工程措施，包括风冷、液冷等。</p></details>
+<details class="term-item" data-kind="glossary"><summary>放电截止电压</summary><p>电芯放电时允许到达的电压下限，受制造商规定和测试工况约束。</p></details>
+<details class="term-item" data-kind="glossary"><summary>测试口径</summary><p>实验中的对象、质量范围、电压、倍率、温度、截止条件及测量边界。</p></details></div></section>
+<section class="manual-section" id="references"><div class="manual-section-head"><span class="eyebrow">04 / SOURCES</span><h2>参考资料与使用范围</h2><p>以下是原专题列出的参考资料，访问时以发布机构公布的现行版本为准。</p></div><ol class="manual-sources">
+            <li><a href="https://www.energy.gov/oe/storage-innovations-2030" target="_blank" rel="noopener noreferrer">美国能源部：Storage Innovations 2030</a><span>电化学、热储能、抽水蓄能、钠电池及其他储能技术路线的评估。</span></li>
+<li><a href="https://storagewiki.epri.com/index.php/Energy_Storage_101" target="_blank" rel="noopener noreferrer">EPRI：Energy Storage 101</a><span>不同技术的储能工作原理、适用时间尺度和指标比较。</span></li>
+<li><a href="https://www.energy.gov/cmei/systems/solar-integration-solar-energy-and-storage-basics" target="_blank" rel="noopener noreferrer">美国能源部：Solar Energy and Storage Basics</a><span>从日常能源使用理解光伏、化学储能、抽水蓄能和热储能。</span></li>
+<li><a href="https://atb.nrel.gov/electricity/2024/utility-scale_battery_storage" target="_blank" rel="noopener noreferrer">NREL：Utility-Scale Battery Storage</a><span>功率、能量、时长、往返效率和储能系统成本的建模。</span></li>
+<li><a href="https://www.energy.gov/cmei/2022-grid-energy-storage-technology-cost-and-performance-assessment" target="_blank" rel="noopener noreferrer">美国能源部：Grid Energy Storage Technology Cost and Performance Assessment</a><span>储能技术的技术经济比较与生命周期成本口径。</span></li>
+<li><a href="https://www.epa.gov/electronics-batteries-management/battery-energy-storage-systems-main-considerations-safe" target="_blank" rel="noopener noreferrer">美国环保署：Battery Energy Storage System Safety</a><span>大型电池储能系统的规划、安装、安全与事故响应。</span></li>
+<li><a href="https://www.iea.org/commentaries/battery-storage-is-scaling-up-and-taking-on-a-larger-system-role" target="_blank" rel="noopener noreferrer">IEA：Battery Storage Is Scaling Up</a><span>储能在能量平移、电网辅助服务和系统灵活性方面的应用。</span></li>
+            <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9147202/" target="_blank" rel="noopener noreferrer">A Comprehensive Review of Lithium-Ion Capacitor Technology (2022)</a><span>LIC 结构、工作原理、功率与能量性能、热管理。</span></li>
+            <li><a href="https://advanced.onlinelibrary.wiley.com/doi/10.1002/aenm.202200920" target="_blank" rel="noopener noreferrer">Design Rationale and Device Configuration of Lithium-Ion Capacitors (2022)</a><span>器件分类、典型性能及活性材料质量和电芯质量的区别。</span></li>
+            <li><a href="https://www.mdpi.com/1996-1073/14/4/979" target="_blank" rel="noopener noreferrer">Lithium-Ion Capacitors: A Review of Design and Active Materials (2021)</a><span>正负极材料、预嵌锂及电极匹配。</span></li>
+            <li><a href="https://betterbuildingssolutioncenter.energy.gov/sites/default/files/NREL-grid_services.pdf" target="_blank" rel="noopener noreferrer">NREL, An Introduction to Grid Services (2019)</a><span>电网调节服务的时间尺度与技术要求。</span></li>
+            <li><a href="https://onlinelibrary.wiley.com/doi/10.1002/smll.202401295" target="_blank" rel="noopener noreferrer">Solution-Based Deep Prelithiation for Lithium-Ion Capacitors with High Energy Density (2024)</a><span>一个有明确活性材料质量口径的研究实例。</span></li>
+            <li><a href="https://samrepo.nlr.gov/help/battery_storage_btm.html" target="_blank" rel="noopener noreferrer">NREL SAM, Battery Storage: Behind the Meter</a><span>系统建模中的 C倍率与直流功率关系。</span></li>
+          </ol><p class="manual-note">本手册中的公式、示意和工程算例需要结合明确的测试条件。系统设计、消防验收与采购应使用适用标准及实际产品数据。</p></section>
+</div></div></main><footer class="footer"><span>储能原理实验室 · 唯一主课程 + 知识手册</span><div><a href="./">主课程</a> · <a href="./labs.html">虚拟实验</a> · <a href="./workbook.html">计算训练</a></div></footer>
+</body></html>
