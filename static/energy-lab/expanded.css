@@ -115,3 +115,12 @@
 .eco-stages .eco-center small{color:#c2dac8}
 .eco-panel>p{font-size:12px;color:#718a79;margin:5px 0}
 @media(max-width:470px){.eco-stages>div{min-height:132px;padding:10px 3px}.eco-stages b{font-size:11px}.eco-stages small{font-size:9px}.cell-display.ecosystem{padding:20px 8px}}
+
+/* 四段式学习路径 */
+.course-roadmap{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:28px}
+.course-roadmap a{display:flex;flex-direction:column;gap:5px;min-width:0;border:1px solid #d4e2d8;background:#f9fbf4;border-radius:10px;padding:15px 13px;transition:background .15s}
+.course-roadmap a:hover{background:#e3eee5}
+.course-roadmap b{font-size:12px;color:#32634b;line-height:1.5}
+.course-roadmap span{font-size:11px;color:#7b907e;line-height:1.65}
+@media(max-width:950px){.course-roadmap{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:470px){.course-roadmap{grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}.course-roadmap a{padding:12px 10px}.course-roadmap b{font-size:11px}.course-roadmap span{font-size:10px}}
