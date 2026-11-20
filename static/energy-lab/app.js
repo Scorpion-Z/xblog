@@ -39,7 +39,7 @@ function renderSimulation(){
  setText("simElapsed",secondsLabel(sim.elapsed));
  setText("simRemaining",fmt(left,2)+" Wh");
  setText("simMessage",!labData.valid?"功率超限，请先降低外部负载。":fraction===0?"演示完成：在假设条件下，可用电能耗尽。":sim.running?"按设定速度模拟恒定负载工作。":"点击“开始”，观察可用电能变化。");
- setWidth("simProgress",fraction*100);setWidth("batteryFill",fraction*100);
+ setWidth("simProgress",fraction*100);$("batteryFill").style.height=Math.max(0,Math.min(100,fraction*100))+"%";
 }
 function tick(now){
  if(!sim.running)return;
@@ -61,7 +61,7 @@ document.querySelectorAll("[data-speed]").forEach(btn=>btn.addEventListener("cli
 document.addEventListener("visibilitychange",()=>{if(document.hidden&&sim.running){resetSimulation(true);setText("simStart","▶ 继续");}});
 function updateCap(){
  const f=number("capF"),vmax=number("capMax"),vmin=number("capMin");
- const valid=vmax>vmin,E=valid?.5*f*(vmax*vmax-vmin*vmin)/3600:0;
+ const valid=vmax>vmin,E=valid ? 0.5*f*(vmax*vmax-vmin*vmin)/3600 : 0;
  setText("capFLabel",fmt(f,0)+" F");setText("capMaxLabel",fmt(vmax,1)+" V");setText("capMinLabel",fmt(vmin,1)+" V");
  setText("capEnergy",fmt(E,3)+" Wh");setText("capNote",valid?"理想恒电容计算；实际器件需按测量曲线积分。":"最高电压必须大于截止电压，请调整参数。");
 }
