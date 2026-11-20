@@ -72,6 +72,7 @@
             </div>
           </div>
           <div class="hero-facts"><div><span>01</span><strong>从生活理解</strong><small>电费 · 发电 · 备用电</small></div><div><span>02</span><strong>从技术深入</strong><small>电池 · 电容 · 抽蓄</small></div><div><span>03</span><strong>从工程判断</strong><small>安全 · 成本 · 选型</small></div></div>
+          <div class="course-roadmap" aria-label="四阶段学习路径"><a href="#why"><b>阶段一 · 听得懂</b><span>生活用电、单位与储能技术</span></a><a href="#chemistries"><b>阶段二 · 看得明白</b><span>电池结构、倍率、系统组成</span></a><a href="#solar"><b>阶段三 · 能够判断</b><span>光伏、调频、成本与安全</span></a><a href="#design"><b>阶段四 · 动手应用</b><span>项目选型、术语与知识测验</span></a></div>
         </section>
 
         <section class="lesson section-pad alternating" id="why" data-section>
@@ -89,6 +90,9 @@
             <article class="unit"><span class="unit-num">03</span><span class="unit-symbol">W</span><h3>功率 · Power</h3><p>每秒传递或消耗电能的速度。100W 的灯每秒消耗 100J 电能。</p><code>单位：瓦特（W）</code></article>
             <article class="unit"><span class="unit-num">04</span><span class="unit-symbol">Wh</span><h3>电能 · Energy</h3><p>一段时间内总共传递或消耗多少电。100W 的灯亮 1 小时，消耗 100Wh。</p><code>单位：瓦时（Wh）</code></article>
           </div>
+          <div class="new-lab" id="householdLab"><span class="mini-label">LAB 00 · 从电费单学单位</span><h3>开一台电器，究竟用了几度电？</h3><p>用实际生活中最常见的电器功率、使用时间和电价来计算。这里假设功率保持不变，真实设备往往会随运行状态变化。</p>
+<div class="new-lab-grid"><div class="new-inputs"><label for="homeW">电器功率 <output id="homeWOut">1000 W</output></label><input id="homeW" type="range" min="10" max="3000" step="10" value="1000"><label for="homeH">使用时间 <output id="homeHOut">2 小时</output></label><input id="homeH" type="range" min=".5" max="24" step=".5" value="2"><label for="homePrice">电价 <output id="homePriceOut">0.60 元/度</output></label><input id="homePrice" type="range" min=".2" max="2" step=".05" value=".6"></div>
+<div class="new-results"><div><span>消耗的电能</span><strong id="homeEnergy">2 kWh</strong></div><div><span>换算成瓦时</span><strong id="homeWh">2000 Wh</strong></div><div class="result-highlight"><span>本次电费估算</span><strong id="homeCost">1.20 元</strong></div><small>电费仅按单一电价乘电能估算；真实账单可能有分时、电价阶梯和其他费用。</small></div></div></div>
           <div class="split-teaching"><div><span class="mini-label">基本关系</span><div class="math-display">P = U × I</div><p>功率（W）= 电压（V）× 电流（A），适用于直流瞬时功率。</p></div><div><span class="mini-label">恒定功率时</span><div class="math-display">E = P × t</div><p>电能（Wh）= 功率（W）× 时间（小时）。1 度电 = 1 kWh = 1000 Wh。</p></div></div>
           <div class="readable-story"><h3>Ah 和 Wh 有什么区别？</h3><p><b>Ah（安时）是电荷容量</b>，类似水桶能流出多少水；<b>Wh（瓦时）是电能</b>，还要看电压这个“水压”。同样 10Ah 的电池，按标称电压 3.7V 算约 37Wh；按 12V 算约 120Wh。两块电池的 Ah 一样，能储存的电能却不一样。</p><div class="math-display">E（Wh）≈ U（V）× Q（Ah）</div><p>这里采用标称电压近似，精确计算仍要积分。日常看到的手机电池“5000mAh”表示 5Ah，不能单凭这个数字判断设备有多少 Wh。</p></div>
 <div class="readable-story"><h3>直流 DC 与交流 AC</h3><p>手机、电芯内部主要使用直流电（DC），电网和家里插座常用交流电（AC）。直流电方向不周期反转；交流电方向随时间周期变化。逆变器把电池直流转换为交流，为家庭设备或电网供电，转换过程有损失。</p><p>前面的 P = U × I 适用于直流瞬时功率。对常见单相正弦交流，按有效值有 <strong>P = U × I × 功率因数</strong>。因此看到家用电器的电压和电流，也不能总是直接相乘就得到实际有功功率。</p></div>
@@ -344,8 +348,15 @@
         </section>
 
         <section class="lesson section-pad references" id="references" data-section>
-          <div class="section-head"><span class="chapter-no">10 / 延伸阅读</span><h2>参考资料与使用说明</h2><p>本专题以基础物理关系及公开学术资料为依据，示意图重新绘制。实例参数均为教学假设。</p></div>
+          <div class="section-head"><span class="chapter-no">10 / 延伸阅读</span><h2>参考资料与使用说明</h2><p>本专题以基础物理关系、能源部门公开教材和科研资料为依据。技术分类、案例计算、图解与模拟参数都注明了假设或限制，外部资料由对应机构维护。</p></div>
           <ol class="source-list">
+            <li><a href="https://www.energy.gov/oe/storage-innovations-2030" target="_blank" rel="noopener noreferrer">美国能源部：Storage Innovations 2030</a><span>电化学、热储能、抽水蓄能、钠电池及其他储能技术路线的评估。</span></li>
+<li><a href="https://storagewiki.epri.com/index.php/Energy_Storage_101" target="_blank" rel="noopener noreferrer">EPRI：Energy Storage 101</a><span>不同技术的储能工作原理、适用时间尺度和指标比较。</span></li>
+<li><a href="https://www.energy.gov/cmei/systems/solar-integration-solar-energy-and-storage-basics" target="_blank" rel="noopener noreferrer">美国能源部：Solar Energy and Storage Basics</a><span>从日常能源使用理解光伏、化学储能、抽水蓄能和热储能。</span></li>
+<li><a href="https://atb.nrel.gov/electricity/2024/utility-scale_battery_storage" target="_blank" rel="noopener noreferrer">NREL：Utility-Scale Battery Storage</a><span>功率、能量、时长、往返效率和储能系统成本的建模。</span></li>
+<li><a href="https://www.energy.gov/cmei/2022-grid-energy-storage-technology-cost-and-performance-assessment" target="_blank" rel="noopener noreferrer">美国能源部：Grid Energy Storage Technology Cost and Performance Assessment</a><span>储能技术的技术经济比较与生命周期成本口径。</span></li>
+<li><a href="https://www.epa.gov/electronics-batteries-management/battery-energy-storage-systems-main-considerations-safe" target="_blank" rel="noopener noreferrer">美国环保署：Battery Energy Storage System Safety</a><span>大型电池储能系统的规划、安装、安全与事故响应。</span></li>
+<li><a href="https://www.iea.org/commentaries/battery-storage-is-scaling-up-and-taking-on-a-larger-system-role" target="_blank" rel="noopener noreferrer">IEA：Battery Storage Is Scaling Up</a><span>储能在能量平移、电网辅助服务和系统灵活性方面的应用。</span></li>
             <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9147202/" target="_blank" rel="noopener noreferrer">A Comprehensive Review of Lithium-Ion Capacitor Technology (2022)</a><span>LIC 结构、工作原理、功率与能量性能、热管理。</span></li>
             <li><a href="https://advanced.onlinelibrary.wiley.com/doi/10.1002/aenm.202200920" target="_blank" rel="noopener noreferrer">Design Rationale and Device Configuration of Lithium-Ion Capacitors (2022)</a><span>器件分类、典型性能及活性材料质量和电芯质量的区别。</span></li>
             <li><a href="https://www.mdpi.com/1996-1073/14/4/979" target="_blank" rel="noopener noreferrer">Lithium-Ion Capacitors: A Review of Design and Active Materials (2021)</a><span>正负极材料、预嵌锂及电极匹配。</span></li>
