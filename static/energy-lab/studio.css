@@ -42,3 +42,14 @@
 .resource-nav a[aria-current=page]{background:#275e44;color:#fff}
 }
 @media(max-width:470px){.resource-nav{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:4px;padding:7px}.resource-nav a{font-size:10px;padding:7px 2px;text-align:center;white-space:normal}}
+
+/* 首屏清楚解释四个学习入口的分工 */
+.learning-hub{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px;padding:16px clamp(20px,5vw,60px) 5px;max-width:1320px;margin:auto}
+.learning-hub>a{display:flex;flex-direction:column;gap:6px;border:1px solid #d8e6db;background:#fff;border-radius:12px;padding:17px 15px;color:#42624a;min-width:0;transition:background .15s}
+.learning-hub>a:hover{background:#e5f3e7}
+.learning-hub>a[aria-current=page]{background:#e3f1e6;border-color:#b8d9c2}
+.learning-hub span{font-size:10px;font-weight:800;letter-spacing:.6px;color:#5a9470}
+.learning-hub strong{font-size:15px;color:#235839}
+.learning-hub small{font-size:11px;color:#7c9280;line-height:1.65}
+@media(max-width:1100px){.learning-hub{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:500px){.learning-hub{padding:12px 12px 2px;gap:6px}.learning-hub>a{padding:12px 10px}.learning-hub span{font-size:9px}.learning-hub strong{font-size:13px}.learning-hub small{font-size:10px}}
