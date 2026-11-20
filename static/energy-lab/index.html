@@ -5,14 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="light">
   <meta name="theme-color" content="#f5f4ef">
-  <meta name="description" content="储能原理实验室：从零理解电压、电流、瓦时、能量密度、C倍率、锂离子电容器和电力调频。附交互实验、公式推导与技术指标核验清单。">
+  <meta name="description" content="储能原理实验室：给零基础读者的完整储能课程。覆盖电学常识、抽水蓄能、电池、超级电容、储能电站、光伏、电价、安全、选型与交互计算。">
   <meta property="og:type" content="website">
   <meta property="og:title" content="储能原理实验室｜超能日志">
-  <meta property="og:description" content="从 1C 为什么是 60 分钟开始，学会判断 100Wh/kg 与 30C 是否靠谱。">
-  <title>储能原理实验室：从入门到专业判断｜超能日志</title>
+  <meta property="og:description" content="从日常用电开始，循序渐进掌握储能技术与工程应用，附交互实验与自测。">
+  <title>储能原理实验室：从零开始学储能｜超能日志</title>
   <link rel="icon" href="../favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="./expanded.css">
   <script src="./app.js" defer></script>
+  <script src="./expanded.js" defer></script>
 </head>
 <body>
   <div class="reading-progress" id="readingProgress" aria-hidden="true"></div>
@@ -22,17 +24,27 @@
       <a class="side-title" href="#top"><span class="tiny-stamp">EXPERIMENTAL LEARNING</span><strong>储能原理<br>实验室</strong><small>从入门到专业判断</small></a>
       <div class="side-caption">按章节学习</div>
       <nav class="side-nav" aria-label="章节目录">
-        <a href="#start" data-nav="start"><span>00</span>从一块电芯开始</a>
-        <a href="#electricity" data-nav="electricity"><span>01</span>认识电学单位</a>
-        <a href="#density" data-nav="density"><span>02</span>能量密度和倍率</a>
-        <a href="#lab" data-nav="lab"><span>03</span>充放电模拟实验</a>
-        <a href="#types" data-nav="types"><span>04</span>三种储能器件</a>
-        <a href="#physics" data-nav="physics"><span>05</span>电芯内部发生什么</a>
-        <a href="#engineering" data-nav="engineering"><span>06</span>从公式走向工程</a>
-        <a href="#grid" data-nav="grid"><span>07</span>电力调频实验</a>
-        <a href="#audit" data-nav="audit"><span>08</span>技术指标怎么审</a>
-        <a href="#quiz" data-nav="quiz"><span>09</span>知识测验</a>
-        <a href="#references" data-nav="references"><span>10</span>资料与边界</a>
+        <a href="#start" data-nav="start"><span>00</span>课程首页</a>
+        <a href="#why" data-nav="why"><span>01</span>为什么需要储能</a>
+        <a href="#electricity" data-nav="electricity"><span>02</span>电学单位与电费</a>
+        <a href="#forms" data-nav="forms"><span>03</span>六类储能技术</a>
+        <a href="#density" data-nav="density"><span>04</span>能量密度与C倍率</a>
+        <a href="#lab" data-nav="lab"><span>05</span>充放电模拟</a>
+        <a href="#chemistries" data-nav="chemistries"><span>06</span>六种电池技术</a>
+        <a href="#types" data-nav="types"><span>07</span>电池、电容与LIC</a>
+        <a href="#physics" data-nav="physics"><span>08</span>电芯内部原理</a>
+        <a href="#engineering" data-nav="engineering"><span>09</span>内阻、发热与寿命</a>
+        <a href="#systems" data-nav="systems"><span>10</span>电站设备与控制</a>
+        <a href="#solar" data-nav="solar"><span>11</span>光伏和日夜错配</a>
+        <a href="#economics" data-nav="economics"><span>12</span>效率和经济性</a>
+        <a href="#scenarios" data-nav="scenarios"><span>13</span>储能的六种用途</a>
+        <a href="#grid" data-nav="grid"><span>14</span>电网调频</a>
+        <a href="#safety" data-nav="safety"><span>15</span>安全与运维</a>
+        <a href="#audit" data-nav="audit"><span>16</span>科研指标评审</a>
+        <a href="#design" data-nav="design"><span>17</span>家庭备电选型</a>
+        <a href="#glossary" data-nav="glossary"><span>18</span>术语速查与路线</a>
+        <a href="#quiz" data-nav="quiz"><span>19</span>知识测验</a>
+        <a href="#references" data-nav="references"><span>20</span>参考资料与边界</a>
       </nav>
       <div class="side-foot"><span class="side-foot-dot"></span><span>离线可用 · 无需账号 · 纯前端</span></div>
     </aside>
@@ -44,12 +56,12 @@
           <div class="hero-meta"><span class="eyebrow"><i class="status-dot"></i> INTERACTIVE ENERGY LAB</span><span>知识专题 / 2026.11</span></div>
           <div class="hero-grid">
             <div>
-              <h1>一块电芯，<br><em>到底能做什么？</em></h1>
-              <p class="hero-sub">看到“100Wh/kg、30C”，应该想到什么？从电的基本单位出发，通过实验理解“存多少电”和“多快释放”，再学会检验产品宣传与科研目标。</p>
-              <div class="hero-actions"><a class="btn btn-primary" href="#electricity">从零开始 <span aria-hidden="true">↘</span></a><a class="btn btn-outline" href="#lab">直接做实验</a></div>
-              <div class="hero-hint"><span class="line-icon">◷</span> 建议阅读约 30 分钟，实验与测验可反复操作。</div>
+              <h1>储能，到底<br><em>是怎么回事？</em></h1>
+              <p class="hero-sub">从家里的电灯、光伏和停电备用讲起，认识电池、抽水蓄能、超级电容和氢储能；学会算电量、看功率、判断安全与成本，最后能独立阅读储能技术方案。零基础可以顺着学习。</p>
+              <div class="hero-actions"><a class="btn btn-primary" href="#why">从零开始 <span aria-hidden="true">↘</span></a><a class="btn btn-outline" href="#lab">直接做实验</a></div>
+              <div class="hero-hint"><span class="line-icon">◷</span> 21个章节 · 交互实验 · 术语速查 · 不必一次读完。</div>
             </div>
-            <div class="hero-visual" aria-label="示意图：相同电芯重量，储能与功率是两个不同维度">
+            <div class="hero-visual" aria-label="示意图：100Wh/kg与30C只是储能技术课程中的一个实验案例">
               <div class="visual-top"><span>01 / CELL SPECIFICATION</span><span class="indicator"><i></i> DEMO</span></div>
               <div class="cell-display">
                 <svg class="cell-art" viewBox="0 0 260 250" role="img" aria-label="示意电芯，旁边展示100瓦时每千克和30C">
@@ -60,10 +72,10 @@
                 </svg>
               </div>
               <div class="visual-bottom"><div><small>储存能力</small><strong>100 <span>Wh/kg</span></strong></div><div class="visual-sep"></div><div><small>放电倍率</small><strong>30 <span>C</span></strong></div></div>
-              <p class="visual-disclaimer">情景设定：用于教学的目标指标，非实测产品</p>
+              <p class="visual-disclaimer">其中一个实验的示意参数，非实测产品或行业基准</p>
             </div>
           </div>
-          <div class="hero-facts"><div><span>01</span><strong>储存电能</strong><small>Wh · kWh · Wh/kg</small></div><div><span>02</span><strong>释放速度</strong><small>W · kW · C 倍率</small></div><div><span>03</span><strong>真实边界</strong><small>损耗 · 温升 · 寿命</small></div></div>
+          <div class="hero-facts"><div><span>01</span><strong>从生活理解</strong><small>电费 · 发电 · 备用电</small></div><div><span>02</span><strong>从技术深入</strong><small>电池 · 电容 · 抽蓄</small></div><div><span>03</span><strong>从工程判断</strong><small>安全 · 成本 · 选型</small></div></div>
         </section>
 
         <section class="lesson section-pad alternating" id="why" data-section>
@@ -82,6 +94,8 @@
             <article class="unit"><span class="unit-num">04</span><span class="unit-symbol">Wh</span><h3>电能 · Energy</h3><p>一段时间内总共传递或消耗多少电。100W 的灯亮 1 小时，消耗 100Wh。</p><code>单位：瓦时（Wh）</code></article>
           </div>
           <div class="split-teaching"><div><span class="mini-label">基本关系</span><div class="math-display">P = U × I</div><p>功率（W）= 电压（V）× 电流（A），适用于直流瞬时功率。</p></div><div><span class="mini-label">恒定功率时</span><div class="math-display">E = P × t</div><p>电能（Wh）= 功率（W）× 时间（小时）。1 度电 = 1 kWh = 1000 Wh。</p></div></div>
+          <div class="readable-story"><h3>Ah 和 Wh 有什么区别？</h3><p><b>Ah（安时）是电荷容量</b>，类似水桶能流出多少水；<b>Wh（瓦时）是电能</b>，还要看电压这个“水压”。同样 10Ah 的电池，按标称电压 3.7V 算约 37Wh；按 12V 算约 120Wh。两块电池的 Ah 一样，能储存的电能却不一样。</p><div class="math-display">E（Wh）≈ U（V）× Q（Ah）</div><p>这里采用标称电压近似，精确计算仍要积分。日常看到的手机电池“5000mAh”表示 5Ah，不能单凭这个数字判断设备有多少 Wh。</p></div>
+<div class="readable-story"><h3>直流 DC 与交流 AC</h3><p>手机、电芯内部主要使用直流电（DC），电网和家里插座常用交流电（AC）。直流电方向不周期反转；交流电方向随时间周期变化。逆变器把电池直流转换为交流，为家庭设备或电网供电，转换过程有损失。</p><p>前面的 P = U × I 适用于直流瞬时功率。对常见单相正弦交流，按有效值有 <strong>P = U × I × 功率因数</strong>。因此看到家用电器的电压和电流，也不能总是直接相乘就得到实际有功功率。</p></div>
           <div class="note"><strong>从这里开始记</strong><p>W 像汽车的速度，Wh 像一段旅程的总里程。100W 与 100Wh 看起来相似，但衡量的是完全不同的事。</p></div>
         </section>
 
@@ -122,7 +136,7 @@
               <div class="control"><label for="crate">放电倍率 <output id="crateLabel">30 C</output></label><input id="crate" type="range" min="1" max="60" step="1" value="30"><div class="bounds"><span>1C</span><span>60C</span></div></div>
               <div class="control"><label for="load">外部负载 <output id="loadLabel">100 W</output></label><input id="load" type="range" min="10" max="5000" step="10" value="100"><div class="bounds"><span>10 W</span><span>5000 W</span></div></div>
               <div class="control"><label for="retain">该工况可用能量比例（假设） <output id="retainLabel">90%</output></label><input id="retain" type="range" min="40" max="100" step="5" value="90"><div class="bounds"><span>40%</span><span>100%</span></div></div>
-              <div class="control"><label for="eff">电能转换效率（假设） <output id="effLabel">95%</output></label><input id="eff" type="range" min="70" max="100" step="5" value="95"><div class="bounds"><span>70%</span><span>100%</span></div></div>
+              <div class="control"><label for="eff">从电芯到负载的转换效率（假设） <output id="effLabel">95%</output></label><input id="eff" type="range" min="70" max="100" step="5" value="95"><div class="bounds"><span>70%</span><span>100%</span></div></div>
               <p class="control-warning">可用能量比例与效率是独立的教学假设，不随倍率自动变化，不是任何真实产品的实测值。</p>
             </div>
             <div class="lab-output">
@@ -317,7 +331,7 @@
 <div class="new-lab" id="sizingLab"><span class="mini-label">LAB 07 · 家庭备电计算</span><h3>停电后，想让三种电器继续工作</h3><p>在示例中，假设三种设备同时工作指定小时数，按恒定功率计算。对于电机、压缩机等还有启动冲击功率，实际逆变器需要额外校核。</p>
 <div class="load-select-grid"><label><input type="checkbox" id="deviceLamp" checked><b>照明</b><small>60W</small><span>4 小时</span></label><label><input type="checkbox" id="deviceFridge" checked><b>冰箱（平均功率示例）</b><small>80W</small><span>8 小时</span></label><label><input type="checkbox" id="deviceRouter" checked><b>路由器</b><small>15W</small><span>8 小时</span></label></div>
 <div class="new-lab-grid"><div class="new-inputs"><label for="sizeHours">共同运行时间调整倍率 <output id="sizeHoursOut">1.0 倍</output></label><input id="sizeHours" type="range" min=".5" max="3" step=".5" value="1"><label for="sizeDOD">允许使用的电芯标称能量比例 <output id="sizeDODOut">80%</output></label><input id="sizeDOD" type="range" min="50" max="100" step="5" value="80"><label for="sizeEff">从电池到负载的综合转换效率 <output id="sizeEffOut">90%</output></label><input id="sizeEff" type="range" min="60" max="100" step="5" value="90"></div>
-<div class="new-results"><div><span>负载合计需要电能</span><strong id="sizeLoadE">1.00 kWh</strong></div><div><span>建议最低电池标称能量（计算值）</span><strong id="sizeBatteryE">1.39 kWh</strong></div><div><span>设备同时运行的平均功率</span><strong id="sizePeakP">155 W</strong></div><div class="result-highlight"><span>估算逆变器持续功率下限</span><strong id="sizeInverterP">172 W</strong></div><small>功率计算未覆盖电动机启动浪涌、容量衰减、极端温度、BMS限流及工程裕度，不能直接作为采购设计值。</small></div></div></div>
+<div class="new-results"><div><span>负载合计需要电能</span><strong id="sizeLoadE">1.00 kWh</strong></div><div><span>最低电池标称能量（计算值）</span><strong id="sizeBatteryE">1.39 kWh</strong></div><div><span>设备同时运行的平均功率</span><strong id="sizePeakP">155 W</strong></div><div class="result-highlight"><span>最低连续交流输出功率（不含裕度）</span><strong id="sizeInverterP">172 W</strong></div><small>功率计算未覆盖电动机启动浪涌、容量衰减、极端温度、BMS限流及工程裕度，不能直接作为采购设计值。</small></div></div></div>
 <div class="design-roadmap"><h3>真正做项目，还需要六步</h3><ol><li><b>确定用途。</b>是调频、晚间供电、备用电源还是峰谷套利？任务不同，设计不同。</li><li><b>画负荷曲线。</b>记录每个时段需要多少kW、持续多久，不能只看平均负荷。</li><li><b>定义能量边界。</b>明确容量是电芯直流侧还是系统交流侧，考虑可用SOC窗口和损耗。</li><li><b>检查约束。</b>包括电压电流、热管理、消防、空间、并网标准和维护能力。</li><li><b>算长期经济账。</b>把投资、充电成本、损耗、衰减、运维、更换及收益机制放在一起。</li><li><b>用数据复核。</b>验证典型和极端工况，核对产品测试报告，避免只靠宣传参数。</li></ol></div>
 <div class="note"><strong>为什么不能只看电池的 kWh？</strong><p>如果一台空调需要 1500W，而储能设备的逆变器只能持续输出 500W，即使它有 20kWh 电能，也无法按预期驱动这台空调。先确认功率能不能带得动，再确认电量能用多久。</p></div>
 </section>
@@ -327,8 +341,8 @@
 <div class="learning-tracks"><h3>建议的学习顺序</h3><div><a href="#why"><strong>完全零基础</strong><small>为什么储能 → 电学单位 → 技术分类 → 电池类型</small></a><a href="#lab"><strong>喜欢动手</strong><small>倍率模拟 → 峰谷电价 → 家庭备用容量</small></a><a href="#systems"><strong>关注工程应用</strong><small>系统组成 → 安全 → 电网应用 → 选型与指标评审</small></a></div></div>
 </section>
 <section class="lesson section-pad" id="quiz" data-section>
-          <div class="section-head"><span class="chapter-no">09 / 自测</span><h2>用十道题检验理解</h2><p>选择答案后提交，逐题查看理由。考察的都是前面真正学过的内容。</p></div>
-          <div class="quiz-top"><div><span class="mini-label">KNOWLEDGE CHECK</span><h3>储能基础与指标辨析</h3></div><div class="quiz-status"><strong id="quizAnswered">0/10</strong><span>已作答</span></div></div>
+          <div class="section-head"><span class="chapter-no">09 / 自测</span><h2>用二十道题检验理解</h2><p>选择答案后提交，逐题查看理由。考察的都是前面真正学过的内容。</p></div>
+          <div class="quiz-top"><div><span class="mini-label">KNOWLEDGE CHECK</span><h3>储能基础与指标辨析</h3></div><div class="quiz-status"><strong id="quizAnswered">0/20</strong><span>已作答</span></div></div>
           <div id="quizMount" class="quiz-items"></div>
           <div class="quiz-actions"><button class="btn btn-primary" id="submitQuiz" type="button">检查答案</button><button class="btn btn-outline" id="resetQuiz" type="button">重新答题</button><div id="quizResult" class="quiz-result" aria-live="polite"></div></div>
         </section>
