@@ -5,6 +5,13 @@ const num=id=>Number(el(id)?.value||0);
 const fmt=(v,d=2)=>Number.isFinite(v)?v.toLocaleString("zh-CN",{maximumFractionDigits:d}):"—";
 const txt=(id,s)=>{if(el(id))el(id).textContent=s;};
 const bind=(ids,fn)=>ids.forEach(id=>el(id)?.addEventListener("input",fn));
+function household(){
+ const watts=num("homeW"),hours=num("homeH"),price=num("homePrice"),kwh=watts*hours/1000;
+ txt("homeWOut",fmt(watts,0)+" W");txt("homeHOut",fmt(hours,1)+" 小时");
+ txt("homePriceOut",fmt(price,2)+" 元/度");txt("homeEnergy",fmt(kwh,3)+" kWh");
+ txt("homeWh",fmt(watts*hours,1)+" Wh");txt("homeCost",fmt(kwh*price,2)+" 元");
+}
+bind(["homeW","homeH","homePrice"],household);
 function arbitrage(){
  const buy=num("arbBuy"),sell=num("arbSell"),input=num("arbIn"),eta=num("arbEta")/100;
  const out=input*eta,cost=input*buy,revenue=out*sell,gross=revenue-cost;
@@ -92,5 +99,5 @@ function renderGlossary(){
  txt("glossaryCount","共 "+glossary.length+" 个术语，匹配 "+filtered.length+" 个。"+(filtered.length===0?" 请换一个关键词。":""));
 }
 el("glossarySearch")?.addEventListener("input",renderGlossary);
-arbitrage();sizing();renderGlossary();
+household();arbitrage();sizing();renderGlossary();
 })();
