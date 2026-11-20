@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <meta name="theme-color" content="#f5f4ef">
+  <meta name="description" content="储能原理实验室：从零理解电压、电流、瓦时、能量密度、C倍率、锂离子电容器和电力调频。附交互实验、公式推导与技术指标核验清单。">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="储能原理实验室｜超能日志">
+  <meta property="og:description" content="从 1C 为什么是 60 分钟开始，学会判断 100Wh/kg 与 30C 是否靠谱。">
+  <title>储能原理实验室：从入门到专业判断｜超能日志</title>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./styles.css">
+  <script src="./app.js" defer></script>
+</head>
+<body>
+  <div class="reading-progress" id="readingProgress" aria-hidden="true"></div>
+  <div class="app-shell">
+    <aside class="side" id="side">
+      <div class="side-brand"><a href="../" class="back-link" title="返回超能日志">← 超能日志</a><span class="side-mark">FIELD NOTES / 01</span></div>
+      <a class="side-title" href="#top"><span class="tiny-stamp">EXPERIMENTAL LEARNING</span><strong>储能原理<br>实验室</strong><small>从入门到专业判断</small></a>
+      <div class="side-caption">按章节学习</div>
+      <nav class="side-nav" aria-label="章节目录">
+        <a href="#start" data-nav="start"><span>00</span>从一块电芯开始</a>
+        <a href="#electricity" data-nav="electricity"><span>01</span>认识电学单位</a>
+        <a href="#density" data-nav="density"><span>02</span>能量密度和倍率</a>
+        <a href="#lab" data-nav="lab"><span>03</span>充放电模拟实验</a>
+        <a href="#types" data-nav="types"><span>04</span>三种储能器件</a>
+        <a href="#physics" data-nav="physics"><span>05</span>电芯内部发生什么</a>
+        <a href="#engineering" data-nav="engineering"><span>06</span>从公式走向工程</a>
+        <a href="#grid" data-nav="grid"><span>07</span>电力调频实验</a>
+        <a href="#audit" data-nav="audit"><span>08</span>技术指标怎么审</a>
+        <a href="#quiz" data-nav="quiz"><span>09</span>知识测验</a>
+        <a href="#references" data-nav="references"><span>10</span>资料与边界</a>
+      </nav>
+      <div class="side-foot"><span class="side-foot-dot"></span><span>离线可用 · 无需账号 · 纯前端</span></div>
+    </aside>
+
+    <div class="main-wrap">
+      <header class="mobile-bar"><a href="../">← 超能日志</a><strong>储能原理实验室</strong><button class="menu-toggle" id="menuToggle" aria-controls="side" aria-expanded="false" type="button">目录 ☰</button></header>
+      <main id="top">
+        <section class="hero section-pad" id="start" data-section>
+          <div class="hero-meta"><span class="eyebrow"><i class="status-dot"></i> INTERACTIVE ENERGY LAB</span><span>知识专题 / 2026.11</span></div>
+          <div class="hero-grid">
+            <div>
+              <h1>一块电芯，<br><em>到底能做什么？</em></h1>
+              <p class="hero-sub">看到“100Wh/kg、30C”，应该想到什么？从电的基本单位出发，通过实验理解“存多少电”和“多快释放”，再学会检验产品宣传与科研目标。</p>
+              <div class="hero-actions"><a class="btn btn-primary" href="#electricity">从零开始 <span aria-hidden="true">↘</span></a><a class="btn btn-outline" href="#lab">直接做实验</a></div>
+              <div class="hero-hint"><span class="line-icon">◷</span> 建议阅读约 30 分钟，实验与测验可反复操作。</div>
+            </div>
+            <div class="hero-visual" aria-label="示意图：相同电芯重量，储能与功率是两个不同维度">
+              <div class="visual-top"><span>01 / CELL SPECIFICATION</span><span class="indicator"><i></i> DEMO</span></div>
+              <div class="cell-display">
+                <svg class="cell-art" viewBox="0 0 260 250" role="img" aria-label="示意电芯，旁边展示100瓦时每千克和30C">
+                  <defs><linearGradient id="cellgrad" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#405b59"/><stop offset="1" stop-color="#173431"/></linearGradient><pattern id="cellgrid" width="14" height="14" patternUnits="userSpaceOnUse"><path d="M14 0H0V14" fill="none" stroke="#d9ebda" stroke-opacity=".11" stroke-width=".7"/></pattern></defs>
+                  <rect x="55" y="28" rx="23" width="150" height="194" fill="#d2ded5"/><rect x="63" y="34" rx="19" width="134" height="182" fill="url(#cellgrad)"/><rect x="63" y="34" rx="19" width="134" height="182" fill="url(#cellgrid)"/>
+                  <rect x="111" y="13" width="40" height="19" rx="5" fill="#b8c2b9"/><rect x="123" y="8" width="16" height="10" rx="3" fill="#7c8d84"/><text x="130" y="101" text-anchor="middle" fill="#e6f2e5" font-size="12" letter-spacing="3">CELL</text><text x="130" y="139" text-anchor="middle" fill="white" font-size="36" font-weight="700">100</text><text x="130" y="160" text-anchor="middle" fill="#d4e8e0" font-size="13">Wh/kg</text>
+                  <path d="M91 183H169" stroke="#b7d6c8" stroke-width="1.5" stroke-dasharray="4 5"/><text x="130" y="201" text-anchor="middle" fill="#c2dacf" font-size="13">30C</text>
+                </svg>
+              </div>
+              <div class="visual-bottom"><div><small>储存能力</small><strong>100 <span>Wh/kg</span></strong></div><div class="visual-sep"></div><div><small>放电倍率</small><strong>30 <span>C</span></strong></div></div>
+              <p class="visual-disclaimer">情景设定：用于教学的目标指标，非实测产品</p>
+            </div>
+          </div>
+          <div class="hero-facts"><div><span>01</span><strong>储存电能</strong><small>Wh · kWh · Wh/kg</small></div><div><span>02</span><strong>释放速度</strong><small>W · kW · C 倍率</small></div><div><span>03</span><strong>真实边界</strong><small>损耗 · 温升 · 寿命</small></div></div>
+        </section>
+
+        <section class="lesson section-pad" id="electricity" data-section>
+          <div class="section-head"><span class="chapter-no">01 / 基础</span><h2>先把四个单位分清楚</h2><p>理解储能之前，最容易混淆的往往是 W 和 Wh。把它们放在同一个例子里看。</p></div>
+          <div class="units-grid">
+            <article class="unit"><span class="unit-num">01</span><span class="unit-symbol">V</span><h3>电压 · Voltage</h3><p>可以类比水管中的压差。电压越高，在相同电流下传递的功率越大。</p><code>单位：伏特（V）</code></article>
+            <article class="unit"><span class="unit-num">02</span><span class="unit-symbol">A</span><h3>电流 · Current</h3><p>单位时间内流过的电荷量。可以类比水管中的水流量。</p><code>单位：安培（A）</code></article>
+            <article class="unit"><span class="unit-num">03</span><span class="unit-symbol">W</span><h3>功率 · Power</h3><p>每秒传递或消耗电能的速度。100W 的灯每秒消耗 100J 电能。</p><code>单位：瓦特（W）</code></article>
+            <article class="unit"><span class="unit-num">04</span><span class="unit-symbol">Wh</span><h3>电能 · Energy</h3><p>一段时间内总共传递或消耗多少电。100W 的灯亮 1 小时，消耗 100Wh。</p><code>单位：瓦时（Wh）</code></article>
+          </div>
+          <div class="split-teaching"><div><span class="mini-label">基本关系</span><div class="math-display">P = U × I</div><p>功率（W）= 电压（V）× 电流（A），适用于直流瞬时功率。</p></div><div><span class="mini-label">恒定功率时</span><div class="math-display">E = P × t</div><p>电能（Wh）= 功率（W）× 时间（小时）。1 度电 = 1 kWh = 1000 Wh。</p></div></div>
+          <div class="note"><strong>从这里开始记</strong><p>W 像汽车的速度，Wh 像一段旅程的总里程。100W 与 100Wh 看起来相似，但衡量的是完全不同的事。</p></div>
+        </section>
+
+        <section class="lesson section-pad alternating" id="density" data-section>
+          <div class="section-head"><span class="chapter-no">02 / 关键指标</span><h2>100Wh/kg 与 30C，分别管什么？</h2><p>能量密度看“同样重量存多少电”；倍率看“按额定容量的多少倍电流工作”。</p></div>
+          <div class="concept-grid">
+            <article class="concept">
+              <span class="eyebrow">SPECIFIC ENERGY</span><h3>100 <small>Wh/kg</small></h3><p>1 kg 电芯，标称能量为 100 Wh；10 kg 电芯，标称能量为 1000 Wh，也就是 1 度电。</p><div class="math-display small-math">E = m × D</div><p class="fine">E 是电能（Wh），m 是质量（kg），D 是质量能量密度（Wh/kg）。</p>
+            </article>
+            <article class="concept concept-dark">
+              <span class="eyebrow">C-RATE</span><h3>30 <small>C</small></h3><p>30C 放电电流等于额定 Ah 容量的 30 倍。若电流始终保持这一数值，理论上 1/30 小时放出额定 Ah 容量。</p><div class="math-display small-math">I = r × Q</div><p class="fine">I 为安培（A），r 为倍率（h⁻¹），Q 为额定安时容量（Ah）。</p>
+            </article>
+          </div>
+          <div class="derivation"><span class="mini-label">为什么时间公式里有 60？</span><div class="derivation-steps"><div><b>1C</b><span>1 小时<br>= 60 分钟</span></div><b class="arrow">→</b><div><b>2C</b><span>60 ÷ 2<br>= 30 分钟</span></div><b class="arrow">→</b><div class="emphasis"><b>30C</b><span>60 ÷ 30<br>= 2 分钟</span></div></div><div class="math-display">t（分钟）= 60 ÷ r</div><p>60 只来自“1 小时 = 60 分钟”。这里的 2 分钟是理想恒流时间，不保证真实电芯在 30C 下释放全部标称 Wh 能量。充电的 30C 能力也不能从放电 30C 自动推导。</p></div>
+          <details class="expand"><summary>进阶：为什么 P ≈ E × r 只是估算？</summary><p>按额定电压 U<sub>nom</sub>，有 E<sub>nom</sub>≈U<sub>nom</sub>×Q。倍率电流 I=r×Q，因此 P<sub>nom</sub>≈U<sub>nom</sub>×I≈E<sub>nom</sub>×r。实际电压 U 会随 SOC、电流与温度变化，P=U(t)I(t)。必须用实测电压与电流积分得到实际放电能量。</p></details>
+        </section>
+
+        <section class="lesson section-pad" id="lab" data-section>
+          <div class="section-head"><span class="chapter-no">03 / 交互实验</span><h2>亲手调整一块电芯</h2><p>从规划中的“100Wh/kg、30C”起步，调节重量、能量密度、倍率和负载。先用理想公式计算，再人为加入损耗假设。</p></div>
+          <div class="lab-layout">
+            <div class="lab-controls">
+              <div class="lab-title"><span class="mini-label">LAB 01 · 电量与倍率</span><button type="button" class="small-button" id="resetLab">重置参数</button></div>
+              <div class="preset-row" role="group" aria-label="实验预设"><button type="button" data-preset="base" class="selected">规划目标</button><button type="button" data-preset="slow">1C 对比</button><button type="button" data-preset="heavy">10kg 电芯</button></div>
+              <div class="control"><label for="mass">电芯质量 <output id="massLabel">1 kg</output></label><input id="mass" type="range" min="0.5" max="20" step="0.5" value="1"><div class="bounds"><span>0.5 kg</span><span>20 kg</span></div></div>
+              <div class="control"><label for="densityInput">能量密度 <output id="densityLabel">100 Wh/kg</output></label><input id="densityInput" type="range" min="10" max="250" step="5" value="100"><div class="bounds"><span>10 Wh/kg</span><span>250 Wh/kg</span></div></div>
+              <div class="control"><label for="crate">放电倍率 <output id="crateLabel">30 C</output></label><input id="crate" type="range" min="1" max="60" step="1" value="30"><div class="bounds"><span>1C</span><span>60C</span></div></div>
+              <div class="control"><label for="load">外部负载 <output id="loadLabel">100 W</output></label><input id="load" type="range" min="10" max="5000" step="10" value="100"><div class="bounds"><span>10 W</span><span>5000 W</span></div></div>
+              <div class="control"><label for="retain">高倍率可用能量比例（假设） <output id="retainLabel">90%</output></label><input id="retain" type="range" min="40" max="100" step="5" value="90"><div class="bounds"><span>40%</span><span>100%</span></div></div>
+              <div class="control"><label for="eff">电能转换效率（假设） <output id="effLabel">95%</output></label><input id="eff" type="range" min="70" max="100" step="5" value="95"><div class="bounds"><span>70%</span><span>100%</span></div></div>
+              <p class="control-warning">可用能量比例与效率是独立的教学假设，不随倍率自动变化，不是任何真实产品的实测值。</p>
+            </div>
+            <div class="lab-output">
+              <div class="output-header"><span>实时计算</span><span class="live-dot">● LIVE</span></div>
+              <div class="metric-group"><div><small>标称电能</small><strong id="outEnergy">100 <i>Wh</i></strong></div><div><small>名义最大功率</small><strong id="outPower">3,000 <i>W</i></strong></div><div><small>最大倍率理想放电时长</small><strong id="outDuration">2 <i>分钟</i></strong></div><div><small>外部可用电能（含假设损耗）</small><strong id="outUsable">85.5 <i>Wh</i></strong></div></div>
+              <div class="load-feedback" id="loadFeedback" role="status">当前 100W 负载处于名义功率上限以内。</div>
+              <div class="output-time"><div><span>按当前负载连续工作</span><strong id="outRuntime">51.3 分钟</strong></div><span id="runtimeExplain">以给定可用能量、恒功率负载估算</span></div>
+              <div class="power-track"><div class="power-labels"><span>负载占名义功率上限</span><b id="powerRatio">3.3%</b></div><div class="track"><div id="powerFill"></div></div></div>
+              <div class="mini-compare"><div class="mini-row"><span>1C</span><div><i style="width:12%"></i></div><small>60分钟</small></div><div class="mini-row"><span>10C</span><div><i style="width:42%"></i></div><small>6分钟</small></div><div class="mini-row hot"><span>30C</span><div><i style="width:94%"></i></div><small>2分钟</small></div></div>
+            </div>
+          </div>
+          <div class="sim-box">
+            <div class="sim-heading"><div><span class="mini-label">LAB 02 · 时间流逝</span><h3>看着电量一点点减少</h3><p>模拟负载持续耗电，可将时间加速。不做真实电芯电化学仿真。</p></div><div class="sim-buttons"><button type="button" class="btn btn-primary" id="simStart">▶ 开始</button><button type="button" class="btn btn-outline" id="simReset">↺ 重来</button></div></div>
+            <div class="sim-layout"><div class="battery-picture"><div class="battery-case"><div class="battery-tip"></div><div class="battery-fill" id="batteryFill"></div><strong id="socLabel">100%</strong></div><span>SOC · 剩余可用电量</span></div><div class="sim-summary"><div><span>已模拟运行</span><strong id="simElapsed">0 秒</strong></div><div><span>剩余可供外部使用电能</span><strong id="simRemaining">85.5 Wh</strong></div><div class="sim-progress"><div id="simProgress"></div></div><div class="sim-clock-note" id="simMessage">点击“开始”，观察电池液面变化。</div><div class="speed-controls"><span>演示速度</span><button type="button" data-speed="60" class="speed active">60倍</button><button type="button" data-speed="600" class="speed">600倍</button><button type="button" data-speed="3600" class="speed">3600倍</button></div></div></div>
+          </div>
+          <div class="takeaway"><span>实验观察</span><p>倍率决定这块电芯允许的名义最大电流；实际接了多大负载，就按多大的功率放电。因此，30C 电芯接一个小灯泡，并不会在 2 分钟后必然没电。</p></div>
+        </section>
+
+        <section class="lesson section-pad alternating" id="types" data-section>
+          <div class="section-head"><span class="chapter-no">04 / 器件家族</span><h2>锂电池、超级电容与锂离子电容器</h2><p>三种器件解决的问题不同。很难用单一指标评定哪个“更先进”。</p></div>
+          <div class="device-grid">
+            <article class="device"><div class="device-icon icon-battery"><i></i><i></i><i></i><i></i></div><span class="device-tag">LIB</span><h3>锂离子电池</h3><p>强调较高能量密度，适合需要持续供电的场景。充放电受电极反应速度、热管理等约束。</p><div class="device-strength"><span>长处</span><strong>能存较多电</strong></div><small>应用示例：汽车动力电池、小时级储能</small></article>
+            <article class="device"><div class="device-icon icon-cap"><i></i><i></i></div><span class="device-tag">EDLC</span><h3>双电层超级电容</h3><p>通过电极表面电荷吸附储能，功率和循环寿命通常突出，但单位质量存储的电能较少。</p><div class="device-strength"><span>长处</span><strong>快速高功率</strong></div><small>应用示例：短脉冲、制动能量回收</small></article>
+            <article class="device featured"><div class="device-icon icon-hybrid"><i></i><i></i><i></i></div><span class="device-tag">LIC</span><h3>锂离子电容器</h3><p>在同一器件中组合电池型负极和电容型正极，尝试兼顾能量密度与输出功率。</p><div class="device-strength"><span>长处</span><strong>兼顾两类需求</strong></div><small>应用示例：高频次短时功率调节</small></article>
+          </div>
+          <div class="ragone"><div class="ragone-title"><div><span class="mini-label">RAGONE · 定性示意</span><h3>储能技术的两条坐标轴</h3></div><span>不代表具体产品性能</span></div>
+            <svg viewBox="0 0 740 360" class="ragone-svg" role="img" aria-label="示意图：纵轴能量密度向上增大，横轴功率密度向右增大；锂离子电池偏高能量，超级电容偏高功率，锂离子电容器介于二者之间">
+              <defs><pattern id="rg" width="58" height="50" patternUnits="userSpaceOnUse"><path d="M58 0H0V50" fill="none" stroke="#e0e4dc" stroke-width="1"/></pattern></defs>
+              <rect x="88" y="30" width="600" height="260" rx="4" fill="url(#rg)"/><path d="M88 20V290H700" fill="none" stroke="#78847b" stroke-width="2"/><path d="M81 30L88 18L95 30M688 283L700 290L688 297" fill="none" stroke="#78847b" stroke-width="2"/><text x="390" y="340" text-anchor="middle" font-size="15" fill="#525e57">功率密度 W/kg → 更大</text><text x="26" y="162" text-anchor="middle" transform="rotate(-90 26 162)" font-size="15" fill="#525e57">能量密度 Wh/kg → 更大</text>
+              <ellipse cx="260" cy="103" rx="123" ry="59" fill="#dce7bc" opacity=".85"/><ellipse cx="425" cy="179" rx="139" ry="71" fill="#c1ded5" opacity=".86"/><ellipse cx="598" cy="248" rx="92" ry="41" fill="#f6dcc1" opacity=".92"/>
+              <text x="260" y="102" text-anchor="middle" font-size="21" font-weight="700" fill="#36412a">锂离子电池</text><text x="260" y="124" text-anchor="middle" font-size="12" fill="#516043">更偏高能量</text>
+              <text x="425" y="178" text-anchor="middle" font-size="21" font-weight="700" fill="#234c44">锂离子电容器</text><text x="425" y="201" text-anchor="middle" font-size="12" fill="#467166">能量与功率的折中</text>
+              <text x="598" y="249" text-anchor="middle" font-size="17" font-weight="700" fill="#754b2f">超级电容</text>
+            </svg>
+            <p class="fine">本图只说明一般性能取向，并非按比例绘制。真实 Ragone 图需要用同一测试对象、同一质量口径、明确工况的实测能量和功率作图。参考资料见文末 [1][2]。</p>
+          </div>
+          <div class="note"><strong>重要的质量口径</strong><p>论文中 100Wh/kg 可能只除以两极活性物质的质量；商品电芯还包括集流体、隔膜、电解液、外壳等。比较时必须看分母到底包含什么。</p></div>
+        </section>
+
+        <section class="lesson section-pad" id="physics" data-section>
+          <div class="section-head"><span class="chapter-no">05 / 原理深入</span><h2>电芯内部怎样存电？</h2><p>锂离子电容器把两种储能机制放进同一个器件：负极具有电池型嵌锂行为，正极主要通过表面吸附储能。</p></div>
+          <div class="chem-card"><div class="chem-head"><span class="mini-label">LIC STRUCTURE · 概念图</span><span>非真实剖面比例</span></div>
+            <svg class="chem-svg" viewBox="0 0 800 270" role="img" aria-label="锂离子电容器结构概念图：左为预嵌锂碳负极，中为电解液和隔膜，右为多孔活性炭正极，锂离子在两者间迁移">
+              <rect x="30" y="42" width="224" height="176" rx="13" fill="#344f4c"/><rect x="49" y="61" width="185" height="138" rx="9" fill="#2c4743" stroke="#7eaca0"/><g fill="#afddc7"><circle cx="82" cy="92" r="10"/><circle cx="147" cy="120" r="10"/><circle cx="197" cy="86" r="10"/><circle cx="103" cy="165" r="10"/><circle cx="189" cy="173" r="10"/></g><g fill="#344f4c" font-size="10" text-anchor="middle" font-weight="700"><text x="82" y="96">Li</text><text x="147" y="124">Li</text><text x="197" y="90">Li</text><text x="103" y="169">Li</text><text x="189" y="177">Li</text></g>
+              <rect x="289" y="42" width="225" height="176" rx="13" fill="#e4eee9" stroke="#bdd0c5"/><path d="M400 53V207" stroke="#88aca4" stroke-width="6" stroke-dasharray="6 7"/><g fill="#578e82"><circle cx="335" cy="92" r="9"/><circle cx="458" cy="118" r="9"/><circle cx="350" cy="175" r="9"/><circle cx="469" cy="177" r="9"/></g><g fill="#fff" font-size="10" text-anchor="middle"><text x="335" y="96">+</text><text x="458" y="122">+</text><text x="350" y="179">+</text><text x="469" y="181">+</text></g>
+              <rect x="548" y="42" width="224" height="176" rx="13" fill="#e9d9bd"/><g fill="none" stroke="#b6844e" stroke-width="7" stroke-linecap="round"><path d="M581 82C607 44 632 139 669 82S725 116 737 75"/><path d="M577 171C625 121 653 221 723 168"/><path d="M593 113C627 144 655 112 710 139"/></g><g fill="#7b512a"><circle cx="618" cy="92" r="8"/><circle cx="686" cy="149" r="8"/><circle cx="609" cy="170" r="8"/></g>
+              <text x="142" y="245" text-anchor="middle" fill="#344f4c" font-size="18" font-weight="700">电池型负极</text><text x="142" y="263" text-anchor="middle" fill="#64766b" font-size="12">预嵌锂碳材料</text><text x="401" y="245" text-anchor="middle" fill="#344f4c" font-size="18" font-weight="700">隔膜 / 电解液</text><text x="659" y="245" text-anchor="middle" fill="#344f4c" font-size="18" font-weight="700">电容型正极</text><text x="659" y="263" text-anchor="middle" fill="#64766b" font-size="12">多孔活性炭</text>
+            </svg><p class="fine">示意用途：区分两极储能机制，不表达电子与离子的完整传输路径。资料见 [1][3]。</p></div>
+          <div class="tech-steps"><article><span>01 / 双电层储能</span><h3>电荷在表面排列</h3><p>电极表面与电解液离子之间形成双电层。功率响应快，但受可利用表面积和工作电压等因素制约。</p></article><article><span>02 / 嵌入反应</span><h3>锂离子进入碳材料结构</h3><p>电池型负极通过嵌入和脱嵌锂离子储能。预嵌锂有助于建立合适的电极电位，制造一致性也是难点。</p></article><article><span>03 / 两极匹配</span><h3>谁慢，谁可能限制整机</h3><p>电极容量配比、离子传输速度、内阻、工作电压窗口，都会同时影响能量、功率和寿命。</p></article></div>
+          <div class="formula-lab"><div><span class="mini-label">LAB 03 · 理想电容能量</span><h3>电容器为什么有 ½CV²？</h3><p>对近似恒定电容，放电从上限电压到下限电压，释放的能量与两个电压的平方差有关。</p><div class="math-display">E = ½ × F × (U²<sub>max</sub> − U²<sub>min</sub>) ÷ 3600</div><p class="fine">E 单位 Wh，F 为电容（法拉），U 为伏特。除以 3600 是把焦耳换成瓦时：1Wh=3600J。</p></div>
+            <div class="formula-controls"><div class="control"><label for="capF">等效电容 <output id="capFLabel">1000 F</output></label><input id="capF" type="range" min="100" max="5000" step="100" value="1000"></div><div class="control"><label for="capMax">最高电压 <output id="capMaxLabel">3.8 V</output></label><input id="capMax" type="range" min="2.5" max="4.2" step="0.1" value="3.8"></div><div class="control"><label for="capMin">截止电压 <output id="capMinLabel">2.2 V</output></label><input id="capMin" type="range" min="1" max="3.8" step="0.1" value="2.2"></div><div class="formula-result"><small>理想可释放电能</small><strong id="capEnergy">1.33 Wh</strong><span id="capNote">电压区间越小，可用能量越少。</span></div></div>
+          </div>
+          <div class="note"><strong>适用范围</strong><p>½FΔU² 是常电容近似模型。锂离子电容器的等效电容可能随电压、倍率、温度变化，准确可用能量需要对实测电压、电流进行积分。</p></div>
+        </section>
+
+        <section class="lesson section-pad alternating" id="engineering" data-section>
+          <div class="section-head"><span class="chapter-no">06 / 工程视角</span><h2>为什么高倍率更难做？</h2><p>大电流会造成内阻压降与发热。设计必须同时考虑热管理、工作电压窗口和寿命。</p></div>
+          <div class="math-row"><div><span class="mini-label">电压跌落（简化）</span><div class="math-display">ΔU = I × R</div><p>电流越大，端电压下降越明显，可能更早触及截止电压。</p></div><div><span class="mini-label">电阻发热（简化）</span><div class="math-display">P<sub>heat</sub> = I² × R</div><p>电流变成 2 倍，电阻热功率在电阻不变时变成 4 倍。</p></div></div>
+          <div class="formula-lab ohm-box"><div><span class="mini-label">LAB 04 · 内阻与温升风险</span><h3>提高电流，热量增长有多快？</h3><p>调节电流与内阻。此处 R 是固定等效直流内阻，忽略极化随时间变化。</p><div class="ohm-visual"><span>开路电压</span><div><i id="ohmBar"></i></div><span>负载端电压</span></div></div>
+            <div class="formula-controls"><div class="control"><label for="ohmV">开路电压 <output id="ohmVLabel">3.7 V</output></label><input type="range" id="ohmV" min="2.5" max="4.2" step="0.1" value="3.7"></div><div class="control"><label for="ohmI">放电电流 <output id="ohmILabel">100 A</output></label><input type="range" id="ohmI" min="10" max="300" step="10" value="100"></div><div class="control"><label for="ohmR">等效内阻 <output id="ohmRLabel">5 mΩ</output></label><input type="range" id="ohmR" min="1" max="30" step="1" value="5"></div><div class="ohm-results"><div><small>电压跌落</small><strong id="ohmDrop">0.50 V</strong></div><div><small>端电压</small><strong id="ohmTerminal">3.20 V</strong></div><div><small>电阻发热功率</small><strong id="ohmHeat">50 W</strong></div></div><p class="fine" id="ohmNote">演示值不代表实际电芯参数。</p></div>
+          </div>
+          <div class="engineering-grid"><div><span>能量密度</span><h3>存得多</h3><p>材料、电压窗口、极片厚度和非活性材料比例都会影响。</p></div><div><span>功率密度</span><h3>放得快</h3><p>离子传输、电子导电、内阻及散热能力是关键。</p></div><div><span>循环寿命</span><h3>用得久</h3><p>要写清测试温度、倍率、SOC窗口和容量保持率判据。</p></div><div><span>系统成本</span><h3>用得划算</h3><p>除电芯外，还要计入变流器、BMS、冷却、运维与更换。</p></div></div>
+          <div class="takeaway"><span>工程判断</span><p>“最高倍率”通常只说某种条件下的极限电流能力。30C 持续多久、能量剩多少、温升多少、寿命如何，才决定能不能在项目中使用。</p></div>
+        </section>
+
+        <section class="lesson section-pad" id="grid" data-section>
+          <div class="section-head"><span class="chapter-no">07 / 应用实验</span><h2>电力调频，为什么需要快速响应？</h2><p>电网频率偏离额定值时，储能可通过变流器快速充放电，辅助平衡有功功率。下面是教学用的简化比例控制。</p></div>
+          <div class="grid-lab">
+            <div class="grid-controls"><div class="lab-title"><span class="mini-label">LAB 05 · 电网功率调节</span><span class="grid-chip">额定频率：50 Hz</span></div>
+              <div class="control"><label for="gridFreq">当前频率 <output id="gridFreqLabel">49.95 Hz</output></label><input id="gridFreq" type="range" min="49.8" max="50.2" step="0.01" value="49.95"><div class="bounds"><span>49.80 Hz</span><span>50.20 Hz</span></div></div>
+              <div class="control"><label for="gridK">比例系数 <output id="gridKLabel">100 kW/Hz</output></label><input id="gridK" type="range" min="20" max="200" step="10" value="100"></div>
+              <div class="control"><label for="gridLimit">功率上限 <output id="gridLimitLabel">10 kW</output></label><input id="gridLimit" type="range" min="1" max="30" step="1" value="10"></div>
+              <div class="control"><label for="gridSeconds">响应持续 <output id="gridSecondsLabel">120 秒</output></label><input id="gridSeconds" type="range" min="10" max="600" step="10" value="120"></div>
+              <div class="control"><label for="gridEnergy">可用放电能量/可充电空间 <output id="gridEnergyLabel">2 kWh</output></label><input id="gridEnergy" type="range" min="0.1" max="10" step="0.1" value="2"></div>
+            </div>
+            <div class="grid-output"><div class="freq-visual"><div class="freq-scale"><span>49.80</span><span>50.00</span><span>50.20</span></div><div class="freq-line"><div class="freq-center"></div><div id="freqNeedle" class="freq-needle"></div></div></div><p class="grid-response" id="gridAction">频率偏低，储能向电网放电</p><div class="grid-stats"><div><small>计算指令功率</small><strong id="gridP">5.0 kW</strong></div><div><small>该时段电能需求</small><strong id="gridE">0.167 kWh</strong></div><div><small>能量约束下可持续</small><strong id="gridTime">24 分钟</strong></div></div><p class="grid-note" id="gridNote">比例响应教学模型，不含死区、频率动态、SOC约束、效率和并网控制细节。</p></div>
+          </div>
+          <div class="case-study"><span class="mini-label">如何看“调频专用锂离子电容器”</span><h3>选设备时，光看 30C 够不够？</h3><p>调频服务往往需要较快的功率响应和频繁的充放电，但实际还取决于调节信号、持续时间、每天吞吐量、SOC回归策略、可用容量以及并网规范。把这些条件带进来，才知道需要多少电芯、多少变流器容量，以及哪类储能技术更合适。</p><p class="fine">本节工况和数值完全为教学假设。频率响应的专业背景可参见 NREL 的电网服务技术材料 [4]。</p></div>
+        </section>
+
+        <section class="lesson section-pad alternating" id="audit" data-section>
+          <div class="section-head"><span class="chapter-no">08 / 专业判断</span><h2>怎样审查“100Wh/kg、30C”？</h2><p>现在回到最初的研发规划。一组好看的数字，还需要完整的测量条件与产品定义。</p></div>
+          <blockquote class="target-quote"><span>研发目标 / 示例</span><p>“能量密度提升至 <mark>100Wh/kg</mark>，充放电倍率达 <mark>30C</mark>。”</p></blockquote>
+          <div class="audit-board"><div class="audit-header"><div><span class="mini-label">指标核验清单</span><h3>手动勾选已有证据</h3></div><div class="audit-count"><strong id="auditCount">0/8</strong><span>项证据</span></div></div>
+            <div class="checklist" id="checklist">
+              <label><input type="checkbox"><span><b>1. 对象清楚</b><small>是活性材料、电极、完整电芯、模组，还是系统？</small></span></label>
+              <label><input type="checkbox"><span><b>2. 能量计算口径</b><small>有称重清单、积分放电数据和上下限电压。</small></span></label>
+              <label><input type="checkbox"><span><b>3. C倍率定义</b><small>额定Ah容量、对应电流、充放电方向和工况明确。</small></span></label>
+              <label><input type="checkbox"><span><b>4. 同一样品联合验证</b><small>100Wh/kg 与 30C 是否在同一电芯及相同条件下验证？</small></span></label>
+              <label><input type="checkbox"><span><b>5. 高倍率实得能量</b><small>明确30C下的放电Wh、截止电压、功率曲线。</small></span></label>
+              <label><input type="checkbox"><span><b>6. 温度与寿命</b><small>有温升、安全、倍率循环以及容量保持率测试。</small></span></label>
+              <label><input type="checkbox"><span><b>7. 制造与成本</b><small>明确样品规模、合格率、材料及全系统成本。</small></span></label>
+              <label><input type="checkbox"><span><b>8. 独立验证材料</b><small>有第三方测试报告或可复核的原始测试数据。</small></span></label>
+            </div><div class="audit-verdict"><strong id="auditVerdict">证据尚未补齐</strong><p id="auditText">完成清单后可看到审核准备度提示。勾选行为仅代表你认为证据已提供，不验证其真实性。</p></div><button type="button" id="auditReset" class="small-button">清空勾选</button></div>
+          <div class="case-study"><span class="mini-label">一个经常被忽略的例子</span><h3>论文中的 100Wh/kg，不一定是产品的 100Wh/kg</h3><p>有些高能量密度成果采用两极活性物质质量作为分母。把集流体、隔膜、电解液、封装和管理系统算进去后，指标可能显著下降。同样，低倍率下的最大能量与高倍率下的最大功率不能随意拼成一个同时成立的工况点。</p><p class="fine">例：2024 年一篇预嵌锂研究报告约 106.6Wh/kg，但其分母明确是正负极活性材料总质量（AC+SC），不能直接称为完整电芯能量密度 [5]。</p></div>
+        </section>
+
+        <section class="lesson section-pad" id="quiz" data-section>
+          <div class="section-head"><span class="chapter-no">09 / 自测</span><h2>用十道题检验理解</h2><p>选择答案后提交，逐题查看理由。考察的都是前面真正学过的内容。</p></div>
+          <div class="quiz-top"><div><span class="mini-label">KNOWLEDGE CHECK</span><h3>储能基础与指标辨析</h3></div><div class="quiz-status"><strong id="quizAnswered">0/10</strong><span>已作答</span></div></div>
+          <div id="quizMount" class="quiz-items"></div>
+          <div class="quiz-actions"><button class="btn btn-primary" id="submitQuiz" type="button">检查答案</button><button class="btn btn-outline" id="resetQuiz" type="button">重新答题</button><div id="quizResult" class="quiz-result" aria-live="polite"></div></div>
+        </section>
+
+        <section class="lesson section-pad references" id="references" data-section>
+          <div class="section-head"><span class="chapter-no">10 / 延伸阅读</span><h2>参考资料与使用说明</h2><p>本专题以基础物理关系及公开学术资料为依据，示意图重新绘制。实例参数均为教学假设。</p></div>
+          <ol class="source-list">
+            <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9147202/" target="_blank" rel="noopener noreferrer">A Comprehensive Review of Lithium-Ion Capacitor Technology (2022)</a><span>LIC 结构、工作原理、功率与能量性能、热管理。</span></li>
+            <li><a href="https://advanced.onlinelibrary.wiley.com/doi/10.1002/aenm.202200920" target="_blank" rel="noopener noreferrer">Design Rationale and Device Configuration of Lithium-Ion Capacitors (2022)</a><span>器件分类、典型性能及活性材料质量和电芯质量的区别。</span></li>
+            <li><a href="https://www.mdpi.com/1996-1073/14/4/979" target="_blank" rel="noopener noreferrer">Lithium-Ion Capacitors: A Review of Design and Active Materials (2021)</a><span>正负极材料、预嵌锂及电极匹配。</span></li>
+            <li><a href="https://betterbuildingssolutioncenter.energy.gov/sites/default/files/NREL-grid_services.pdf" target="_blank" rel="noopener noreferrer">NREL, An Introduction to Grid Services (2019)</a><span>电网调节服务的时间尺度与技术要求。</span></li>
+            <li><a href="https://onlinelibrary.wiley.com/doi/10.1002/smll.202401295" target="_blank" rel="noopener noreferrer">Solution-Based Deep Prelithiation for Lithium-Ion Capacitors with High Energy Density (2024)</a><span>一个有明确活性材料质量口径的研究实例。</span></li>
+            <li><a href="https://samrepo.nlr.gov/help/battery_storage_btm.html" target="_blank" rel="noopener noreferrer">NREL SAM, Battery Storage: Behind the Meter</a><span>系统建模中的 C倍率与直流功率关系。</span></li>
+          </ol>
+          <div class="boundary"><h3>关于实验结果</h3><p>所有交互计算均在浏览器本地完成，不上传输入，不代表产品检测结果。功率估算采用额定电压近似；运行时间采用恒定负载；内阻实验采用固定等效电阻；调频实验采用简单比例模型，均未覆盖完整电化学、温升、控制保护和安全验证。真实项目应以符合适用标准的测试及工程校核为准。</p></div>
+          <div class="footer-links"><a href="../topics/">← 返回专题目录</a><a href="../">返回超能日志首页 ↑</a></div>
+          <footer>超能日志 · 储能原理实验室 <span>内容与交互设计 / 2026-11</span></footer>
+        </section>
+      </main>
+    </div>
+  </div>
+</body>
+</html>
