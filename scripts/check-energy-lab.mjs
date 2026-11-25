@@ -29,6 +29,12 @@ for(const path of ["studio.css","curriculum.js","figures.js","labs.js","studio.j
 for(const path of ["workbook.css","workbook.js"]){assert(workbook.includes("./"+path),"workbook includes "+path)}
 for(const name of ["lessonContent","lessonTitle","lessonParas","labMount","quizAnswers","moduleNav","markDone"]){assert(html.includes('id="'+name+'"'),"index DOM #"+name)}
 assert(html.includes("./workbook.html"),"workbook linked");
+const practiceLessons=new Map([...wb.matchAll(/id:"(p\d+)",lesson:"([^"]+)"/g)].map(([,problem,lesson])=>[problem,lesson]));
+assert(practiceLessons.size===8,"8 addressable practice problems");
+for(const [problem,lesson] of practiceLessons)
+ assert(lessons.some(l=>l.id===lesson&&l.practice===problem),"practice links to and from "+lesson);
+for(const lesson of lessons.filter(l=>l.practice))
+ assert(practiceLessons.has(lesson.practice),"known practice target for "+lesson.id);
 const entryPaths=["./","./labs.html","./handbook.html","./workbook.html"];
 for(const page of [html,handbook,labPage,workbook])for(const link of entryPaths)assert(page.includes('href="'+link+'"'),"four-part navigation includes "+link);
 assert(!html.includes("原版课程")&&!html.includes("旧版完整课程"),"no parallel old course entry");

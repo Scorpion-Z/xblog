@@ -102,7 +102,9 @@ function sources(l){
  const section=manualMap[l.id]||"why";
  html+='<div class="course-resource-links"><h4>进一步学习</h4><a href="./handbook.html#'+section+'">知识手册：详细解释与资料 →</a>'+
   (l.lab?'<a href="./labs.html#'+l.lab+'">虚拟实验室：单独操作本实验 →</a>':'')+
-  '<a href="./workbook.html">计算训练：独立完成习题 →</a></div>';
+  (l.practice
+    ? '<a href="./workbook.html#'+escape(l.practice)+'">计算训练：做本课对应的习题 →</a>'
+    : '<a href="./workbook.html">计算训练：查看全部习题 →</a>')+'</div>';
  trust("lessonSources",html);
 }
 function render(index,scroll){
@@ -160,4 +162,5 @@ teacherUI();
 
 const initial=decodeURIComponent(location.hash.slice(1)),lesson=lookup.has(initial)?initial:(lookup.has(state.last)?state.last:all[0].id);
 render(lookup.get(lesson),false);
+if(lookup.has(initial)) requestAnimationFrame(()=>byId("lessonContent").scrollIntoView({block:"start"}));
 })();

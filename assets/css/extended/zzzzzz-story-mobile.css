@@ -147,7 +147,7 @@
     margin: 0;
     border: 0;
     border-bottom: 1px solid var(--vx-edge);
-    scroll-margin-top: 18px;
+    scroll-margin-top: 52px;
     background: var(--vx-bg);
     color: var(--vx-fg);
     overflow: visible;
@@ -331,5 +331,81 @@
   .vx-shell *, .vx-shell *::before, .vx-shell *::after {
     animation: none !important; scroll-behavior: auto !important;
     transition: none !important;
+  }
+}
+
+.vx-mobile-chapters {
+  display: none;
+}
+.vx-hero-action .vx-text-switch {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 12px;
+  border: 1px solid rgba(219, 234, 240, .5);
+  border-radius: 3px;
+  color: #dbeaf0;
+  font-size: .9rem;
+}
+.vx-hero-action .vx-text-switch:hover {
+  color: #ffdc95;
+  border-color: currentColor;
+}
+
+@media (max-width: 900px) {
+  .vx-mobile-chapters {
+    position: sticky;
+    top: 0;
+    z-index: 18;
+    display: block;
+    background: #102638;
+    color: #f6f6f0;
+    border-bottom: 1px solid #395267;
+  }
+  .vx-mobile-chapters summary {
+    display: flex;
+    align-items: center;
+    min-height: 48px;
+    gap: 10px;
+    padding: 4px 18px;
+    font-weight: 650;
+    cursor: pointer;
+  }
+  .vx-mobile-chapters summary::before {
+    content: "▸";
+    color: #f3c36e;
+  }
+  .vx-mobile-chapters[open] summary::before {
+    content: "▾";
+  }
+  .vx-mobile-chapters summary > span {
+    margin-inline-start: auto;
+    color: #bdd0db;
+    font-weight: 500;
+    font-variant-numeric: tabular-nums;
+  }
+  .vx-mobile-chapters nav {
+    position: absolute;
+    top: 100%;
+    inset-inline: 0;
+    max-height: min(22rem, 54vh);
+    overflow: auto;
+    overscroll-behavior: contain;
+    background: #102638;
+    border-bottom: 1px solid #395267;
+  }
+  .vx-mobile-chapters ol {
+    margin: 0 14px;
+    padding: 0 0 10px 2em;
+  }
+  .vx-mobile-chapters a {
+    display: block;
+    padding: 9px 8px;
+    border-radius: 4px;
+    color: #e4eef4;
+  }
+  .vx-mobile-chapters a[aria-current="step"] {
+    background: #2a4257;
+    color: #ffdc95;
   }
 }

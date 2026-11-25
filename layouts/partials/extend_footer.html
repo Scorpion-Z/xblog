@@ -12,3 +12,20 @@
   <a href="{{ "about/" | relURL }}">关于</a>
   <a href="{{ "index.xml" | relURL }}">RSS</a>
 </nav>
+
+{{- if not site.Params.disableThemeToggle }}
+<script>
+(() => {
+  const button = document.getElementById("theme-toggle");
+  if (!button) return;
+  const root = document.documentElement;
+  const updateLabel = () => {
+    const label = root.dataset.theme === "dark" ? "切换为浅色主题" : "切换为深色主题";
+    button.setAttribute("aria-label", label);
+    button.title = label + "（Alt + T）";
+  };
+  updateLabel();
+  new MutationObserver(updateLabel).observe(root, {attributeFilter: ["data-theme"]});
+})();
+</script>
+{{- end }}

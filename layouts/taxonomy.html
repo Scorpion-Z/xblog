@@ -1,22 +1,38 @@
-{{- define "main" }}
-
-{{- if .Title }}
+{{- define "main" -}}
 <header class="page-header">
   <h1>{{ .Title }}</h1>
-  {{- if .Description }}
-  <div class="post-description">
-    {{ .Description }}
-  </div>
+  {{- with .Description }}
+  <div class="post-description">{{ . }}</div>
   {{- end }}
 </header>
-{{- end }}
 
-<ul class="terms-tags" aria-label="{{ .Title }}">
-  {{- $type := .Type }}
-  {{- range .Data.Terms.Alphabetical }}
-    {{- $name := .Name }}
+{{- $terms := .Data.Terms.Alphabetical -}}
+{{- if eq .Type "tags" -}}
+  {{- $groups := where $terms "Count" "gt" 1 -}}
+  {{- $others := where $terms "Count" "eq" 1 -}}
+  {{- with $groups }}
+  <section class="journal-topic-tags" aria-labelledby="journal-topic-tags-heading">
+    <h2 id="journal-topic-tags-heading">同一主题的多篇文章</h2>
+    {{- template "journal-term-list" (dict "type" "tags" "terms" . "label" "多篇文章的标签") }}
+  </section>
+  {{- end }}
+  {{- with $others }}
+  <details class="journal-other-tags" {{ if not $groups }}open{{ end }}>
+    <summary>其他标签 <span>（{{ len . }} 个）</span></summary>
+    {{- template "journal-term-list" (dict "type" "tags" "terms" . "label" "其他标签") }}
+  </details>
+  {{- end }}
+{{- else -}}
+  {{- template "journal-term-list" (dict "type" .Type "terms" $terms "label" .Title) -}}
+{{- end -}}
+{{- end -}}
+
+{{- define "journal-term-list" -}}
+<ul class="terms-tags" aria-label="{{ .label }}">
+  {{- $type := .type }}
+  {{- range .terms }}
     {{- $count := .Count }}
-    {{- with site.GetPage (printf "/%s/%s" $type $name) }}
+    {{- with site.GetPage (printf "/%s/%s" $type .Name) }}
     <li>
       <a href="{{ .RelPermalink }}">
         <span>{{ .LinkTitle }}</span>
@@ -26,5 +42,4 @@
     {{- end }}
   {{- end }}
 </ul>
-
-{{- end }}
+{{- end -}}

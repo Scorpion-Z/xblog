@@ -167,3 +167,42 @@ a.journal-story-version {
     cursor: pointer;
   }
 }
+
+.post-header .journal-story-switch {
+  margin: 12px 0 0;
+}
+.journal-story-switch a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 36px;
+  padding: 3px 12px;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  color: var(--x-accent);
+  font-size: .9rem;
+  font-weight: 600;
+}
+.journal-story-switch a:hover {
+  border-color: var(--x-accent);
+  background: var(--x-accent-soft);
+}
+
+.journal-topic-tags h2,
+.journal-other-tags summary {
+  font-size: 1.03rem;
+  font-weight: 650;
+}
+.journal-other-tags {
+  margin: 26px 0;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+}
+.journal-other-tags summary {
+  width: fit-content;
+  padding: 6px 0;
+  cursor: pointer;
+}
+.journal-other-tags summary span {
+  color: var(--secondary);
+  font-weight: 400;
+}

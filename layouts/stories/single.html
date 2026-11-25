@@ -6,7 +6,6 @@
     <div class="vx-hero-meta">
       <a href="{{ "stories/" | relURL }}">← 专题叙事</a>
       <span>SUPER JOURNAL / FIELD REPORT NO. 1149</span>
-      {{- with .Params.source }}<a href="{{ . | relURL }}">文字版 ↗</a>{{- end }}
     </div>
     <div class="vx-hero-watermark" aria-hidden="true">1149</div>
     <div class="vx-hero-title">
@@ -15,7 +14,7 @@
       <p>{{ .Params.intro }}</p>
       <div class="vx-hero-action">
         <a href="#vx-chapters" class="vx-primary-link">进入实验 <span aria-hidden="true">↓</span></a>
-        <span>07 个场景 · 整幕翻页</span>
+        {{- with .Params.source }}<a class="vx-text-switch" href="{{ . | relURL }}">阅读文字版</a>{{- end }}
       </div>
     </div>
     <div class="vx-hero-drawing" aria-hidden="true">
@@ -52,6 +51,16 @@
   </header>
 
   <div class="vx-journey" id="vx-chapters">
+    <details class="vx-mobile-chapters" data-vx-mobile-chapters>
+      <summary>章节 <span>第 <span data-vx-mobile-current>1</span> / {{ len $scenes }} 幕</span></summary>
+      <nav aria-label="手机章节导航">
+        <ol>
+          {{- range $i, $scene := $scenes }}
+          <li><a href="#vx-part-{{ add $i 1 }}" data-vx-dot="{{ $i }}" {{ if eq $i 0 }}aria-current="step"{{ end }}>{{ $scene.title }}</a></li>
+          {{- end }}
+        </ol>
+      </nav>
+    </details>
     <div class="vx-world" aria-hidden="true">
       <div class="vx-world-grid"></div>
       <div class="vx-at-design-grid" aria-hidden="true">
@@ -216,7 +225,7 @@
       <section class="vx-chapter" id="vx-part-{{ add $i 1 }}" data-vx-chapter="{{ $i }}" aria-labelledby="vx-heading-{{ add $i 1 }}">
         <div class="vx-copy">
           <span class="vx-copy-number">{{ $scene.kicker }}</span>
-          <h2 id="vx-heading-{{ add $i 1 }}">{{ $scene.title }}</h2>
+          <h2 id="vx-heading-{{ add $i 1 }}" tabindex="-1">{{ $scene.title }}</h2>
           <p>{{ $scene.text }}</p>
           {{- with $scene.detail }}<div class="vx-copy-takeaway">{{ . }}</div>{{- end }}
           <figure class="vx-fallback-figure">
@@ -242,6 +251,6 @@
     <div class="vx-outro-sources"><span>ORIGINAL SOURCES</span><a href="https://www.rfc-editor.org/rfc/rfc1149.html" target="_blank" rel="noopener noreferrer">RFC 1149 ↗</a><a href="https://blug.linux.no/rfc1149/pinglogg.txt" target="_blank" rel="noopener noreferrer">BLUG Ping Log ↗</a><a href="https://www.rfc-editor.org/rfc/rfc9171.html" target="_blank" rel="noopener noreferrer">RFC 9171 ↗</a></div>
   </footer>
 </article>
-<script src="{{ "js/story-immersive.js" | relURL }}?v=20261119-mobile1" defer></script>
+<script src="{{ "js/story-immersive.js" | relURL }}?v=20261125-chapters" defer></script>
 <script src="{{ "js/story-atelier-v4.js" | relURL }}?v=20261118-atelier4" defer></script>
 {{- end -}}

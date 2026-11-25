@@ -95,7 +95,7 @@ weight = 10
 
 [[menu.main]]
 identifier = 'topics'
-name = '专题'
+name = '主题索引'
 pageRef = 'topics'
 weight = 20
 

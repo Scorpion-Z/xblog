@@ -1,0 +1,5 @@
+{{- with .Page.Params.storyversion -}}
+  {{- with site.GetPage . -}}
+    <p class="journal-story-switch"><a href="{{ .RelPermalink }}">阅读互动版</a></p>
+  {{- end -}}
+{{- end -}}

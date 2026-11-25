@@ -5,6 +5,9 @@
     const bar = document.querySelector(".x-reading-progress-bar");
     if (!article || !bar) return;
 
+    const switchLink = article.querySelector(".journal-story-switch");
+    if (switchLink) article.closest(".post-single")?.querySelector(".post-header")?.append(switchLink);
+
     const toc = document.querySelector("details.toc");
     const compact = window.matchMedia("(max-width: 1179px)");
     let returnToToc;

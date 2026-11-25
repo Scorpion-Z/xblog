@@ -17,6 +17,8 @@
     var chapters = Array.prototype.slice.call(root.querySelectorAll("[data-vx-chapter]"));
     var visuals = Array.prototype.slice.call(root.querySelectorAll("[data-vx-visual]"));
     var dots = Array.prototype.slice.call(root.querySelectorAll("[data-vx-dot]"));
+    var mobileChapters = root.querySelector("[data-vx-mobile-chapters]");
+    var mobileCounter = root.querySelector("[data-vx-mobile-current]");
     var counter = root.querySelector("[data-vx-current]");
     var giant = root.querySelector("[data-vx-giant]");
     var progress = root.querySelector("[data-vx-progress]");
@@ -118,11 +120,12 @@
       root.dataset.active = String(index);
       var numeral = String(index + 1).padStart(2, "0");
       if (counter) counter.textContent = numeral;
+      if (mobileCounter) mobileCounter.textContent = String(index + 1);
       if (giant) giant.textContent = numeral;
       visuals.forEach(function (v, i) { v.classList.toggle("is-current", i === index); });
       chapters.forEach(function (c, i) { c.classList.toggle("is-reading", i === index); });
-      dots.forEach(function (d, i) {
-        if (i === index) d.setAttribute("aria-current", "step");
+      dots.forEach(function (d) {
+        if (Number(d.dataset.vxDot) === index) d.setAttribute("aria-current", "step");
         else d.removeAttribute("aria-current");
       });
       if (stageProgress) stageProgress.style.transform = "scaleX(" + ((index + 1) / chapters.length).toFixed(5) + ")";
@@ -212,11 +215,31 @@
     if (modeButton) modeButton.addEventListener("click", function () { snap = !snap && supports(); updateMode(); });
     if (previousButton) previousButton.addEventListener("click", function () { step(-1, false); });
     if (nextButton) nextButton.addEventListener("click", function () { step(1, false); });
-    dots.forEach(function (dot, index) {
-      dot.addEventListener("click", function (event) {
-        if (!snap) return;
+    if (mobileChapters) {
+      // Use the sticky directory's offset and skip PaperMod's generic anchor handler.
+      mobileChapters.addEventListener("click", function (event) {
+        var link = event.target.closest("[data-vx-dot]");
+        if (!link || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
         event.preventDefault();
-        moveTo(index + 1, false);
+        event.stopPropagation();
+        var target = chapters[Number(link.dataset.vxDot)];
+        mobileChapters.open = false;
+        if (window.location.hash !== link.hash) window.history.pushState(null, "", link.hash);
+        target.querySelector("h2").focus({ preventScroll: true });
+        target.scrollIntoView({ block: "start", behavior: reduced.matches ? "instant" : "smooth" });
+      }, true);
+      mobileChapters.addEventListener("keydown", function (event) {
+        if (event.key === "Escape" && mobileChapters.open) {
+          mobileChapters.open = false;
+          mobileChapters.querySelector("summary").focus();
+        }
+      });
+    }
+    dots.forEach(function (dot) {
+      dot.addEventListener("click", function (event) {
+        if (!snap || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+        event.preventDefault();
+        moveTo(Number(dot.dataset.vxDot) + 1, false);
       });
     });
     window.addEventListener("wheel", handleWheel, { passive: false });

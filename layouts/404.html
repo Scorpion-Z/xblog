@@ -1,0 +1,12 @@
+{{- define "main" -}}
+<section class="journal-archive" aria-labelledby="not-found-heading">
+  <header class="journal-archive-heading">
+    <h1 id="not-found-heading">404 · 页面未找到</h1>
+    <p>链接可能已经更改。可以返回首页，或搜索文章和课程。</p>
+  </header>
+  <nav class="journal-home-more" aria-label="继续浏览">
+    <a href="{{ "" | relURL }}">返回首页</a>
+    <a href="{{ "search/" | relURL }}">搜索文章</a>
+  </nav>
+</section>
+{{- end -}}
