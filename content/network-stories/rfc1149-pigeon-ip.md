@@ -7,6 +7,7 @@ tags: ["RFC 1149", "TCP/IP", "信鸽网络", "ICMP", "MTU", "TCP三次握手", "
 summary: "一份愚人节 RFC，让信鸽背上 IP 数据包。沿着真实 Ping 实验，重新认识 TCP/IP 分层、MTU、三次握手、延迟和吞吐量。"
 description: "RFC 1149 详细科普：信鸽如何传 IP 包，2001 年 Linux Ping 实验发生了什么，为什么 TCP 三次握手会让人等到怀疑人生。"
 showToc: true
+storyVersion: "/stories/pigeon-ip"
 TocOpen: true
 ---
 

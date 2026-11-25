@@ -1,0 +1,16 @@
+{{- define "main" -}}
+<header class="page-header x-search-header">
+  <h1>{{ .Title }}</h1>
+  <div class="post-description">{{ .Summary }}</div>
+</header>
+
+<form class="searchbox x-searchbox" id="journal-search" role="search" data-index="{{ "index.json" | relURL }}">
+  <input id="searchInput" name="q"
+    placeholder="{{ .Params.placeholder }}"
+    aria-label="搜索站内文章和课程" type="search" autocomplete="off" maxlength="64" autofocus>
+  <p class="journal-result-count" id="journal-search-status" role="status">输入关键词开始搜索。</p>
+  <ul class="searchResults journal-search-results" id="searchResults" aria-label="搜索结果"></ul>
+  <noscript><p>开启 JavaScript 后可搜索，也可以<a href="{{ "archives/" | relURL }}">按时间查看归档</a>。</p></noscript>
+</form>
+<script src="{{ "js/journal-search.js" | relURL }}" defer></script>
+{{- end -}}

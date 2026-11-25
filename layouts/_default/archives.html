@@ -2,16 +2,20 @@
 <section class="journal-archive" aria-labelledby="archives-heading">
   <header class="journal-archive-heading">
     <h1 id="archives-heading">归档</h1>
-    <p>按发表时间整理。</p>
+    <p>按发表时间整理文章、趣谈网络和提示词。</p>
   </header>
-  {{- range (where site.RegularPages "Section" "posts").GroupByDate "2006" }}
+  {{- range (partial "journal-articles.html" .).GroupByDate "2006" }}
   <section class="journal-archive-year" aria-labelledby="year-{{ .Key }}">
     <h2 id="year-{{ .Key }}">{{ .Key }}</h2>
     <ol class="journal-archive-list">
       {{- range .Pages.ByDate.Reverse }}
       <li>
         <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "01-02" }}</time>
-        <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+        <div>
+          <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+          {{- if ne .Section "posts" }} <span class="journal-archive-type">{{ .CurrentSection.Title }}</span>{{ end }}
+          {{- partial "journal-story-version.html" . }}
+        </div>
       </li>
       {{- end }}
     </ol>

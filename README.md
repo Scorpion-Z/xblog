@@ -18,7 +18,7 @@
 
 - 全站页脚展示“总访问”（PV）与“独立访客”（UV）。
 - `posts`、`prompts` 和 `network-stories` 的文章详情页，在阅读时间等元信息后展示该页面的阅读次数（Page PV）。
-- 集成位置：`layouts/partials/extend_footer.html`；样式：`assets/css/extended/traffic.css`。
+- 全站计数位于 `layouts/partials/extend_footer.html`，文章阅读数由 `layouts/partials/extend_post_content.html` 插入，样式位于 `assets/css/extended/traffic.css`。
 - 本地运行 `hugo server` 时不加载计数服务，避免本地预览误计入线上数据。正式构建会加载。
 - 统计从启用开始积累，无法自动恢复历史阅读量。PV 含重复访问；UV 是第三方按其规则计算的估计值。
 - 数据依赖第三方服务，网络、浏览器插件或隐私设置可能拦截请求，页面中将保留“—”。

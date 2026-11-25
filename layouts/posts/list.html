@@ -1,0 +1,43 @@
+{{- define "main" -}}
+{{- $articles := partial "journal-articles.html" . -}}
+{{- $pinned := where $articles "Params.pinned" true -}}
+<section class="journal-archive journal-catalog" aria-labelledby="journal-catalog-title">
+  <header class="journal-archive-heading">
+    <h1 id="journal-catalog-title">{{ .Title }}</h1>
+    <p>{{ .Description }}</p>
+  </header>
+
+  <fieldset class="journal-filters" id="journal-filters" hidden>
+    <legend class="journal-visually-hidden">按栏目筛选文章</legend>
+    <label><input type="radio" name="section" value="" checked><span>全部</span></label>
+    <label><input type="radio" name="section" value="posts"><span>普通文章</span></label>
+    <label><input type="radio" name="section" value="network-stories"><span>趣谈网络</span></label>
+    <label><input type="radio" name="section" value="prompts"><span>提示词</span></label>
+  </fieldset>
+  <p class="journal-result-count" id="journal-catalog-count" role="status">{{ len $articles }} 篇</p>
+  <ol class="journal-list" id="journal-catalog">
+    {{- range union $pinned.ByWeight $articles }}
+    <li class="journal-entry" data-section="{{ .Section }}">
+      <div class="journal-entry-meta">
+        <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time>
+        <span>{{ .CurrentSection.Title }}{{ if .Params.pinned }} · 置顶{{ end }}</span>
+      </div>
+      <div class="journal-entry-main">
+        <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+        {{- with .Params.summary | default .Summary }}
+        <p>{{ . | plainify | htmlUnescape | truncate 110 }}</p>
+        {{- end }}
+        {{- partial "journal-story-version.html" . }}
+      </div>
+    </li>
+    {{- end }}
+  </ol>
+  <nav class="journal-home-more" aria-label="文章列表相关入口">
+    <a href="{{ "archives/" | relURL }}">按日期看归档</a>
+    {{- with .OutputFormats.Get "rss" }}
+    <a href="{{ .RelPermalink }}">订阅普通文章（RSS）</a>
+    {{- end }}
+  </nav>
+</section>
+<script src="{{ "js/journal-catalog.js" | relURL }}" defer></script>
+{{- end -}}

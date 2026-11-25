@@ -1,0 +1,2 @@
+{{- $articles := where site.RegularPages "Section" "in" (slice "posts" "network-stories" "prompts") -}}
+{{- return $articles.ByDate.Reverse -}}

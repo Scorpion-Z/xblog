@@ -1,0 +1,5 @@
+{{- with .Params.storyversion -}}
+  {{- with site.GetPage . -}}
+    <a class="journal-story-version" href="{{ .RelPermalink }}">互动版<span class="journal-visually-hidden">：{{ .Title }}</span></a>
+  {{- end -}}
+{{- end -}}

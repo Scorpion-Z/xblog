@@ -1,27 +1,5 @@
-{{- if and .IsPage (or (eq .Section "posts") (eq .Section "prompts") (eq .Section "network-stories")) }}
-<div class="x-reading-progress" aria-hidden="true"><span class="x-reading-progress-bar"></span></div>
-<script src="{{ "js/reading-progress.js" | relURL }}" defer></script>
-{{- end }}
-
-{{- if eq .Section "prompts" }}
-<script src="{{ "js/prompt-library.js" | relURL }}" defer></script>
-{{- end }}
-
 {{- /* Third-party counters should not run in Hugo's local development mode. */ -}}
 {{- if hugo.IsProduction }}
-{{- if and .IsPage (or (eq .Section "posts") (eq .Section "prompts") (eq .Section "network-stories")) }}
-<script>
-(function () {
-  var meta = document.querySelector(".post-meta");
-  if (!meta || document.getElementById("vercount_value_page_pv")) return;
-  var counter = document.createElement("span");
-  counter.className = "x-post-viewcount";
-  counter.innerHTML = '阅读 <strong id="vercount_value_page_pv">—</strong> 次';
-  meta.appendChild(document.createTextNode(" · "));
-  meta.appendChild(counter);
-})();
-</script>
-{{- end }}
 <div class="x-traffic-bar" aria-label="站点访问统计">
   <span>总访问 <strong id="vercount_value_site_pv">—</strong> 次</span>
   <span class="x-traffic-divider" aria-hidden="true">·</span>

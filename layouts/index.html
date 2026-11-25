@@ -1,8 +1,5 @@
 {{- define "main" -}}
-{{- /* Include regular articles, network stories and prompt-library posts. */ -}}
-{{- $posts := where site.RegularPages "Section" "in" (slice "posts" "prompts" "network-stories") -}}
-{{- $posts = where $posts "Params.hiddenInHomeList" "!=" true -}}
-{{- $posts = $posts.ByDate.Reverse -}}
+{{- $posts := where (partial "journal-articles.html" .) "Params.hiddenInHomeList" "!=" true -}}
 
 <section class="journal-home" aria-labelledby="journal-intro-title">
   <header class="journal-home-intro">

@@ -1,14 +1,40 @@
-{{- $.Scratch.Add "index" slice -}}
+{{- $index := slice -}}
+{{- $companions := slice -}}
 {{- range site.RegularPages -}}
-  {{- if and (not .Params.searchHidden) (ne .Layout `archives`) (ne .Layout `search`) }}
-    {{- $.Scratch.Add "index" (dict
+  {{- with .Params.storyversion -}}
+    {{- with site.GetPage . -}}
+      {{- $companions = $companions | append .Permalink -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- range site.RegularPages -}}
+  {{- if and (not .Params.searchHidden) (ne .Layout "archives") (ne .Layout "journal-search") (not (in $companions .Permalink)) -}}
+    {{- $type := "页面" -}}
+    {{- if .Section }}{{ $type = .CurrentSection.Title }}{{ end -}}
+    {{- $entry := dict
       "title" .Title
-      "content" .Plain
+      "content" (.Plain | htmlUnescape)
       "permalink" .Permalink
-      "summary" (.Summary | plainify)
+      "summary" (.Params.summary | default .Summary | plainify | htmlUnescape)
       "tags" (.Params.tags | default (slice))
       "categories" (.Params.categories | default (slice))
-    ) -}}
-  {{- end }}
+      "type" $type
+    -}}
+    {{- with .Params.storyversion -}}
+      {{- with site.GetPage . -}}
+        {{- $entry = merge $entry (dict "companion" (dict "title" .Title "permalink" .Permalink)) -}}
+      {{- end -}}
+    {{- end -}}
+    {{- $index = $index | append $entry -}}
+  {{- end -}}
 {{- end -}}
-{{- $.Scratch.Get "index" | jsonify -}}
+{{- $index = $index | append (dict
+    "title" "财务学堂" "type" "课程" "content" "" "categories" (slice) "permalink" ("finance-academy/" | absURL)
+    "summary" "从一笔业务开始，学习会计、财务报表与连续业务案例。"
+    "tags" (slice "财务" "企业财务研习室")
+  ) (dict
+    "title" "储能实验室" "type" "课程" "content" "" "categories" (slice) "permalink" ("energy-lab/" | absURL)
+    "summary" "从生活用电到储能工程，提供系统课程、虚拟实验和计算训练。"
+    "tags" (slice "储能" "储能原理实验室" "知识手册")
+  ) -}}
+{{- $index | jsonify -}}

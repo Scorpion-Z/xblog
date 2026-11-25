@@ -1,0 +1,23 @@
+{{- /* PaperMod caches footers across articles, so page-specific scripts belong here. */ -}}
+{{- if (in (slice "posts" "prompts" "network-stories") .Section) }}
+<div class="x-reading-progress" aria-hidden="true"><span class="x-reading-progress-bar"></span></div>
+<script src="{{ "js/reading-progress.js" | relURL }}" defer></script>
+{{- end }}
+
+{{- if eq .Section "prompts" }}
+<script src="{{ "js/prompt-library.js" | relURL }}" defer></script>
+{{- end }}
+
+{{- if and hugo.IsProduction (in (slice "posts" "prompts" "network-stories") .Section) }}
+<script>
+(function () {
+  var meta = document.querySelector(".post-meta");
+  if (!meta || document.getElementById("vercount_value_page_pv")) return;
+  var counter = document.createElement("span");
+  counter.className = "x-post-viewcount";
+  counter.innerHTML = '阅读 <strong id="vercount_value_page_pv">—</strong> 次';
+  meta.appendChild(document.createTextNode(" · "));
+  meta.appendChild(counter);
+})();
+</script>
+{{- end }}
