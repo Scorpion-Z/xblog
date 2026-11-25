@@ -17,6 +17,7 @@
       "permalink" .Permalink
       "summary" (.Params.summary | default .Summary | plainify | htmlUnescape)
       "tags" (.Params.tags | default (slice))
+      "aliases" (.Params.searchAliases | default (slice))
       "categories" (.Params.categories | default (slice))
       "type" $type
     -}}

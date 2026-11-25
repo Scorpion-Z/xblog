@@ -1,4 +1,5 @@
 ---
+hiddenInRss: true
 title: "关于"
 url: "/about/"
 summary: "关于这个博客。"

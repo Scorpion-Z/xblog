@@ -1,4 +1,5 @@
 ---
+hiddenInRss: true
 title: "搜索"
 layout: "journal-search"
 url: "/search/"

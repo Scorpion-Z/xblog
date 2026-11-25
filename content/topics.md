@@ -1,4 +1,5 @@
 ---
+hiddenInRss: true
 title: "主题索引"
 url: "/topics/"
 summary: "按主题查找文章、提示词和学习工具。"

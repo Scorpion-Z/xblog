@@ -5,6 +5,7 @@ draft: false
 description: "阅读工作汇报、改革方案、学术论文和行业报告时，用六组提示词提取事实、核对论证、发现遗漏并形成独立判断。"
 summary: "从快速阅读到批判性分析，整理6组适用于汇报材料、学术论文和行业研究的可复制提示词。"
 categories: ["提示词", "方法"]
+searchAliases: ["报告怎么读"]
 tags: ["AI提示词", "报告阅读", "学术论文", "批判性思维", "管理决策"]
 showToc: true
 TocOpen: true

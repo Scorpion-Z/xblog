@@ -8,22 +8,26 @@
 
   const clean = (text = "") => text.replace(/\s+/g, " ").trim();
   const fold = text => clean(text).normalize("NFKC");
+  const comparisonKey = text => fold(text)
+    .replace(/(\p{Script=Han})(?=[a-z0-9])|([a-z0-9])(?=\p{Script=Han})/giu, "$1$2 ");
   function pattern(term) {
     const literal = term.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
     return new RegExp(/^[a-z0-9]+$/i.test(term) ? `\\b${literal}\\b` : literal, "iu");
   }
 
   function find(query) {
-    const phrase = pattern(query);
-    const terms = query.split(" ").map(pattern);
+    const key = comparisonKey(query);
+    const phrase = pattern(key);
+    const terms = key.split(" ").map(pattern);
 
     return entries.flatMap(entry => {
-      const strong = [entry.title, entry.companion?.title, ...(entry.tags ?? [])].filter(Boolean).map(fold);
-      const fields = [...strong, ...(entry.categories ?? []), entry.summary, entry.content].map(fold);
+      const strong = [entry.title, entry.companion?.title, ...(entry.tags ?? []), ...(entry.aliases ?? [])]
+        .filter(Boolean).map(comparisonKey);
+      const fields = [...strong, ...[...(entry.categories ?? []), entry.summary, entry.content].map(comparisonKey)];
       if (!terms.every(term => fields.some(field => term.test(field)))) return [];
 
       let rank = 3;
-      if (strong.some(field => field.toLowerCase() === query.toLowerCase())) rank = 0;
+      if (strong.some(field => field.toLowerCase() === key.toLowerCase())) rank = 0;
       else if (strong.some(field => phrase.test(field))) rank = 1;
       else if (terms.every(term => strong.some(field => term.test(field)))) rank = 2;
 
@@ -32,7 +36,7 @@
   }
 
   function snippet(entry, query) {
-    const probes = [pattern(query), ...query.split(" ").map(pattern)];
+    const probes = [pattern(query), ...comparisonKey(query).split(" ").map(pattern)];
     const summary = clean(entry.summary);
     const content = clean(entry.content);
     const match = probes.map(probe => probe.exec(fold(content))).find(Boolean);
